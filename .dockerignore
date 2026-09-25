@@ -1,0 +1,12 @@
+.git
+.next
+node_modules
+.env*
+!.env.example
+.claude
+releases
+*.tar
+n8n
+README.md
+Dockerfile
+.dockerignore
