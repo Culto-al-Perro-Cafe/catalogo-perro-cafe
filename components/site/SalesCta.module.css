@@ -1,0 +1,39 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.spacer,
+.bar {
+  display: none;
+}
+
+@media (max-width: 639px) {
+  .header {
+    display: none;
+  }
+
+  .spacer {
+    display: block;
+    height: calc(76px + env(safe-area-inset-bottom));
+  }
+
+  .bar {
+    position: fixed;
+    inset: auto 0 0;
+    z-index: 40;
+    display: flex;
+    padding: 12px var(--page-pad) calc(12px + env(safe-area-inset-bottom));
+    background: var(--color-the-black);
+    border-top: var(--border-on-ink);
+  }
+
+  /* Pinned bar: no lift effect, it would clip against the viewport edge. */
+  .bar :global(.cp-btn:hover),
+  .bar :global(.cp-btn:focus-visible),
+  .bar :global(.cp-btn:active) {
+    transform: none;
+    box-shadow: var(--focus-ring);
+  }
+}

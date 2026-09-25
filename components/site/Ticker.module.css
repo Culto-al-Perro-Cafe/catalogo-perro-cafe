@@ -1,0 +1,60 @@
+.ticker {
+  overflow: hidden;
+  padding: 10px 0;
+  background: var(--color-the-orange);
+  color: var(--color-paper-ivory);
+  border-bottom: 2px solid var(--color-the-black);
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  /* Keyframes are local: CSS Modules scope animation names to this file. */
+  animation: marquee 32s linear infinite;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+.run,
+.item {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 1.6em;
+}
+
+.run {
+  padding-right: 1.6em;
+}
+
+.text {
+  display: block;
+  padding-top: 0.22em;
+}
+
+.star {
+  flex: none;
+  display: block;
+  width: 0.8em;
+  height: 0.8em;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}

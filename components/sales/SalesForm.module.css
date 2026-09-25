@@ -1,0 +1,53 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px 28px;
+  background: var(--color-paper-ivory);
+  color: var(--color-the-black);
+  border: 2px solid var(--color-the-black);
+  outline: none;
+}
+
+.form {
+  gap: 22px;
+  padding: 28px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 22px 16px;
+}
+
+.selects {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  align-items: start;
+  container-type: inline-size;
+}
+
+/* Side by side (2 × 260px + gap): give both labels the same two-line box so the
+ * selects stay aligned whatever the label length or an error message below. */
+@container (min-width: 536px) {
+  .selects :global(.cp-field-label) {
+    display: flex;
+    align-items: flex-end;
+    min-height: 2.7em;
+  }
+}
+
+.submit {
+  display: flex;
+  padding-top: 6px;
+}
+
+.successTitle {
+  font-size: clamp(20px, 2vw, 34px);
+  line-height: 0.95;
+  text-wrap: balance;
+}
+
+.successActions {
+  display: flex;
+  padding-top: 8px;
+}

@@ -1,0 +1,33 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px var(--page-pad);
+  background: var(--color-the-black);
+  border-bottom: var(--border-on-ink);
+}
+
+.home {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.logo {
+  display: block;
+  height: 40px;
+  width: auto;
+  max-width: 60vw;
+}
+
+/* Keeps the header height stable when the CTA is hidden (/ventas, mobile). */
+@media (min-width: 640px) {
+  .header {
+    min-height: 70px;
+  }
+}

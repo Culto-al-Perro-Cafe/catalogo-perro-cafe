@@ -1,0 +1,55 @@
+{
+  "name": "Leads de Ventas (Catálogo B2B)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "0da30cf0-a0a5-483b-990c-7903e8ef89af",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [-400, 0],
+      "id": "0ce17420-c28e-4b2c-bdf4-e01fb954928e",
+      "name": "Webhook",
+      "webhookId": "0da30cf0-a0a5-483b-990c-7903e8ef89af"
+    },
+    {
+      "parameters": {
+        "jsCode": "// One lead per request from the Catálogo B2B \"Platica con ventas\" form.\n// The site validates on its server before posting, so this only shapes a\n// clean record with Spanish field names for whatever runs next.\nconst body = $input.first().json.body || {};\nconst s = (v) => String(v ?? '').trim();\n\nconst tipo = s(body.tipo) === 'Otro' && s(body.tipoOtro)\n  ? `Otro: ${s(body.tipoOtro)}`\n  : s(body.tipo);\n\nreturn [{\n  json: {\n    nombre: s(body.nombre),\n    email: s(body.email),\n    whatsapp: s(body.whatsapp),\n    codigoPostal: s(body.cp),\n    consumoMensual: s(body.consumo),\n    lineaDeInteres: s(body.linea),\n    tipoDeEstablecimiento: tipo,\n    enviadoEn: s(body.submittedAt) || new Date().toISOString(),\n    origen: 'catalogo-b2b',\n  },\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-160, 0],
+      "id": "dc690d57-a98b-4eb1-9555-13ea2b415425",
+      "name": "Normalizar lead"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"ok\": true\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [80, 0],
+      "id": "bf9f3950-5eb8-43be-aca6-7d0797391f0a",
+      "name": "Responder OK"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [[{ "node": "Normalizar lead", "type": "main", "index": 0 }]]
+    },
+    "Normalizar lead": {
+      "main": [[{ "node": "Responder OK", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "all",
+    "saveDataErrorExecution": "all"
+  },
+  "pinData": {}
+}

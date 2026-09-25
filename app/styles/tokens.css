@@ -1,0 +1,66 @@
+/* Culto al Perro Café — Public Bento design tokens.
+ * Source: Claude Design project "Culto al Perro Café — Public Bento DS" (tokens/*.css).
+ * Brand colors and fonts live in @theme so Tailwind utilities (bg-the-orange,
+ * font-headline, …) are available too. */
+
+@theme {
+  --color-the-black: #222222;
+  --color-the-orange: #e4734c;
+  --color-the-green: #2ba497;
+  --color-the-yellow: #f2b561;
+  --color-paper-ivory: #faefdf;
+  --color-paper-sand: #f2dab2;
+  --color-white: #ffffff;
+  --color-shadow-roast: #24160f;
+  --color-secondary: #a0401e;
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-surface-variant: #56423c;
+}
+
+/* Font families come from next/font (see app/layout.tsx). */
+@theme inline {
+  --font-headline: var(--font-rokkitt), ui-serif, Georgia, serif;
+  --font-body: var(--font-josefin), ui-sans-serif, system-ui, sans-serif;
+  --font-label: var(--font-josefin), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+:root {
+  /* Semantic aliases */
+  --ink: var(--color-the-black);
+  --accent: var(--color-the-orange);
+  --surface-card: var(--color-paper-ivory);
+
+  /* Type scale */
+  --display-sm: 64px;
+  --display-md: 96px;
+  --display-lg: 144px;
+
+  /* Spacing (4px base) */
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --page-pad: 24px;
+
+  /* Borders — square, always */
+  --border-ink: 2px solid var(--color-the-black);
+  --border-on-ink: 2px solid rgba(255, 255, 255, 0.2);
+
+  /* Hard offset shadows — never blurred */
+  --shadow-hard: 4px 4px 0 0 var(--color-the-black);
+  --shadow-offset: 8px 8px 0 0 var(--color-the-black);
+  --shadow-lift: 8px 8px 0 0 var(--color-the-orange);
+  --shadow-press: 4px 4px 0 0 var(--color-the-orange);
+  --focus-ring: 0 0 0 2px var(--color-the-orange);
+
+  /* Motion */
+  --dur-fast: 140ms;
+  --dur-base: 180ms;
+  --ease-panel: cubic-bezier(0.16, 1, 0.3, 1);
+}

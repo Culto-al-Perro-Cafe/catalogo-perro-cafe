@@ -1,0 +1,346 @@
+/* Design-system base + component classes (ported from the DS bundle and the
+ * Catálogo B2B overrides). Kept in @layer ds so CSS Modules can override. */
+
+@layer ds {
+  /* ---------- Base ---------- */
+  html {
+    background: var(--color-the-black);
+  }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--color-the-black);
+    color: #fff;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+  a:hover {
+    color: var(--color-the-orange);
+  }
+
+  @keyframes cp-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* ---------- Typography ---------- */
+  .t-display-md,
+  .t-display-sm {
+    margin: 0;
+    font-family: var(--font-headline);
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  .t-display-md {
+    font-size: var(--display-md);
+    letter-spacing: -0.05em;
+    line-height: 0.86;
+  }
+  .t-display-sm {
+    font-size: var(--display-sm);
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+  }
+  .t-body,
+  .t-body-lg {
+    margin: 0;
+    font-family: var(--font-body);
+    line-height: 1.5;
+  }
+  .t-body {
+    font-size: 14px;
+  }
+  .t-body-lg {
+    font-size: 18px;
+  }
+  .t-label {
+    margin: 0;
+    font-family: var(--font-label);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.4;
+  }
+  .t-accent {
+    color: var(--color-the-orange);
+  }
+
+  /* ---------- Button ---------- */
+  .cp-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 36px;
+    padding: 8px 16px;
+    border: 2px solid var(--color-the-black);
+    border-radius: 0;
+    font-family: var(--font-label);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      transform var(--dur-base) var(--ease-panel),
+      box-shadow var(--dur-base) var(--ease-panel),
+      background-color var(--dur-fast) ease-out,
+      color var(--dur-fast) ease-out;
+  }
+  .cp-btn[data-variant="primary"],
+  .cp-btn[data-variant="primary"]:hover {
+    background: var(--color-the-black);
+    color: #fff;
+  }
+  .cp-btn[data-variant="secondary"],
+  .cp-btn[data-variant="secondary"]:hover {
+    background: var(--color-paper-ivory);
+    color: var(--color-the-black);
+  }
+  .cp-btn[data-variant="roast"],
+  .cp-btn[data-variant="roast"]:hover {
+    background: var(--color-the-orange);
+    color: #fff;
+  }
+  .cp-btn[data-size="lg"] {
+    min-height: 44px;
+    font-family: var(--font-headline);
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 0;
+  }
+  .cp-btn[data-size="xl"] {
+    min-height: 56px;
+    padding: 10px 24px;
+    gap: 10px;
+    font-family: var(--font-headline);
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: -0.01em;
+  }
+  .cp-btn[data-full-width] {
+    width: 100%;
+  }
+  .cp-btn:hover:not(:disabled),
+  .cp-btn:focus-visible {
+    transform: translate(-4px, -4px);
+    box-shadow: var(--shadow-lift);
+    outline: none;
+  }
+  .cp-btn:active:not(:disabled) {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-press);
+  }
+  .cp-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+  .cp-btn[aria-busy="true"] {
+    cursor: wait;
+    opacity: 0.9;
+  }
+  /* Josefin caps sit high — optical nudge on the small back buttons. */
+  .cp-btn[data-size="md"] > .cp-btn__label {
+    transform: translateY(2px);
+  }
+  .cp-icon {
+    flex: none;
+    display: block;
+  }
+  .cp-icon[data-spin] {
+    animation: cp-spin 1s linear infinite;
+  }
+
+  /* ---------- Bento tile ---------- */
+  .cp-tile {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+    border: 2px solid var(--color-the-black);
+    border-radius: 0;
+    background: var(--color-paper-ivory);
+    color: var(--color-the-black);
+    text-align: left;
+    text-decoration: none;
+  }
+  .cp-tile[data-tone="sand"] {
+    background: var(--color-paper-sand);
+  }
+  .cp-tile[data-tone="white"] {
+    background: #fff;
+  }
+  .cp-tile[data-tone="ink"] {
+    background: var(--color-the-black);
+    color: #fff;
+  }
+  .cp-tile[data-tone="orange"] {
+    background: var(--color-the-orange);
+  }
+  .cp-tile[data-tone="yellow"] {
+    background: var(--color-the-yellow);
+  }
+  .cp-tile[data-shadow="offset"] {
+    box-shadow: var(--shadow-offset);
+  }
+  a.cp-tile {
+    cursor: pointer;
+    transition:
+      transform var(--dur-base) var(--ease-panel),
+      box-shadow var(--dur-base) var(--ease-panel);
+  }
+  a.cp-tile:hover,
+  a.cp-tile:focus-visible {
+    color: var(--color-the-black);
+    transform: translate(-4px, -4px);
+    box-shadow: var(--shadow-lift);
+    outline: none;
+  }
+  a.cp-tile:active {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-press);
+  }
+  .cp-tile__img {
+    object-fit: cover;
+    transition: transform 600ms var(--ease-panel);
+  }
+  a.cp-tile:hover .cp-tile__img {
+    transform: scale(1.04);
+  }
+
+  .cp-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: repeating-linear-gradient(
+      135deg,
+      rgba(34, 34, 34, 0.1) 0 2px,
+      transparent 2px 14px
+    );
+  }
+  .cp-placeholder > span {
+    padding: 4px 8px;
+    border: 2px dashed currentColor;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+  }
+
+  /* ---------- Form fields ---------- */
+  .cp-field-shell {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .cp-field-label {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--color-the-black);
+    text-wrap: pretty;
+  }
+  .cp-field {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 12px 8px;
+    border: 2px solid var(--color-the-black);
+    border-radius: 0;
+    background: #fff;
+    color: var(--color-the-black);
+    font-family: var(--font-body);
+    font-size: 16px;
+    outline: none;
+  }
+  .cp-field::placeholder {
+    color: rgba(34, 34, 34, 0.4);
+  }
+  .cp-field:focus {
+    box-shadow: var(--focus-ring);
+  }
+  .cp-field[aria-invalid="true"] {
+    border-color: var(--color-error);
+  }
+  .cp-field-error {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    line-height: 1.625;
+    color: var(--color-error);
+  }
+  .cp-select {
+    position: relative;
+  }
+  .cp-select > select {
+    appearance: none;
+    padding-right: 36px;
+  }
+  .cp-select > .cp-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--color-the-black);
+  }
+
+  /* Segmented choice (radio group) */
+  .cp-seg {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+  @media (max-width: 419px) {
+    .cp-seg {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  .cp-seg__opt {
+    height: 44px;
+    border: 2px solid var(--color-the-black);
+    border-radius: 0;
+    background: #fff;
+    color: var(--color-the-black);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color var(--dur-fast) ease-out;
+  }
+  .cp-seg__opt:hover {
+    background: var(--color-paper-sand);
+  }
+  .cp-seg__opt[aria-checked="true"] {
+    background: var(--color-the-orange);
+    color: #fff;
+  }
+  .cp-seg__opt:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cp-btn,
+    a.cp-tile,
+    .cp-tile__img {
+      transition: none;
+    }
+    .cp-btn:hover:not(:disabled),
+    a.cp-tile:hover {
+      transform: none;
+    }
+  }
+}

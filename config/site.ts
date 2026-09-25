@@ -1,0 +1,103 @@
+/**
+ * Site-wide content and SEO settings.
+ * Edit copy here — pages and components read from this file.
+ */
+
+const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
+).replace(/\/$/, "");
+
+export const siteConfig = {
+  url: siteUrl,
+  name: "El Culto al Perro Café",
+  shortName: "Culto al Perro Café",
+  locale: "es_MX",
+  lang: "es-MX",
+  themeColor: "#222222",
+
+  seo: {
+    /** Default <title>; child pages render as "<page> | <shortName>". */
+    title: "Café tostado para negocios · Mayoreo B2B",
+    description:
+      "Proveemos café tostado para cafeterías, restaurantes, oficinas y hoteles. Envíos a todo México, en grano o molido, con facturación. Mayoreo desde 5 kg.",
+    keywords: [
+      "café tostado mayoreo",
+      "proveedor de café para negocios",
+      "café para cafeterías",
+      "café para restaurantes",
+      "café para oficina",
+      "café de especialidad México",
+      "café en grano mayoreo",
+      "tostador de café Hermosillo",
+    ],
+  },
+
+  business: {
+    city: "Hermosillo",
+    region: "Sonora",
+    country: "MX",
+    areaServed: "México",
+    slogan: "Proveedores de café perrón",
+  },
+
+  logo: {
+    src: "/brand/logo-header.svg",
+    alt: "El culto al Perro Café",
+    width: 859,
+    height: 105,
+  },
+
+  ticker: [
+    "Café tostado",
+    "Envíos a todo México",
+    "En grano o molido",
+    "Facturación",
+  ],
+
+  home: {
+    title: "Proveemos café tostado",
+    titleHighlight: "para tu negocio",
+    /** Sentences render on one line on desktop and one per line on mobile. */
+    subtitle: ["Enviamos a todo México", "Mayoreo desde 5Kg"],
+    linesHeading: "Nuestras líneas",
+    cardCta: "Ver detalles →",
+    cta: {
+      title: "¿No sabes cuál elegir para tu equipo?",
+      button: "Platica con ventas",
+    },
+  },
+
+  line: {
+    breadcrumbRoot: "Nuestras líneas",
+    backLabel: "Todas las líneas",
+    quoteButton: "Cotizar pedido",
+  },
+
+  sales: {
+    navLabel: "Platica con ventas",
+    title: "Platica con",
+    titleHighlight: "ventas",
+    subtitle: "Solicita una cotización. Te la enviamos por correo.",
+    seoTitle: "Platica con ventas · Cotiza café para tu negocio",
+    seoDescription:
+      "Cuéntanos de tu negocio y te recomendamos la línea de café ideal. Cotiza café tostado de mayoreo con envío a todo México.",
+  },
+
+  footer: {
+    madeIn: "Hecho en México",
+    wordmark: "Culto al Perro Café",
+    /** `lines` is filled from config/lines.ts; other columns list explicit links. */
+    columns: [
+      { title: "Líneas", links: "lines" },
+      {
+        title: "Mayoreo",
+        links: [
+          { label: "Cotizar pedido", href: "/ventas" },
+          { label: "Platica con ventas", href: "/ventas" },
+        ],
+      },
+    ],
+  },
+} as const;
+
+export type SiteConfig = typeof siteConfig;

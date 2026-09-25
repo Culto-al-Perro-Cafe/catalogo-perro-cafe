@@ -1,0 +1,11 @@
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 8px;
+  border-bottom: var(--border-on-ink);
+}
+
+.crumb {
+  color: #fff;
+}

@@ -1,0 +1,115 @@
+.footer {
+  background: var(--color-the-black);
+  color: #fff;
+  border-top: var(--border-on-ink);
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 24px 80px;
+  padding: 48px 32px 32px;
+}
+
+.mark {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-self: stretch;
+  margin-right: auto;
+  color: #fff;
+}
+
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 24px 80px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  text-align: right;
+}
+
+.columnTitle {
+  font-family: var(--font-label);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-the-yellow);
+}
+
+.link {
+  font-family: var(--font-body);
+  font-size: 16px;
+}
+
+.wordmarkBox {
+  padding: 0 24px;
+  overflow: hidden;
+}
+
+.wordmark {
+  display: inline-block;
+  padding-top: 0.14em;
+  padding-right: 0.08em;
+  font-family: var(--font-headline);
+  font-weight: 900;
+  font-size: clamp(48px, 10.5vw, 200px);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-the-orange);
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 16px 32px;
+  border-top: var(--border-on-ink);
+  font-family: var(--font-label);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Mobile: row 1 = link columns side by side, row 2 = centered star. */
+@media (max-width: 639px) {
+  .top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 32px;
+    padding: 40px var(--page-pad) 24px;
+  }
+
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .column:first-child {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .mark {
+    order: 2;
+    align-self: center;
+    margin-right: 0;
+  }
+
+  .bottom {
+    padding: 16px var(--page-pad);
+  }
+}

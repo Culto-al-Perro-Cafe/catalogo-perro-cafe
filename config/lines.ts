@@ -1,0 +1,91 @@
+/**
+ * Coffee product lines shown in the catalog.
+ * Add, remove or reorder entries here — the grid, detail pages,
+ * sitemap, footer links and the sales form options all update automatically.
+ */
+
+export type ProductLine = {
+  /** URL slug: /lineas/<slug> */
+  slug: string;
+  /** Full name, used in titles, breadcrumbs, forms and structured data. */
+  name: string;
+  /** Title split in two lines for the display headline ("Café para" / "Espresso"). */
+  titlePre: string;
+  titleMain: string;
+  /** One-liner for catalog cards. */
+  summary: string;
+  /** Long description on the detail page. */
+  description: string;
+  highlights: string[];
+  /** Meta description override; falls back to `summary` + `description`. */
+  seoDescription?: string;
+  /** Product photo in /public. Leave undefined to show the hatched placeholder. */
+  image?: { src: string; alt: string };
+};
+
+export const productLines: ProductLine[] = [
+  {
+    slug: "espresso",
+    name: "Café para Espresso",
+    titlePre: "Café para",
+    titleMain: "Espresso",
+    summary: "Consistencia lote tras lote. Para máquina y métodos de filtrado.",
+    description:
+      "Diseñado para barras que exigen perfección y constancia. Te garantizamos el mismo perfil de sabor lote tras lote, para que tus baristas no tengan que estar recalibrando moliendas todo el tiempo. Rinde excelente en máquina de espresso y métodos de filtrado manuales.",
+    highlights: [
+      "Perfil estable todo el año.",
+      "Ideal para cafeterías de especialidad.",
+    ],
+    seoDescription:
+      "Café para espresso de mayoreo con perfil estable lote tras lote. Ideal para cafeterías de especialidad, máquina de espresso y métodos de filtrado. Envíos a todo México.",
+  },
+  {
+    slug: "restaurante",
+    name: "Línea Restaurante",
+    titlePre: "Línea",
+    titleMain: "Restaurante",
+    summary: "La mejor taza en cada mesa, sin batallar. Cero amargor.",
+    description:
+      "Sirve una taza excelente al final de cada comida, sin batallar. Logramos un perfil balanceado y constante que le gusta a todos, eliminando por completo ese sabor «amargo» o quemado del café comercial de baja calidad. Tus clientes lo van a notar.",
+    highlights: [
+      "Sabor amigable para todos los paladares.",
+      "Fácil de preparar para tu personal de piso.",
+    ],
+    seoDescription:
+      "Café para restaurantes: perfil balanceado, sin amargor y fácil de preparar para tu personal. Café tostado de mayoreo con envíos a todo México.",
+  },
+  {
+    slug: "oficina",
+    name: "Línea Oficina",
+    titlePre: "Línea",
+    titleMain: "Oficina",
+    summary: "Gran sabor a bajo costo. Ideal para cafeteras de goteo.",
+    description:
+      "El café de oficina no tiene que ser malo. Esta es nuestra opción de mejor costo-beneficio, pensada específicamente para las clásicas cafeteras de casa u oficina. Buen rendimiento, buen sabor y a un precio que cuida el presupuesto de tu empresa.",
+    highlights: [
+      "Grano de bajo costo.",
+      "Para percoladoras y cafeteras de filtro.",
+    ],
+    seoDescription:
+      "Café para oficina con el mejor costo-beneficio. Ideal para cafeteras de goteo y percoladoras. Café tostado de mayoreo con facturación y envíos a todo México.",
+  },
+  {
+    slug: "tueste-intenso",
+    name: "Línea Tueste Intenso",
+    titlePre: "Línea",
+    titleMain: "Tueste Intenso",
+    summary: "Fuerte y con carácter. Perfecto para barras de cortesía.",
+    description:
+      "Para los que buscan ese sabor a café fuerte y tradicional. Desarrollamos este tueste pensando en negocios que ofrecen servicio de café en cortesía (como hoteles, agencias o salas de espera) y necesitan una bebida con mucha presencia y carácter.",
+    highlights: [
+      "Tueste oscuro, cuerpo pesado.",
+      "Rinde perfecto para estaciones de cortesía.",
+    ],
+    seoDescription:
+      "Café de tueste oscuro y cuerpo pesado para hoteles, agencias y salas de espera. Café tostado de mayoreo con envíos a todo México.",
+  },
+];
+
+export function getProductLine(slug: string): ProductLine | undefined {
+  return productLines.find((line) => line.slug === slug);
+}
