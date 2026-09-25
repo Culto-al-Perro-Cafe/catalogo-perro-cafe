@@ -5,8 +5,8 @@ Claude Design project **Catálogo B2B** and its "Public Bento" design system.
 
 ```bash
 cp .env.example .env.local   # set NEXT_PUBLIC_SITE_URL and SALES_WEBHOOK_URL
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 ## Routes
