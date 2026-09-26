@@ -37,12 +37,13 @@ The receiving end is the n8n workflow in `n8n/ventas-leads.workflow.json`
 (import it in n8n → *Workflows → Import from file*, then activate it):
 
 ```
-Webhook (POST) → Normalizar lead → Responder OK
+Webhook (POST) → Normalizar lead → Guardar lead → Responder OK
 ```
 
 Production URL: `https://n8n.pozole.dev/webhook/0da30cf0-a0a5-483b-990c-7903e8ef89af`.
-The URL is only called from the server, never exposed to the browser. Leads appear
-under the workflow's *Executions*; add nodes after "Normalizar lead" to notify sales.
+The URL is only called from the server, never exposed to the browser. Each lead is
+stored as a row in the n8n Data Table `leads_catalogo_b2b` (id `87vVIvYjmKb4rvRQ`); if
+storing fails the webhook errors and the form shows an error instead of "Recibido".
 
 ## SEO
 

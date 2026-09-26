@@ -10,7 +10,10 @@
       },
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
-      "position": [-400, 0],
+      "position": [
+        -400,
+        0
+      ],
       "id": "0ce17420-c28e-4b2c-bdf4-e01fb954928e",
       "name": "Webhook",
       "webhookId": "0da30cf0-a0a5-483b-990c-7903e8ef89af"
@@ -21,9 +24,131 @@
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [-160, 0],
+      "position": [
+        -160,
+        0
+      ],
       "id": "dc690d57-a98b-4eb1-9555-13ea2b415425",
       "name": "Normalizar lead"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "87vVIvYjmKb4rvRQ",
+          "mode": "list",
+          "cachedResultName": "leads_catalogo_b2b",
+          "cachedResultUrl": "/projects/WFPixLqGEFqLgDVg/datatables/87vVIvYjmKb4rvRQ"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "nombre",
+              "displayName": "nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "whatsapp",
+              "displayName": "whatsapp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "codigoPostal",
+              "displayName": "codigoPostal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "consumoMensual",
+              "displayName": "consumoMensual",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "lineaDeInteres",
+              "displayName": "lineaDeInteres",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "tipoDeEstablecimiento",
+              "displayName": "tipoDeEstablecimiento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "enviadoEn",
+              "displayName": "enviadoEn",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "origen",
+              "displayName": "origen",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        80,
+        0
+      ],
+      "id": "2d99fc9a-c16f-4bfa-9527-33735e5ecee5",
+      "name": "Guardar lead"
     },
     {
       "parameters": {
@@ -33,17 +158,47 @@
       },
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
-      "position": [80, 0],
+      "position": [
+        320,
+        0
+      ],
       "id": "bf9f3950-5eb8-43be-aca6-7d0797391f0a",
       "name": "Responder OK"
     }
   ],
   "connections": {
     "Webhook": {
-      "main": [[{ "node": "Normalizar lead", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Normalizar lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "Normalizar lead": {
-      "main": [[{ "node": "Responder OK", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Guardar lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Guardar lead": {
+      "main": [
+        [
+          {
+            "node": "Responder OK",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "settings": {

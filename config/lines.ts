@@ -26,6 +26,7 @@ export type ProductLine = {
 export const productLines: ProductLine[] = [
   {
     slug: "espresso",
+    image: { src: "/products/espresso.jpg", alt: "Granos de café tostado para espresso, tueste medio claro" },
     name: "Café para Espresso",
     titlePre: "Café para",
     titleMain: "Espresso",
@@ -41,6 +42,7 @@ export const productLines: ProductLine[] = [
   },
   {
     slug: "restaurante",
+    image: { src: "/products/restaurante.jpg", alt: "Granos de café tostado de la Línea Restaurante, tueste medio" },
     name: "Línea Restaurante",
     titlePre: "Línea",
     titleMain: "Restaurante",
@@ -56,6 +58,7 @@ export const productLines: ProductLine[] = [
   },
   {
     slug: "oficina",
+    image: { src: "/products/oficina.jpg", alt: "Granos de café tostado de la Línea Oficina, tueste medio" },
     name: "Línea Oficina",
     titlePre: "Línea",
     titleMain: "Oficina",
@@ -71,6 +74,7 @@ export const productLines: ProductLine[] = [
   },
   {
     slug: "tueste-intenso",
+    image: { src: "/products/tueste-intenso.jpg", alt: "Granos de café de tueste oscuro de la Línea Tueste Intenso" },
     name: "Línea Tueste Intenso",
     titlePre: "Línea",
     titleMain: "Tueste Intenso",
