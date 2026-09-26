@@ -1,6 +1,11 @@
-# Deploys to CapRover whenever a version tag (vX.Y.Z) is pushed.
-# Requires the repository secret CAPROVER_APP_TOKEN
-# (CapRover → Apps → catalogo-perro-cafe → Deployment → "Enable App Token").
+# On a version tag (vX.Y.Z): build the Docker image here (CapRover only pulls and runs it),
+# push it to GHCR, keep the versioned source TAR as an artifact, and deploy the image.
+#
+# Requires:
+#   - secret CAPROVER_APP_TOKEN (CapRover → Apps → catalogo-perro-cafe → Deployment → "Enable App Token")
+#   - CapRover able to pull from ghcr.io (public package, or a ghcr.io remote registry in CapRover)
+# Optional:
+#   - variable NEXT_PUBLIC_SITE_URL (defaults to https://catalogo.perro.cafe; inlined at build time)
 name: Deploy
 
 on:
@@ -13,6 +18,7 @@ concurrency:
 
 permissions:
   contents: read
+  packages: write
 
 env:
   APP_NAME: catalogo-perro-cafe
@@ -32,13 +38,12 @@ jobs:
             exit 1
           fi
           echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+          echo "IMAGE=ghcr.io/${GITHUB_REPOSITORY,,}" >> "$GITHUB_ENV"
 
-      - name: Build TAR
+      - name: Build versioned source TAR
         run: |
           TAR="$APP_NAME-$VERSION.tar"
           git archive --format=tar -o "$TAR" HEAD
-          tar -tf "$TAR" | grep -qx Dockerfile
-          tar -tf "$TAR" | grep -qx captain-definition
           echo "TAR=$TAR" >> "$GITHUB_ENV"
 
       - name: Keep TAR as build artifact
@@ -48,7 +53,32 @@ jobs:
           path: ${{ env.TAR }}
           retention-days: 30
 
-      - name: Deploy to CapRover
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          build-args: |
+            NEXT_PUBLIC_SITE_URL=${{ vars.NEXT_PUBLIC_SITE_URL || 'https://catalogo.perro.cafe' }}
+          tags: |
+            ${{ env.IMAGE }}:${{ env.VERSION }}
+            ${{ env.IMAGE }}:latest
+          labels: |
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+            org.opencontainers.image.version=${{ env.VERSION }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Deploy image to CapRover
         env:
           CAPROVER_APP_TOKEN: ${{ secrets.CAPROVER_APP_TOKEN }}
         run: |
@@ -56,4 +86,4 @@ jobs:
             --caproverUrl "$CAPROVER_URL" \
             --appName "$APP_NAME" \
             --appToken "$CAPROVER_APP_TOKEN" \
-            --tarFile "$TAR"
+            --imageName "$IMAGE:$VERSION"
