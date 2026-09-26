@@ -17,7 +17,7 @@ export const siteConfig = {
 
   seo: {
     /** Default <title>; child pages render as "<page> | <shortName>". */
-    title: "Café tostado para negocios · Mayoreo B2B",
+    title: "Café tostado para negocios",
     description:
       "Proveemos café tostado para cafeterías, restaurantes, oficinas y hoteles. Envíos a todo México, en grano o molido, con facturación. Mayoreo desde 5 kg.",
     keywords: [
@@ -60,7 +60,7 @@ export const siteConfig = {
     /** Sentences render on one line on desktop and one per line on mobile. */
     subtitle: ["Enviamos a todo México", "Mayoreo desde 5Kg"],
     linesHeading: "Nuestras líneas",
-    cardCta: "Ver detalles →",
+    cardCta: "Ver →",
     cta: {
       title: "¿No sabes cuál elegir para tu equipo?",
       button: "Platica con ventas",

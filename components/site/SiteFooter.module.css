@@ -75,7 +75,6 @@
   justify-content: flex-end;
   gap: 8px;
   padding: 16px 32px;
-  border-top: var(--border-on-ink);
   font-family: var(--font-label);
   font-size: 10px;
   font-weight: 700;
