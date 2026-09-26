@@ -1,0 +1,59 @@
+# Deploys to CapRover whenever a version tag (vX.Y.Z) is pushed.
+# Requires the repository secret CAPROVER_APP_TOKEN
+# (CapRover → Apps → catalogo-perro-cafe → Deployment → "Enable App Token").
+name: Deploy
+
+on:
+  push:
+    tags: ["v*.*.*"]
+
+concurrency:
+  group: deploy-caprover
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  APP_NAME: catalogo-perro-cafe
+  CAPROVER_URL: https://captain.pozole.dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Check tag matches package.json version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if [ "v$VERSION" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match package.json version $VERSION"
+            exit 1
+          fi
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+
+      - name: Build TAR
+        run: |
+          TAR="$APP_NAME-$VERSION.tar"
+          git archive --format=tar -o "$TAR" HEAD
+          tar -tf "$TAR" | grep -qx Dockerfile
+          tar -tf "$TAR" | grep -qx captain-definition
+          echo "TAR=$TAR" >> "$GITHUB_ENV"
+
+      - name: Keep TAR as build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.APP_NAME }}-${{ env.VERSION }}
+          path: ${{ env.TAR }}
+          retention-days: 30
+
+      - name: Deploy to CapRover
+        env:
+          CAPROVER_APP_TOKEN: ${{ secrets.CAPROVER_APP_TOKEN }}
+        run: |
+          npx --yes caprover@2 deploy \
+            --caproverUrl "$CAPROVER_URL" \
+            --appName "$APP_NAME" \
+            --appToken "$CAPROVER_APP_TOKEN" \
+            --tarFile "$TAR"
