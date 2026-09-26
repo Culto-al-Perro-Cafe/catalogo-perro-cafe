@@ -50,7 +50,8 @@ export const siteConfig = {
   ticker: [
     "Café tostado",
     "Envíos a todo México",
-    "En grano o molido",
+    "Café en grano",
+    "Molido sin costo",
     "Facturación",
   ],
 
@@ -90,10 +91,11 @@ export const siteConfig = {
     columns: [
       { title: "Líneas", links: "lines" },
       {
-        title: "Mayoreo",
+        title: "Sitio",
         links: [
-          { label: "Cotizar pedido", href: "/ventas" },
           { label: "Platica con ventas", href: "/ventas" },
+          { label: "Nosotros", href: "https://www.perro.cafe/pages/sobre-nosotros" },
+          { label: "Menudeo", href: "https://mercadolibre.perro.cafe" },
         ],
       },
     ],
