@@ -1,6 +1,6 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState, useTransition, type FormEvent } from "react";
 import { submitSalesLead } from "@/app/ventas/actions";
 import { getProductLine, productLines } from "@/config/lines";
@@ -25,6 +25,8 @@ const businessOptions = [
   { value: "", label: cfg.fields.tipo.placeholder },
   ...cfg.businessTypes.map((t) => ({ value: t, label: t })),
 ];
+const SENT_PARAM = "enviado";
+
 const FIELD_ORDER: (keyof SalesLead)[] = [
   "nombre",
   "email",
@@ -35,11 +37,33 @@ const FIELD_ORDER: (keyof SalesLead)[] = [
   "tipoOtro",
 ];
 
-/** Reads `?linea=<slug>` to preselect the product line. Wrap in <Suspense>. */
+/**
+ * Shows the thank-you panel on `?enviado`, otherwise the form (with `?linea=<slug>`
+ * preselecting the product line). Wrap in <Suspense>.
+ */
 export function SalesFormFromParams() {
-  const slug = useSearchParams().get("linea");
+  const params = useSearchParams();
+  if (params.has(SENT_PARAM)) return <SalesSuccess />;
+  const slug = params.get("linea");
   const line = slug ? getProductLine(slug) : undefined;
   return <SalesForm key={line?.slug} initialLine={line?.name} />;
+}
+
+/** Deliberately shows no submitted data (it would end up in the URL or screenshots). */
+export function SalesSuccess() {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => ref.current?.focus(), []);
+  return (
+    <div ref={ref} tabIndex={-1} className={styles.panel} role="status">
+      <h2 className={`t-display-sm ${styles.successTitle}`}>{cfg.success.title}</h2>
+      <p className="t-body">{cfg.success.body}</p>
+      <div className={styles.successActions}>
+        <Button href={routes.home} variant="secondary" size="lg" icon="arrow_back">
+          {cfg.success.back}
+        </Button>
+      </div>
+    </div>
+  );
 }
 
 export function SalesForm({ initialLine }: { initialLine?: string }) {
@@ -49,14 +73,9 @@ export function SalesForm({ initialLine }: { initialLine?: string }) {
   });
   const [errors, setErrors] = useState<SalesLeadErrors>({});
   const [formError, setFormError] = useState<string>();
-  const [sent, setSent] = useState(false);
   const [pending, startTransition] = useTransition();
   const formRef = useRef<HTMLFormElement>(null);
-  const successRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (sent) successRef.current?.focus();
-  }, [sent]);
+  const router = useRouter();
 
   const set = (key: keyof SalesLead, value: string) => {
     setForm((f) => ({ ...f, [key]: value }));
@@ -82,27 +101,13 @@ export function SalesForm({ initialLine }: { initialLine?: string }) {
 
     startTransition(async () => {
       const result = await submitSalesLead(form);
-      if (result.ok) setSent(true);
+      if (result.ok) router.replace(routes.salesSent, { scroll: false });
       else {
         showErrors(result.errors);
         setFormError(result.formError);
       }
     });
   };
-
-  if (sent) {
-    return (
-      <div ref={successRef} tabIndex={-1} className={styles.panel} role="status">
-        <h2 className={`t-display-sm ${styles.successTitle}`}>{cfg.success.title}</h2>
-        <p className="t-body">{cfg.success.body.replace("{email}", form.email.trim())}</p>
-        <div className={styles.successActions}>
-          <Button href={routes.home} variant="secondary" size="lg" icon="arrow_back">
-            {cfg.success.back}
-          </Button>
-        </div>
-      </div>
-    );
-  }
 
   const f = cfg.fields;
   return (

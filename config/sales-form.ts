@@ -51,8 +51,7 @@ export const salesFormConfig = {
 
   success: {
     title: "Recibido",
-    /** `{email}` is replaced at runtime. */
-    body: "Te mandamos una cotización a {email}.",
+    body: "Te enviamos una cotización a tu correo en breve",
     back: "Regresa al catálogo",
   },
 } as const;
