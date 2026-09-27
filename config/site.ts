@@ -95,8 +95,7 @@ export const siteConfig = {
         links: [
           { label: "Platica con ventas", href: "/ventas" },
           { label: "Blog", href: "/blogs" },
-          { label: "Nosotros", href: "https://www.perro.cafe/pages/sobre-nosotros" },
-          { label: "Menudeo", href: "https://mercadolibre.perro.cafe" },
+          { label: "Menudeo", href: "/menudeo" },
         ],
       },
     ],
