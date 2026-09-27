@@ -1,0 +1,97 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 24px var(--page-pad) 64px;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 8px;
+  border-bottom: var(--border-on-ink);
+}
+
+/* Josefin caps sit high — same optical nudge the catalog's back buttons use. */
+.bar :global(.cp-btn__label) {
+  transform: translateY(2px);
+}
+
+.crumb {
+  min-width: 0;
+  overflow: hidden;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.4;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.article {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.category {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--color-the-orange);
+}
+
+.category:hover {
+  color: #fff;
+}
+
+.title {
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-headline);
+  font-size: clamp(40px, 5.2vw, 76px);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.meta,
+.caption {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.cover {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+}
+
+.coverFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--color-paper-sand);
+  border: 2px solid var(--color-the-black);
+}
+
+.coverFrame img {
+  object-fit: cover;
+}

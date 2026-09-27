@@ -5,11 +5,19 @@ import { Button } from "@/components/ui/Button";
 import styles from "./BackBar.module.css";
 
 /** "← Todas las líneas" bar at the top of inner pages, with an optional breadcrumb. */
-export function BackBar({ breadcrumb }: { breadcrumb?: ReactNode }) {
+export function BackBar({
+  breadcrumb,
+  backHref = routes.home,
+  backLabel = siteConfig.line.backLabel,
+}: {
+  breadcrumb?: ReactNode;
+  backHref?: string;
+  backLabel?: string;
+}) {
   return (
     <div className={styles.bar}>
-      <Button href={routes.home} variant="secondary" icon="arrow_back">
-        {siteConfig.line.backLabel}
+      <Button href={backHref} variant="secondary" icon="arrow_back">
+        {backLabel}
       </Button>
       {breadcrumb && (
         <nav aria-label="Ruta de navegación" className={`t-label ${styles.crumb}`}>

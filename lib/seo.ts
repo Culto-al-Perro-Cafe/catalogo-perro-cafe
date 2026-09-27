@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { blogSection, type BlogConfig } from "@/config/blogs";
 import { productLines, type ProductLine } from "@/config/lines";
+import type { Article } from "@/lib/blog";
 import { siteConfig } from "@/config/site";
 import { routes } from "@/lib/routes";
 
@@ -16,26 +18,38 @@ export function pageMetadata({
   description,
   path,
   image,
+  article,
 }: {
   title: string;
   description: string;
   path: string;
   image?: { src: string; alt: string };
+  /** Blog posts: Open Graph "article" with dates and author. */
+  article?: { publishedTime: string; modifiedTime?: string; author: string };
 }): Metadata {
   const fullTitle = `${title} | ${siteConfig.shortName}`;
+  const shared = {
+    locale: siteConfig.locale,
+    siteName: siteConfig.name,
+    url: path,
+    title: fullTitle,
+    description,
+    ...(image && { images: [{ url: image.src, alt: image.alt }] }),
+  };
   return {
     title,
     description,
     alternates: { canonical: path },
-    openGraph: {
-      type: "website",
-      locale: siteConfig.locale,
-      siteName: siteConfig.name,
-      url: path,
-      title: fullTitle,
-      description,
-      ...(image && { images: [{ url: image.src, alt: image.alt }] }),
-    },
+    ...(article && { authors: [{ name: article.author }] }),
+    openGraph: article
+      ? {
+          ...shared,
+          type: "article",
+          publishedTime: article.publishedTime,
+          modifiedTime: article.modifiedTime,
+          authors: [article.author],
+        }
+      : { ...shared, type: "website" },
     twitter: { card: "summary_large_image", title: fullTitle, description },
   };
 }
@@ -121,5 +135,93 @@ export function productLineJsonLd(line: ProductLine) {
         },
       ],
     },
+  ];
+}
+
+function breadcrumbJsonLd(items: { name: string; path: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      item: absoluteUrl(item.path),
+    })),
+  };
+}
+
+export function blogIndexJsonLd(articles: Article[]) {
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      name: `${blogSection.title} · ${siteConfig.shortName}`,
+      description: blogSection.description,
+      url: absoluteUrl(routes.blogs),
+      inLanguage: siteConfig.lang,
+      publisher: { "@id": organizationId },
+      blogPost: articles.map((a) => ({
+        "@type": "BlogPosting",
+        headline: a.title,
+        url: absoluteUrl(routes.article(a.blog, a.slug)),
+        datePublished: a.date,
+      })),
+    },
+    breadcrumbJsonLd([
+      { name: siteConfig.shortName, path: routes.home },
+      { name: blogSection.name, path: routes.blogs },
+    ]),
+  ];
+}
+
+export function blogJsonLd(blog: BlogConfig, articles: Article[]) {
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      name: `${blog.title} · ${blogSection.name} ${siteConfig.shortName}`,
+      description: blog.description,
+      url: absoluteUrl(routes.blog(blog.slug)),
+      inLanguage: siteConfig.lang,
+      publisher: { "@id": organizationId },
+      blogPost: articles.map((a) => ({
+        "@type": "BlogPosting",
+        headline: a.title,
+        url: absoluteUrl(routes.article(a.blog, a.slug)),
+        datePublished: a.date,
+      })),
+    },
+    breadcrumbJsonLd([
+      { name: siteConfig.shortName, path: routes.home },
+      { name: blogSection.name, path: routes.blogs },
+      { name: blog.title, path: routes.blog(blog.slug) },
+    ]),
+  ];
+}
+
+export function articleJsonLd(article: Article, blog: BlogConfig) {
+  const url = absoluteUrl(routes.article(article.blog, article.slug));
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: article.title,
+      description: article.description,
+      url,
+      mainEntityOfPage: url,
+      datePublished: article.date,
+      dateModified: article.updated ?? article.date,
+      inLanguage: siteConfig.lang,
+      author: { "@type": "Person", name: article.author },
+      publisher: { "@id": organizationId },
+      ...(article.image && { image: absoluteUrl(article.image.src) }),
+    },
+    breadcrumbJsonLd([
+      { name: siteConfig.shortName, path: routes.home },
+      { name: blogSection.name, path: routes.blogs },
+      { name: blog.title, path: routes.blog(blog.slug) },
+      { name: article.title, path: routes.article(article.blog, article.slug) },
+    ]),
   ];
 }

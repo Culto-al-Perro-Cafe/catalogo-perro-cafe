@@ -16,6 +16,9 @@ pnpm dev
 | `/`               | Catalog: hero, product line cards, sales CTA            |
 | `/lineas/[slug]`  | Product line detail (statically generated per line)     |
 | `/ventas`         | Quote form (`?linea=<slug>` preselects a line)          |
+| `/blogs`          | All articles, newest first (linked from the footer)     |
+| `/blogs/[blog]`   | Blog index (5 blogs)                                    |
+| `/blogs/[blog]/[slug]` | Article from `content/blogs` (see below)           |
 
 ## Editing content
 
@@ -26,6 +29,52 @@ All copy and data live in `config/` — no component changes needed:
   sitemap entry, footer link, JSON-LD and form option. Set `image` to replace the
   hatched placeholder with a photo from `/public`.
 - `config/sales-form.ts` — form labels, options and validation messages.
+
+## Blog articles
+
+Articles are Markdown files — no database. URLs match the original Shopify store:
+
+```
+content/blogs/<blog>/<slug>.md   →   /blogs/<blog>/<slug>
+public/images/blog/<slug>/…      →   article images
+```
+
+Blogs (`ayuda`, `negocio`, `tostadores`, `recetas`, `noticias`) are declared in `config/blogs.ts`.
+Each file starts with frontmatter:
+
+```yaml
+---
+title: Cómo elegir un proveedor de café para tu negocio
+seoTitle: Optional <title> when it should differ from the title
+description: Meta description (≈150 characters)
+date: '2026-05-25'
+updated: '2026-05-25'        # optional
+author: José Salcido
+image:                        # optional cover (also the share image)
+  src: /images/blog/<slug>/cover.png
+  alt: Describe the image
+  caption: Optional caption under the cover
+legacyUrl: https://www.perro.cafe/blogs/ayuda/…   # optional
+related: [ayuda/otro-articulo, negocio/otro-mas]  # optional "Sigue leyendo" (default: newest in the same blog)
+---
+```
+
+The body is GitHub-flavored Markdown (tables, footnotes `[^1]`), plus:
+
+| Syntax | Renders |
+|---|---|
+| `## Heading {#anchor}` | Heading with a fixed anchor (`#anchor` links keep working) |
+| `![Alt](/images/…  "Caption")` | Image; on its own line it becomes a figure with caption |
+| `::cta{id="cotizar"}` | CTA preset from `config/ctas.ts` |
+| `::cta{id="cotizar" label="Cotiza aquí"}` | Preset with a different button label (or `href`) |
+| `:::cta{href="/ventas" label="…"}` … `:::` | One-off CTA; the Markdown inside is its title/body |
+| `::producto{id="restaurante"}` | "Producto recomendado" card for a catalog line (`config/lines.ts`) |
+| `::lead-form{id="kit-cafeteria-2026"}` | Lead-capture form (webhook + copy in `config/ctas.ts`) |
+| `:::details[Question]` … `:::` | Collapsible block (FAQs, tips) |
+
+Text CTAs render as the orange box, CTAs with an image as the ivory card. Reading time
+("N min de lectura") is computed automatically. Unknown embeds, CTA/line ids or `related` entries fail the build, so typos can't ship. Add a CTA once in `config/ctas.ts`
+and reuse it from any article.
 
 ## Sales leads
 

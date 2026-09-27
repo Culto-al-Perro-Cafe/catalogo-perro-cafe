@@ -1,0 +1,120 @@
+/* Article embeds (design: Catálogo B2B → post).
+ * .lead  — orange CTA box (text CTAs)
+ * .card  — ivory card with an image on the left (product card, image CTAs) */
+
+.lead,
+.card {
+  margin: 16px 0;
+  color: var(--color-the-black);
+  border: 2px solid var(--color-the-black);
+}
+
+.lead {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 28px;
+  background: var(--color-the-orange);
+}
+
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  background: var(--color-paper-ivory);
+}
+
+.media {
+  position: relative;
+  flex: 1 1 180px;
+  min-height: 180px;
+  overflow: hidden;
+  background: var(--color-paper-sand);
+}
+
+.content {
+  flex: 2 1 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 24px;
+  border-left: 2px solid var(--color-the-black);
+}
+
+/* When the card wraps (narrow screens), the image sits on top. */
+@media (max-width: 519px) {
+  .media {
+    flex-basis: 100%;
+    aspect-ratio: 16 / 10;
+    min-height: 0;
+  }
+
+  .content {
+    border-left: 0;
+    border-top: 2px solid var(--color-the-black);
+  }
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--color-secondary);
+}
+
+.lead .heading,
+.card .heading,
+.lead .custom :is(h2, h3, h4),
+.card .custom :is(h2, h3, h4) {
+  margin: 0;
+  font-family: var(--font-headline);
+  font-size: clamp(26px, 2.4vw, 34px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.lead .text,
+.card .text,
+.lead .custom p,
+.card .custom p {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.custom {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.action {
+  display: flex;
+  padding-top: 6px;
+}
+
+.action :global(.cp-btn) {
+  white-space: normal;
+  text-align: left;
+}
+
+/* On the orange box the orange lift shadow needs an ink outline to read. */
+.lead :global(.cp-btn:hover),
+.lead :global(.cp-btn:focus-visible) {
+  box-shadow:
+    8px 8px 0 0 var(--color-the-orange),
+    8px 8px 0 2px var(--color-the-black);
+}
+
+.lead :global(.cp-btn:active) {
+  box-shadow:
+    4px 4px 0 0 var(--color-the-orange),
+    4px 4px 0 2px var(--color-the-black);
+}

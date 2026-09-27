@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
+import { blogs } from "@/config/blogs";
 import { productLines } from "@/config/lines";
+import { getAllArticles } from "@/lib/blog";
 import { routes } from "@/lib/routes";
 import { absoluteUrl } from "@/lib/seo";
 
@@ -12,5 +14,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     })),
     { url: absoluteUrl(routes.sales), changeFrequency: "yearly", priority: 0.6 },
+    { url: absoluteUrl(routes.blogs), changeFrequency: "weekly", priority: 0.6 },
+    ...blogs.map((blog) => ({
+      url: absoluteUrl(routes.blog(blog.slug)),
+      changeFrequency: "weekly" as const,
+      priority: 0.5,
+    })),
+    ...getAllArticles().map((a) => ({
+      url: absoluteUrl(routes.article(a.blog, a.slug)),
+      lastModified: a.updated ?? a.date,
+      changeFrequency: "yearly" as const,
+      priority: 0.6,
+    })),
   ];
 }
