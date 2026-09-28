@@ -266,6 +266,38 @@
   text-wrap: pretty;
 }
 
+/* Pointing hand + button (same treatment as the landing's "Platica con ventas" CTA). */
+.kitAction {
+  flex: none;
+  /* Right-aligned when it wraps under the photo + text on mid-size screens. */
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.kitHand {
+  flex: none;
+  width: clamp(80px, 8vw, 124px);
+  height: auto;
+  transition: transform var(--dur-base) var(--ease-panel);
+}
+
+.kitTile:hover .kitHand,
+.kitTile:focus-within .kitHand {
+  transform: translateX(6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kitHand {
+    transition: none;
+  }
+  .kitTile:hover .kitHand,
+  .kitTile:focus-within .kitHand {
+    transform: none;
+  }
+}
+
 .kitTile :global(.cp-btn:hover),
 .kitTile :global(.cp-btn:focus-visible) {
   box-shadow:
@@ -332,5 +364,21 @@
   .kitTile :global(.cp-btn) {
     width: 100%;
     white-space: normal;
+  }
+
+  /* Stacked: the button is full width below, so the hand points down at it. */
+  .kitAction {
+    flex-direction: column;
+    width: 100%;
+    gap: 4px;
+  }
+
+  .kitHand,
+  .kitTile:hover .kitHand,
+  .kitTile:focus-within .kitHand {
+    width: 72px;
+    transform: rotate(90deg);
+    /* rotate() keeps the wide layout box (72×45); reserve the rotated height (45×72). */
+    margin-block: 14px;
   }
 }

@@ -6,6 +6,7 @@ import { utmConfig } from "@/config/utm";
 import Image from "next/image";
 import { BentoTile, TileMedia } from "@/components/ui/BentoTile";
 import { Button } from "@/components/ui/Button";
+import { PointingHand } from "@/components/ui/PointingHand";
 import styles from "./page.module.css";
 
 export const metadata = pageMetadata({
@@ -114,17 +115,20 @@ export default function MenudeoPage() {
             </h2>
             <p className={styles.kitBody}>{cfg.sampleKit.body}</p>
           </div>
-          <a
-            href={withUtm(cfg.sampleKit.url, { campaign: utmConfig.campaigns.menudeo, content: "kit-de-muestras" })}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`${cfg.sampleKit.title} — ${cfg.linkLabelSuffix}`}
-            className="cp-btn"
-            data-variant="primary"
-            data-size="xl"
-          >
-            <span className="cp-btn__label">{cfg.sampleKit.label}</span>
-          </a>
+          <div className={styles.kitAction}>
+            <PointingHand className={styles.kitHand} />
+            <a
+              href={withUtm(cfg.sampleKit.url, { campaign: utmConfig.campaigns.menudeo, content: "kit-de-muestras" })}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${cfg.sampleKit.title} — ${cfg.linkLabelSuffix}`}
+              className="cp-btn"
+              data-variant="primary"
+              data-size="xl"
+            >
+              <span className="cp-btn__label">{cfg.sampleKit.label}</span>
+            </a>
+          </div>
         </BentoTile>
       </section>
     </div>

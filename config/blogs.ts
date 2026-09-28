@@ -46,7 +46,7 @@ export const blogSection = {
   name: "Blog",
   title: "Blog",
   description:
-    "Ideas para servir mejor café en tu negocio, recetas de barra y noticias desde el tostador.",
+    "Ideas para servir buen café en tu negocio, recetas de barra y noticias desde el tostador.",
   allLabel: "Todas",
   categoriesLabel: "Categorías",
   backLabel: "Regresar",

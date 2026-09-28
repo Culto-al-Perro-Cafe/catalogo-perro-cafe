@@ -50,9 +50,10 @@ export const siteConfig = {
   ticker: [
     "Café tostado",
     "Envíos a todo México",
-    "Café en grano",
+    "Grano Entero",
     "Molido sin costo",
     "Facturación",
+    "Ventas al mayoreo"
   ],
 
   home: {
