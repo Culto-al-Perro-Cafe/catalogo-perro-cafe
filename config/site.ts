@@ -89,7 +89,7 @@ export const siteConfig = {
     madeIn: "Hecho en México",
     /** Small print after the footer: what we measure and how. */
     privacyNotice:
-      "Usamos cookies y PostHog para medir visitas y grabar sesiones de forma anónima, con lo que escribes en formularios oculto, para mejorar este sitio. Al navegar aceptas su uso.",
+      "Usamos cookies para medir visitas de forma anónima para mejorar este sitio. Al navegar aceptas su uso.",
     wordmark: "Culto al Perro Café",
     /** `lines` is filled from config/lines.ts; other columns list explicit links. */
     columns: [
