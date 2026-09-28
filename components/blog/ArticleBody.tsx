@@ -4,19 +4,29 @@ import type { ComponentProps, ReactNode } from "react";
 import { leadForms, type CtaId, type LeadFormId } from "@/config/ctas";
 import type { Article } from "@/lib/blog";
 import { publicImageSize, renderMarkdown } from "@/lib/markdown";
+import { withUtm } from "@/lib/utm";
+import { utmConfig } from "@/config/utm";
 import { ArticleCta } from "./ArticleCta";
 import { ProductCard } from "./ProductCard";
 import { LeadForm } from "./LeadForm";
 import styles from "./ArticleBody.module.css";
 
-function ArticleLink({ href = "", children, ...rest }: ComponentProps<"a">) {
-  if (href.startsWith("/")) return <Link href={href}>{children}</Link>;
-  if (href.startsWith("#")) return <a href={href} {...rest}>{children}</a>;
-  return (
-    <a href={href} target="_blank" rel="noopener noreferrer" {...rest}>
-      {children}
-    </a>
-  );
+/** Links in the article body; external ones open in a new tab and get UTMs (config/utm.ts). */
+function articleLink(slug: string) {
+  return function ArticleLink({ href = "", children, ...rest }: ComponentProps<"a">) {
+    if (href.startsWith("/")) return <Link href={href}>{children}</Link>;
+    if (href.startsWith("#")) return <a href={href} {...rest}>{children}</a>;
+    return (
+      <a
+        href={withUtm(href, { campaign: utmConfig.campaigns.blog, content: slug })}
+        target="_blank"
+        rel="noopener noreferrer"
+        {...rest}
+      >
+        {children}
+      </a>
+    );
+  };
 }
 
 function ArticleImage({ src, alt = "", title, ...rest }: ComponentProps<"img"> & { "data-block"?: string }) {
@@ -50,7 +60,7 @@ export function ArticleBody({ article }: { article: Article }) {
   const content = renderMarkdown(
     article.body,
     {
-      a: ArticleLink,
+      a: articleLink(article.slug),
       img: ArticleImage,
       table: (props: ComponentProps<"table">) => (
         <div className={styles.tableWrap}>
@@ -59,7 +69,7 @@ export function ArticleBody({ article }: { article: Article }) {
       ),
       // Embeds (see lib/markdown.tsx and config/ctas.ts)
       "cta-embed": ({ cta, label, href, children }: { cta?: CtaId; label?: string; href?: string; children?: ReactNode }) => (
-        <ArticleCta id={cta} label={label} href={href}>
+        <ArticleCta id={cta} label={label} href={href} utmContent={article.slug}>
           {children}
         </ArticleCta>
       ),

@@ -154,6 +154,11 @@
   margin-bottom: 16px;
 }
 
+/* FAQs: consecutive questions stack with no space between (shared 2px border). */
+.prose details + details {
+  margin-top: -26px;
+}
+
 .prose details a:not(:global(.cp-btn)) {
   color: var(--color-the-black);
 }

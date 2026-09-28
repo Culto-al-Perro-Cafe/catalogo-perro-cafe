@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 import { ctas, type CtaConfig, type CtaId } from "@/config/ctas";
+import { utmConfig } from "@/config/utm";
+import { withUtm } from "@/lib/utm";
 import { TileMedia } from "@/components/ui/BentoTile";
 import { Button } from "@/components/ui/Button";
 import styles from "./EmbedCard.module.css";
@@ -14,14 +16,20 @@ export function ArticleCta({
   label,
   href,
   children,
+  utmContent,
 }: {
   id?: CtaId;
   label?: string;
   href?: string;
   children?: ReactNode;
+  /** Article slug, used as utm_content when the CTA points off-site. */
+  utmContent?: string;
 }) {
   const preset: Partial<CtaConfig> = id ? ctas[id] : {};
-  const target = href ?? preset.href ?? "/ventas";
+  const target = withUtm(href ?? preset.href ?? "/ventas", {
+    campaign: utmConfig.campaigns.blog,
+    content: utmContent,
+  });
   const hasCustomBody = Boolean(children && (!Array.isArray(children) || children.length > 0));
 
   const text = hasCustomBody ? (

@@ -9,7 +9,7 @@ const siteUrl = (
 
 export const siteConfig = {
   url: siteUrl,
-  name: "El Culto al Perro Café",
+  name: "Culto al Perro Café",
   shortName: "Culto al Perro Café",
   locale: "es_MX",
   lang: "es-MX",
@@ -42,7 +42,7 @@ export const siteConfig = {
 
   logo: {
     src: "/brand/logo-header.svg",
-    alt: "El culto al Perro Café",
+    alt: "Culto al Perro Café",
     width: 859,
     height: 105,
   },
@@ -94,8 +94,8 @@ export const siteConfig = {
         title: "Sitio",
         links: [
           { label: "Platica con ventas", href: "/ventas" },
-          { label: "Blog", href: "/blogs" },
           { label: "Menudeo", href: "/menudeo" },
+          { label: "Blog", href: "/blogs" },
         ],
       },
     ],

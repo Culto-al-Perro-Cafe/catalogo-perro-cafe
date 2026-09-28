@@ -1,6 +1,8 @@
 import { menudeoConfig as cfg, retailProducts, type RetailProduct } from "@/config/menudeo";
 import { routes } from "@/lib/routes";
 import { pageMetadata } from "@/lib/seo";
+import { withUtm } from "@/lib/utm";
+import { utmConfig } from "@/config/utm";
 import Image from "next/image";
 import { BentoTile, TileMedia } from "@/components/ui/BentoTile";
 import { Button } from "@/components/ui/Button";
@@ -24,7 +26,7 @@ function ProductLink({
 }) {
   return (
     <a
-      href={product.url}
+      href={withUtm(product.url, { campaign: utmConfig.campaigns.menudeo, content: product.id })}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`${product.name} — ${cfg.linkLabelSuffix}`}
@@ -50,7 +52,7 @@ export default function MenudeoPage() {
 
       <div className={styles.grid}>
         <ProductLink product={featured} className={styles.featured}>
-          <div className={styles.media}>
+          <div className={styles.media} style={{ background: featured.backdrop }}>
             <TileMedia
               image={featured.image}
               placeholder={`${cfg.photoPlaceholder} — ${featured.name}`}
@@ -70,7 +72,7 @@ export default function MenudeoPage() {
 
         {rest.map((product) => (
           <ProductLink key={product.id} product={product} className={styles.item}>
-            <div className={styles.media}>
+            <div className={styles.media} style={{ background: product.backdrop }}>
               <TileMedia
                 image={product.image}
                 placeholder={cfg.photoPlaceholder}
@@ -97,7 +99,12 @@ export default function MenudeoPage() {
 
       {/* Sample kit — same treatment as the home page "#ventas" block. */}
       <section id="kit-de-muestras" aria-labelledby="kit-title" className={styles.kit}>
-        <BentoTile tone="orange" shadow="offset" className={styles.kitTile}>
+        <BentoTile
+          tone="orange"
+          shadow="offset"
+          className={styles.kitTile}
+          style={{ background: cfg.sampleKit.background }}
+        >
           <div className={styles.kitPhoto}>
             <Image src={cfg.sampleKit.image.src} alt={cfg.sampleKit.image.alt} fill sizes="(max-width: 639px) 100vw, 220px" />
           </div>
@@ -108,7 +115,7 @@ export default function MenudeoPage() {
             <p className={styles.kitBody}>{cfg.sampleKit.body}</p>
           </div>
           <a
-            href={cfg.sampleKit.url}
+            href={withUtm(cfg.sampleKit.url, { campaign: utmConfig.campaigns.menudeo, content: "kit-de-muestras" })}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`${cfg.sampleKit.title} — ${cfg.linkLabelSuffix}`}

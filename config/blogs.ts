@@ -54,6 +54,17 @@ export const blogSection = {
   relatedTitle: "Sigue leyendo",
   footnotesLabel: "Referencias",
   product: { eyebrow: "Producto recomendado", button: "Ver línea" },
+  /** Article shown large at the top of /blogs ("<blog>/<slug>"); it's left out of the grid below. */
+  featured: "ayuda/por-que-el-cafe-no-paga-iva",
+  featuredBadge: "Destacado",
+  share: {
+    label: "Compartir",
+    facebook: "Compartir en Facebook",
+    x: "Compartir en X",
+    email: "Compartir por correo",
+    copy: "Copiar enlace",
+    copied: "Enlace copiado",
+  },
 };
 
 export function getBlog(slug: string): BlogConfig | undefined {

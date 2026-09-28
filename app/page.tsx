@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { productLines } from "@/config/lines";
 import { siteConfig } from "@/config/site";
 import { routes } from "@/lib/routes";
@@ -45,9 +46,21 @@ export default function CatalogPage() {
       <section id="ventas" className={styles.cta}>
         <BentoTile tone="orange" shadow="offset" className={styles.ctaTile}>
           <h2 className={`t-display-sm ${styles.ctaTitle}`}>{home.cta.title}</h2>
-          <Button href={routes.sales} variant="primary" size="xl" iconAfter="arrow_forward">
-            {home.cta.button}
-          </Button>
+          <div className={styles.ctaAction}>
+            {/* Decorative: the hand points at the button. */}
+            <Image
+              src="/brand/hand-pointing.svg"
+              alt=""
+              aria-hidden="true"
+              width={811}
+              height={508}
+              unoptimized
+              className={styles.ctaHand}
+            />
+            <Button href={routes.sales} variant="primary" size="xl" iconAfter="arrow_forward">
+              {home.cta.button}
+            </Button>
+          </div>
         </BentoTile>
       </section>
     </>

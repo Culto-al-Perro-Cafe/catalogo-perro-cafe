@@ -1,0 +1,45 @@
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  color: #fff;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0;
+  cursor: pointer;
+  transition:
+    color var(--dur-fast) ease-out,
+    border-color var(--dur-fast) ease-out;
+}
+
+.action:hover,
+.action:focus-visible {
+  color: var(--color-the-orange);
+  border-color: var(--color-the-orange);
+  outline: none;
+}
+
+.action[data-copied] {
+  color: var(--color-the-green);
+  border-color: var(--color-the-green);
+}
+
+.status {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--color-the-green);
+}
+
+.status:empty {
+  display: none;
+}

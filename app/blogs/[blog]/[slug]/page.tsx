@@ -6,9 +6,12 @@ import { blogSection, getBlog } from "@/config/blogs";
 import { formatDate, getAllArticles, getArticle, getRelatedArticles } from "@/lib/blog";
 import { publicImageSize } from "@/lib/markdown";
 import { routes } from "@/lib/routes";
-import { articleJsonLd, pageMetadata } from "@/lib/seo";
+import { absoluteUrl, articleJsonLd, pageMetadata } from "@/lib/seo";
 import { ArticleBody } from "@/components/blog/ArticleBody";
 import { RelatedArticles } from "@/components/blog/RelatedArticles";
+import { ShareBar } from "@/components/blog/ShareBar";
+import { utmConfig } from "@/config/utm";
+import { tagOwnUrl } from "@/lib/utm";
 import { JsonLd } from "@/components/site/JsonLd";
 import { Button } from "@/components/ui/Button";
 import styles from "./page.module.css";
@@ -40,12 +43,20 @@ export async function generateMetadata({ params }: PageProps<"/blogs/[blog]/[slu
   });
 }
 
+/** The article URL tagged per share network (config/utm.ts). */
+function shareUrls(url: string, slug: string) {
+  const tag = (network: keyof typeof utmConfig.share) =>
+    tagOwnUrl(url, { ...utmConfig.share[network], campaign: utmConfig.campaigns.blogShare, content: slug });
+  return { facebook: tag("facebook"), x: tag("x"), email: tag("email") };
+}
+
 /** Blog post (design: Catálogo B2B → Blog → post). */
 export default async function ArticlePage({ params }: PageProps<"/blogs/[blog]/[slug]">) {
   const found = await load(params);
   if (!found) notFound();
   const { blog, article } = found;
   const cover = article.image && publicImageSize(article.image.src);
+  const articleUrl = absoluteUrl(routes.article(article.blog, article.slug));
 
   return (
     <div className={styles.page}>
@@ -66,9 +77,13 @@ export default async function ArticlePage({ params }: PageProps<"/blogs/[blog]/[
             {blog.title}
           </Link>
           <h1 className={styles.title}>{article.title}</h1>
-          <span className={styles.meta}>
-            <time dateTime={article.date}>{formatDate(article.date)}</time> · {article.minutes} {blogSection.readingTime}
-          </span>
+          {/* Date + reading time on the left, share actions right-aligned on the same row. */}
+          <div className={styles.metaRow}>
+            <span className={styles.meta}>
+              <time dateTime={article.date}>{formatDate(article.date)}</time> · {article.minutes} {blogSection.readingTime}
+            </span>
+            <ShareBar url={articleUrl} title={article.title} tagged={shareUrls(articleUrl, article.slug)} />
+          </div>
         </header>
 
         {article.image && cover && (

@@ -3,6 +3,7 @@ import type { ArticleMeta } from "@/lib/blog";
 import { routes } from "@/lib/routes";
 import Link from "next/link";
 import { ArticleGrid } from "./ArticleGrid";
+import { FeaturedArticle } from "./FeaturedArticle";
 import styles from "./BlogListing.module.css";
 
 /**
@@ -14,10 +15,13 @@ export function BlogListing({
   description,
   articles,
   active,
+  featured,
 }: {
   title: string;
   description: string;
   articles: ArticleMeta[];
+  /** Shown large above the grid; pass `articles` without it so it isn't listed twice. */
+  featured?: ArticleMeta;
   /** Blog slug of the current category; undefined = "Todas". */
   active?: string;
 }) {
@@ -51,6 +55,8 @@ export function BlogListing({
           );
         })}
       </nav>
+
+      {featured && <FeaturedArticle article={featured} />}
 
       <ArticleGrid articles={articles} />
     </div>

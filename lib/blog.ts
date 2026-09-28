@@ -103,6 +103,13 @@ export function getArticle(blog: string, slug: string): Article | undefined {
   return getAllArticles().find((a) => a.blog === blog && a.slug === slug);
 }
 
+/** The article configured as `blogSection.featured`; fails the build if it doesn't exist. */
+export function getFeaturedArticle(ref: string): Article {
+  const found = getAllArticles().find((a) => `${a.blog}/${a.slug}` === ref);
+  if (!found) throw new Error(`config/blogs.ts: featured "${ref}" not found (use "<blog>/<slug>")`);
+  return found;
+}
+
 /** "Sigue leyendo": frontmatter `related`, else newest from the same blog, topped up from others. */
 export function getRelatedArticles(article: Article, count = 2): Article[] {
   const all = getAllArticles();

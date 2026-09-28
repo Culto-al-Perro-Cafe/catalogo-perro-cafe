@@ -9,8 +9,6 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding-bottom: 8px;
-  border-bottom: var(--border-on-ink);
 }
 
 /* Josefin caps sit high — same optical nudge the catalog's back buttons use. */
@@ -66,6 +64,20 @@
   letter-spacing: -0.03em;
   text-transform: uppercase;
   text-wrap: balance;
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  width: 100%;
+}
+
+/* Share actions stay right-aligned even when they wrap below the date (phones). */
+.metaRow > :last-child {
+  margin-left: auto;
 }
 
 .meta,

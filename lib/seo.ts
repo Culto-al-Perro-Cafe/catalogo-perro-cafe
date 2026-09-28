@@ -62,7 +62,6 @@ export function organizationJsonLd() {
     "@type": "Organization",
     "@id": organizationId,
     name: siteConfig.name,
-    alternateName: siteConfig.shortName,
     url: absoluteUrl(),
     logo: absoluteUrl("/icon.svg"),
     slogan: siteConfig.business.slogan,

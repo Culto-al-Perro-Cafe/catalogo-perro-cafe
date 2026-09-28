@@ -1,4 +1,4 @@
-# Catálogo B2B — El Culto al Perro Café
+# Catálogo B2B — Culto al Perro Café
 
 Wholesale coffee catalog built with Next.js 16 (App Router), implemented from the
 Claude Design project **Catálogo B2B** and its "Public Bento" design system.
