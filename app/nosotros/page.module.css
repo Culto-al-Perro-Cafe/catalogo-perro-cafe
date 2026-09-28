@@ -24,12 +24,13 @@
   border: 2px solid var(--color-the-black);
 }
 
-/* Same panel on the dark page, outlined instead of filled. */
+/* Same panel straight on the dark page: no fill, no visible border
+ * (transparent keeps the 2px so it lines up with the ivory panel beside it). */
 .outlinePanel {
   composes: panel;
   background: none;
   color: #fff;
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: transparent;
 }
 
 .eyebrow {
