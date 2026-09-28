@@ -1,0 +1,392 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px var(--page-pad) 56px;
+  color: #fff;
+}
+
+.accent {
+  color: var(--color-the-orange);
+}
+
+.text {
+  margin: 0;
+  max-width: 520px;
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+/* Shared display heading (uses, steps). */
+.useTitle,
+.sectionTitle,
+.closingTitle,
+.heroTitle,
+.statementText,
+.beanName {
+  margin: 0;
+  font-family: var(--font-headline);
+  font-weight: 900;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.useTitle {
+  font-size: clamp(36px, 4vw, 64px);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+}
+
+/* ── Hero ─────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: min(88vh, 860px);
+  overflow: hidden;
+  background: var(--color-paper-sand);
+  border: 2px solid var(--color-the-black);
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+.heroCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 760px;
+  margin: clamp(16px, 3vw, 40px);
+  padding: clamp(24px, 3vw, 40px);
+  background: var(--color-the-black);
+  border: 2px solid var(--color-the-black);
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--color-the-orange);
+}
+
+.heroTitle {
+  font-size: clamp(52px, 7.4vw, 128px);
+  line-height: 0.88;
+  letter-spacing: -0.035em;
+}
+
+.heroBody {
+  margin: 0;
+  max-width: 540px;
+  font-family: var(--font-body);
+  font-size: clamp(18px, 1.5vw, 22px);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+}
+
+.shipping {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* ── Statement ────────────────────────────────────────── */
+.statement {
+  display: flex;
+  justify-content: center;
+  padding: clamp(40px, 6vw, 88px) 0 clamp(24px, 3vw, 40px);
+}
+
+.statementText {
+  max-width: 1100px;
+  text-align: center;
+  font-size: clamp(32px, 4.6vw, 76px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+/* ── Business / home ──────────────────────────────────── */
+.uses {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.use {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--color-the-black);
+  border: 2px solid var(--color-the-black);
+}
+
+.useMedia {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-bottom: 2px solid var(--color-the-black);
+}
+
+.useMedia img,
+.stepsMedia img,
+.bean img {
+  object-fit: cover;
+}
+
+.useBody {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: clamp(24px, 2.6vw, 36px);
+}
+
+/* ── What's in the box ────────────────────────────────── */
+.contents {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: clamp(40px, 5vw, 72px);
+}
+
+.contentsHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px 48px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.sectionTitle {
+  font-size: clamp(36px, 4.4vw, 72px);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+}
+
+.contentsBody {
+  composes: text;
+  max-width: 440px;
+}
+
+.beans {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.bean {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  aspect-ratio: 3 / 4;
+  min-width: 0;
+  overflow: hidden;
+  background: var(--color-paper-sand);
+  border: 2px solid var(--color-the-black);
+}
+
+.beanNum {
+  position: relative;
+  align-self: flex-start;
+  margin: 14px;
+  padding: 8px 10px 4px;
+  background: var(--color-the-orange);
+  color: var(--color-the-black);
+  border: 2px solid var(--color-the-black);
+  font-family: var(--font-headline);
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.beanCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 14px;
+  padding: 16px 18px 18px;
+  background: var(--color-paper-ivory);
+  color: var(--color-the-black);
+  border: 2px solid var(--color-the-black);
+  container-type: inline-size;
+}
+
+/* Sized to the card so the longest line ("Natural Honey") never overflows. */
+.beanName {
+  font-size: clamp(16px, 11cqi, 32px);
+  white-space: nowrap;
+  text-wrap: nowrap;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+
+.beanNote {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+/* ── How it works / closing: photo + panel ────────────── */
+.split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  gap: 16px;
+  padding-top: clamp(40px, 5vw, 72px);
+}
+
+.stepsMedia {
+  position: relative;
+  min-height: 420px;
+  overflow: hidden;
+  border: 2px solid var(--color-the-black);
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  padding: clamp(24px, 3vw, 48px);
+  background: var(--color-paper-ivory);
+  color: var(--color-the-black);
+  border: 2px solid var(--color-the-black);
+}
+
+.stepList {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 2px solid var(--color-the-black);
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--color-the-black);
+}
+
+.stepNum {
+  font-family: var(--font-headline);
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--color-the-orange);
+}
+
+.stepText {
+  padding-top: 0.18em;
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+.closing {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  margin-top: clamp(40px, 5vw, 72px);
+  padding-top: 0;
+  overflow: hidden;
+  background: var(--color-the-orange);
+  color: var(--color-the-black);
+  border: 2px solid var(--color-the-black);
+}
+
+.closingBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  padding: clamp(32px, 4vw, 56px);
+}
+
+.closingTitle {
+  font-size: clamp(44px, 5.6vw, 96px);
+  line-height: 0.88;
+  letter-spacing: -0.035em;
+}
+
+.closingText {
+  composes: text;
+  max-width: 480px;
+}
+
+.closingMedia {
+  position: relative;
+  min-height: 320px;
+  background: #fff;
+  border-left: 2px solid var(--color-the-black);
+}
+
+.closingMedia img {
+  object-fit: contain;
+}
+
+/* On the orange panel the orange lift shadow needs an ink outline to read. */
+.closing :global(.cp-btn:hover),
+.closing :global(.cp-btn:focus-visible) {
+  box-shadow:
+    8px 8px 0 0 var(--color-the-orange),
+    8px 8px 0 2px var(--color-the-black);
+}
+.closing :global(.cp-btn:active) {
+  box-shadow:
+    4px 4px 0 0 var(--color-the-orange),
+    4px 4px 0 2px var(--color-the-black);
+}
+
+@media (max-width: 900px) {
+  .uses {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .beans {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (max-width: 800px) {
+  /* Stacked closing panel: border moves from the side to the top of the photo. */
+  .closing {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .closingMedia {
+    border-left: 0;
+    border-top: 2px solid var(--color-the-black);
+  }
+}
+
+@media (max-width: 480px) {
+  .beans {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

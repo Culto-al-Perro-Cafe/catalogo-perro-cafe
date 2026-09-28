@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     { url: absoluteUrl(routes.sales), changeFrequency: "yearly", priority: 0.6 },
     { url: absoluteUrl(routes.menudeo), changeFrequency: "monthly", priority: 0.6 },
+    { url: absoluteUrl(routes.kit), changeFrequency: "monthly", priority: 0.6 },
     { url: absoluteUrl(routes.blogs), changeFrequency: "weekly", priority: 0.6 },
     ...blogs.map((blog) => ({
       url: absoluteUrl(routes.blog(blog.slug)),

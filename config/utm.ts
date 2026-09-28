@@ -10,6 +10,7 @@ export const utmConfig = {
   /** utm_campaign per area of the site. */
   campaigns: {
     menudeo: "menudeo",
+    kit: "kit",
     blog: "blog",
     blogShare: "blog_share",
   },
