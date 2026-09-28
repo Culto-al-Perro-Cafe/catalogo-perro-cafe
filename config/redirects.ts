@@ -18,6 +18,9 @@ export const legacyRedirects: { source: string; destination: string }[] = [
   { source: "/products/proveedor-de-cafe-para-restaurantes", destination: "/lineas/restaurante" },
   { source: "/products/cafe-para-oficinas", destination: "/lineas/oficina" },
 
+  // About page.
+  { source: "/pages/sobre-nosotros", destination: "/nosotros" },
+
   // Wholesale and contact pages → B2B catalog and sales form.
   { source: "/pages/mayoreo", destination: "/" },
   { source: "/pages/contact", destination: "/ventas" },

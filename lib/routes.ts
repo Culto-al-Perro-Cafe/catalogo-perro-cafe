@@ -3,6 +3,7 @@ export const routes = {
   sales: "/ventas",
   menudeo: "/menudeo",
   kit: "/kit",
+  about: "/nosotros",
   line: (slug: string) => `/lineas/${slug}`,
   /** Sales form with a product line preselected. */
   quote: (slug: string) => `/ventas?linea=${encodeURIComponent(slug)}`,

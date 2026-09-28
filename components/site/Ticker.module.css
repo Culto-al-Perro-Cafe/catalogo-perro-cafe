@@ -44,6 +44,39 @@
   height: 0.8em;
 }
 
+/* Big band: headline type, ink on orange, boxed, scrolling the other way. */
+.ticker[data-variant="band"] {
+  padding: 18px 0 14px;
+  color: var(--color-the-black);
+  border: 2px solid var(--color-the-black);
+}
+
+.ticker[data-variant="band"] .track {
+  animation-duration: 40s;
+  animation-direction: reverse;
+  font-family: var(--font-headline);
+  font-weight: 900;
+  font-size: clamp(28px, 3vw, 44px);
+  letter-spacing: -0.02em;
+}
+
+.ticker[data-variant="band"] :is(.run, .item) {
+  gap: 0.5em;
+}
+
+.ticker[data-variant="band"] .run {
+  padding-right: 0.5em;
+}
+
+.ticker[data-variant="band"] .text {
+  padding-top: 0.08em;
+}
+
+.ticker[data-variant="band"] .star {
+  width: 0.6em;
+  height: 0.6em;
+}
+
 @keyframes marquee {
   from {
     transform: translateX(0);

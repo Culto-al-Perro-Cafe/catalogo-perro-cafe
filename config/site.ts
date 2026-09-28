@@ -100,6 +100,7 @@ export const siteConfig = {
           { label: "Platica con ventas", href: "/ventas" },
           { label: "Menudeo", href: "/menudeo" },
           { label: "Blog", href: "/blogs" },
+          { label: "Nosotros", href: "/nosotros" },
         ],
       },
     ],

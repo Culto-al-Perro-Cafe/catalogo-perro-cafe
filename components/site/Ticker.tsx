@@ -11,12 +11,15 @@ function Star() {
   );
 }
 
-/** Looping announcement band. Pure CSS — no client JS. */
-export function Ticker({ items }: { items: readonly string[] }) {
+/**
+ * Looping announcement band. Pure CSS — no client JS.
+ * "banner": small caps strip at the top of every page. "band": big headline band (e.g. /nosotros).
+ */
+export function Ticker({ items, variant = "banner" }: { items: readonly string[]; variant?: "banner" | "band" }) {
   // Two identical runs, each containing the list twice, so the -50% loop is seamless.
   const run = [...items, ...items];
   return (
-    <div className={styles.ticker} role="marquee" aria-label={items.join(" · ")}>
+    <div className={styles.ticker} data-variant={variant} role="marquee" aria-label={items.join(" · ")}>
       <div className={styles.track}>
         {[0, 1].map((copy) => (
           <div key={copy} className={styles.run} aria-hidden="true">
