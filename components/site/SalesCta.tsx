@@ -5,6 +5,8 @@ import { siteConfig } from "@/config/site";
 import { routes } from "@/lib/routes";
 import { Button } from "@/components/ui/Button";
 import styles from "./SalesCta.module.css";
+import { trackAttrs } from "@/lib/analytics";
+import { analyticsEvents } from "@/config/analytics";
 
 /** No point linking to the sales page from the sales page. */
 function useIsSalesPage() {
@@ -16,7 +18,7 @@ export function HeaderSalesCta() {
   if (useIsSalesPage()) return null;
   return (
     <nav aria-label="Principal" className={styles.header}>
-      <Button href={routes.sales} variant="roast">
+      <Button href={routes.sales} variant="roast" {...trackAttrs(analyticsEvents.ctaClick, { cta: "header_ventas" })}>
         {siteConfig.sales.navLabel}
       </Button>
     </nav>
@@ -30,7 +32,14 @@ export function MobileSalesBar() {
     <>
       <div className={styles.spacer} aria-hidden="true" />
       <div className={styles.bar}>
-        <Button href={routes.sales} variant="roast" size="lg" iconAfter="arrow_forward" fullWidth>
+        <Button
+          href={routes.sales}
+          variant="roast"
+          size="lg"
+          iconAfter="arrow_forward"
+          fullWidth
+          {...trackAttrs(analyticsEvents.ctaClick, { cta: "mobile_bar_ventas" })}
+        >
           {siteConfig.sales.navLabel}
         </Button>
       </div>

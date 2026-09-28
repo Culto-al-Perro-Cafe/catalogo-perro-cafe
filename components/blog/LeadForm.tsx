@@ -6,6 +6,8 @@ import type { LeadFormConfig, LeadFormId } from "@/config/ctas";
 import { Button } from "@/components/ui/Button";
 import { SelectField, TextField } from "@/components/ui/fields";
 import styles from "./LeadForm.module.css";
+import { track } from "@/lib/analytics";
+import { analyticsEvents } from "@/config/analytics";
 
 type Copy = Omit<LeadFormConfig, "webhookUrl" | "source" | "leadMagnet">;
 
@@ -27,6 +29,7 @@ export function LeadForm({ id, copy }: { id: LeadFormId; copy: Copy }) {
         window.location.href,
       );
       setStatus(ok ? "success" : "error");
+      if (ok) track(analyticsEvents.leadFormSubmitted, { form: id });
       if (ok) form.reset();
     });
   };

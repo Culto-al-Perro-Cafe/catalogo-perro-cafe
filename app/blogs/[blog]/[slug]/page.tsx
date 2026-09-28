@@ -82,7 +82,7 @@ export default async function ArticlePage({ params }: PageProps<"/blogs/[blog]/[
             <span className={styles.meta}>
               <time dateTime={article.date}>{formatDate(article.date)}</time> · {article.minutes} {blogSection.readingTime}
             </span>
-            <ShareBar url={articleUrl} title={article.title} tagged={shareUrls(articleUrl, article.slug)} />
+            <ShareBar url={articleUrl} title={article.title} tagged={shareUrls(articleUrl, article.slug)} article={article.slug} />
           </div>
         </header>
 

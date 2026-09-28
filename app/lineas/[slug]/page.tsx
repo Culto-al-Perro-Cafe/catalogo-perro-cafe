@@ -9,6 +9,8 @@ import { JsonLd } from "@/components/site/JsonLd";
 import { BentoTile, TileMedia } from "@/components/ui/BentoTile";
 import { Button } from "@/components/ui/Button";
 import styles from "./page.module.css";
+import { trackAttrs } from "@/lib/analytics";
+import { analyticsEvents } from "@/config/analytics";
 
 /** Only the slugs in config/lines.ts exist; anything else is a 404. */
 export const dynamicParams = false;
@@ -80,6 +82,7 @@ export default async function LinePage({ params }: PageProps<"/lineas/[slug]">) 
               variant="roast"
               size="xl"
               iconAfter="arrow_forward"
+              {...trackAttrs(analyticsEvents.ctaClick, { cta: "line_quote", line: line.slug })}
             >
               {siteConfig.line.quoteButton}
             </Button>

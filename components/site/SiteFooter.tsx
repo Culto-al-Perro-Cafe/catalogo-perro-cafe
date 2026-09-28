@@ -43,6 +43,7 @@ export function SiteFooter() {
       <div className={styles.bottom}>
         <span>{footer.madeIn}</span>
       </div>
+      <p className={styles.privacy}>{footer.privacyNotice}</p>
     </footer>
   );
 }

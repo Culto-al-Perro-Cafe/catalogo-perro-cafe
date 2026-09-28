@@ -19,6 +19,8 @@ import {
 import { Button } from "@/components/ui/Button";
 import { SegmentedChoice, SelectField, TextField } from "@/components/ui/fields";
 import styles from "./SalesForm.module.css";
+import { track } from "@/lib/analytics";
+import { analyticsEvents } from "@/config/analytics";
 
 const lineOptions = [RECOMMEND_OPTION, ...productLines.map((l) => l.name)];
 const businessOptions = [
@@ -101,7 +103,11 @@ export function SalesForm({ initialLine }: { initialLine?: string }) {
 
     startTransition(async () => {
       const result = await submitSalesLead(form);
-      if (result.ok) router.replace(routes.salesSent, { scroll: false });
+      if (result.ok) {
+        // No personal data: only what the lead is interested in.
+        track(analyticsEvents.quoteSubmitted, { linea: form.linea, tipo: form.tipo, consumo: form.consumo });
+        router.replace(routes.salesSent, { scroll: false });
+      }
       else {
         showErrors(result.errors);
         setFormError(result.formError);

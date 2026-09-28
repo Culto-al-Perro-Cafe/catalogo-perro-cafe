@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { blogSection } from "@/config/blogs";
 import styles from "./ShareBar.module.css";
+import { track } from "@/lib/analytics";
+import { analyticsEvents } from "@/config/analytics";
 
 /* Monochrome icons (currentColor). */
 const icons = {
@@ -47,11 +49,15 @@ export function ShareBar({
   url,
   title,
   tagged,
+  article,
 }: {
   url: string;
   title: string;
   tagged: { facebook: string; x: string; email: string };
+  /** Article slug, for analytics. */
+  article: string;
 }) {
+  const shared = (network: string) => track(analyticsEvents.articleShared, { network, article });
   const [copied, setCopied] = useState(false);
   const t = blogSection.share;
   const enc = encodeURIComponent;
@@ -72,6 +78,7 @@ export function ShareBar({
       el.remove();
     }
     setCopied(true);
+    shared("copy_link");
     setTimeout(() => setCopied(false), 2000);
   };
 
@@ -83,6 +90,7 @@ export function ShareBar({
         target="_blank"
         rel="noopener noreferrer"
         aria-label={t.facebook}
+        onClick={() => shared("facebook")}
         title={t.facebook}
       >
         <Icon name="facebook" />
@@ -93,6 +101,7 @@ export function ShareBar({
         target="_blank"
         rel="noopener noreferrer"
         aria-label={t.x}
+        onClick={() => shared("x")}
         title={t.x}
       >
         <Icon name="x" />
@@ -101,6 +110,7 @@ export function ShareBar({
         className={styles.action}
         href={`mailto:?subject=${enc(title)}&body=${enc(`${title}\n\n${tagged.email}`)}`}
         aria-label={t.email}
+        onClick={() => shared("email")}
         title={t.email}
       >
         <Icon name="email" />

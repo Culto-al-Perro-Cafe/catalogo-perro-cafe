@@ -8,6 +8,8 @@ import { BentoTile } from "@/components/ui/BentoTile";
 import { Button } from "@/components/ui/Button";
 import { PointingHand } from "@/components/ui/PointingHand";
 import styles from "./page.module.css";
+import { trackAttrs } from "@/lib/analytics";
+import { analyticsEvents } from "@/config/analytics";
 
 export default function CatalogPage() {
   const { home } = siteConfig;
@@ -48,7 +50,13 @@ export default function CatalogPage() {
           <h2 className={`t-display-sm ${styles.ctaTitle}`}>{home.cta.title}</h2>
           <div className={styles.ctaAction}>
             <PointingHand className={styles.ctaHand} />
-            <Button href={routes.sales} variant="primary" size="xl" iconAfter="arrow_forward">
+            <Button
+              href={routes.sales}
+              variant="primary"
+              size="xl"
+              iconAfter="arrow_forward"
+              {...trackAttrs(analyticsEvents.ctaClick, { cta: "home_ventas" })}
+            >
               {home.cta.button}
             </Button>
           </div>

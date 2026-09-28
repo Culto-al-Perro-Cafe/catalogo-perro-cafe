@@ -45,8 +45,10 @@ export function Button({
   };
 
   if (href !== undefined) {
+    // Links only take data-* attributes (e.g. analytics trackAttrs), not button props.
+    const data = Object.fromEntries(Object.entries(rest).filter(([k]) => k.startsWith("data-")));
     return (
-      <Link href={href} {...common}>
+      <Link href={href} {...common} {...data}>
         {icon && <Icon name={icon} size={iconSize} />}
         <span className="cp-btn__label">{children}</span>
         {iconAfter && <Icon name={iconAfter} size={iconSize} />}

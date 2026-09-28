@@ -5,6 +5,8 @@ import { withUtm } from "@/lib/utm";
 import { TileMedia } from "@/components/ui/BentoTile";
 import { Button } from "@/components/ui/Button";
 import styles from "./EmbedCard.module.css";
+import { trackAttrs } from "@/lib/analytics";
+import { analyticsEvents } from "@/config/analytics";
 
 /**
  * CTA embedded in an article: a preset from config/ctas.ts (`id`), optionally with a
@@ -30,6 +32,7 @@ export function ArticleCta({
     campaign: utmConfig.campaigns.blog,
     content: utmContent,
   });
+  const tracking = trackAttrs(analyticsEvents.ctaClick, { cta: "article_cta", cta_id: id ?? "custom", article: utmContent });
   const hasCustomBody = Boolean(children && (!Array.isArray(children) || children.length > 0));
 
   const text = hasCustomBody ? (
@@ -50,7 +53,7 @@ export function ArticleCta({
         <div className={styles.content}>
           {text}
           <div className={styles.action}>
-            <Button href={target} variant="roast" size="lg" iconAfter="arrow_forward">
+            <Button href={target} variant="roast" size="lg" iconAfter="arrow_forward" {...tracking}>
               {label ?? preset.label ?? "Ver más"}
             </Button>
           </div>
@@ -63,7 +66,7 @@ export function ArticleCta({
     <aside className={styles.lead}>
       {text}
       <div className={styles.action}>
-        <Button href={target} variant="primary" size="lg" iconAfter="arrow_forward">
+        <Button href={target} variant="primary" size="lg" iconAfter="arrow_forward" {...tracking}>
           {label ?? preset.label ?? "Platica con ventas"}
         </Button>
       </div>

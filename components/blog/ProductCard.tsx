@@ -4,6 +4,8 @@ import { routes } from "@/lib/routes";
 import { TileMedia } from "@/components/ui/BentoTile";
 import { Button } from "@/components/ui/Button";
 import styles from "./EmbedCard.module.css";
+import { trackAttrs } from "@/lib/analytics";
+import { analyticsEvents } from "@/config/analytics";
 
 /** `::producto{id="…"}` — recommends a catalog line inside an article. */
 export function ProductCard({ id }: { id: string }) {
@@ -19,7 +21,13 @@ export function ProductCard({ id }: { id: string }) {
         <p className={styles.heading}>{line.name}</p>
         <p className={styles.text}>{line.summary}</p>
         <div className={styles.action}>
-          <Button href={routes.line(line.slug)} variant="roast" size="lg" iconAfter="arrow_forward">
+          <Button
+            href={routes.line(line.slug)}
+            variant="roast"
+            size="lg"
+            iconAfter="arrow_forward"
+            {...trackAttrs(analyticsEvents.ctaClick, { cta: "article_product", line: line.slug })}
+          >
             {blogSection.product.button}
           </Button>
         </div>

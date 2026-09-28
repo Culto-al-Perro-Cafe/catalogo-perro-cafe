@@ -8,6 +8,8 @@ import { BentoTile, TileMedia } from "@/components/ui/BentoTile";
 import { Button } from "@/components/ui/Button";
 import { PointingHand } from "@/components/ui/PointingHand";
 import styles from "./page.module.css";
+import { trackAttrs } from "@/lib/analytics";
+import { analyticsEvents } from "@/config/analytics";
 
 export const metadata = pageMetadata({
   title: cfg.seoTitle,
@@ -19,10 +21,13 @@ export const metadata = pageMetadata({
 function ProductLink({
   product,
   className,
+  placement,
   children,
 }: {
   product: RetailProduct;
   className: string;
+  /** Analytics: where the link sits on the page. */
+  placement: "featured" | "grid";
   children: React.ReactNode;
 }) {
   return (
@@ -31,6 +36,7 @@ function ProductLink({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`${product.name} — ${cfg.linkLabelSuffix}`}
+      {...trackAttrs(analyticsEvents.mercadoLibreClick, { product: product.id, placement })}
       className={`cp-tile ${className}`}
       data-tone="ivory"
     >
@@ -52,7 +58,7 @@ export default function MenudeoPage() {
       </header>
 
       <div className={styles.grid}>
-        <ProductLink product={featured} className={styles.featured}>
+        <ProductLink product={featured} className={styles.featured} placement="featured">
           <div className={styles.media} style={{ background: featured.backdrop }}>
             <TileMedia
               image={featured.image}
@@ -72,7 +78,7 @@ export default function MenudeoPage() {
         </ProductLink>
 
         {rest.map((product) => (
-          <ProductLink key={product.id} product={product} className={styles.item}>
+          <ProductLink key={product.id} product={product} className={styles.item} placement="grid">
             <div className={styles.media} style={{ background: product.backdrop }}>
               <TileMedia
                 image={product.image}
@@ -91,7 +97,12 @@ export default function MenudeoPage() {
           <h3 className={styles.businessTitle}>{cfg.businessCta.title}</h3>
           <p className={styles.businessBody}>{cfg.businessCta.body}</p>
           <div>
-            <Button href={routes.home} variant="primary" iconAfter="arrow_forward">
+            <Button
+              href={routes.home}
+              variant="primary"
+              iconAfter="arrow_forward"
+              {...trackAttrs(analyticsEvents.ctaClick, { cta: "menudeo_mayoreo" })}
+            >
               {cfg.businessCta.label}
             </Button>
           </div>
@@ -122,6 +133,7 @@ export default function MenudeoPage() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${cfg.sampleKit.title} — ${cfg.linkLabelSuffix}`}
+              {...trackAttrs(analyticsEvents.mercadoLibreClick, { product: "kit-de-muestras", placement: "kit" })}
               className="cp-btn"
               data-variant="primary"
               data-size="xl"
