@@ -82,11 +82,13 @@ and reuse it from any article.
 to `SALES_WEBHOOK_URL`. In development the lead is logged instead; in production a
 missing webhook shows an error so leads are never silently dropped.
 
-The receiving end is the n8n workflow in `n8n/ventas-leads.workflow.json`
-(import it in n8n → *Workflows → Import from file*, then activate it):
+The receiving end is the n8n workflow "Leads de Ventas (Catálogo B2B)" on n8n.pozole.dev
+(managed in n8n, not in this repo):
 
 ```
 Webhook (POST) → Normalizar lead → Guardar lead → Responder OK
+                                                   ├→ email alert to new_lead_notification_targets
+                                                   └→ RoastOS quote (order in "pricing") → PDF emailed to the lead
 ```
 
 Production URL: `https://n8n.pozole.dev/webhook/0da30cf0-a0a5-483b-990c-7903e8ef89af`.
