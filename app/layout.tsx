@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Josefin_Sans, Rokkitt } from "next/font/google";
 import { siteConfig } from "@/config/site";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
+import { GoogleTag } from "@/components/site/GoogleTag";
 import { JsonLd } from "@/components/site/JsonLd";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { MobileSalesBar } from "@/components/site/SalesCta";
@@ -63,6 +64,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main>{children}</main>
         <SiteFooter />
         <MobileSalesBar />
+        <GoogleTag />
       </body>
     </html>
   );

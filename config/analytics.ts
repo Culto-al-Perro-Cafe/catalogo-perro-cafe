@@ -1,6 +1,7 @@
 /**
- * PostHog product analytics. The project token is public by design (it ships in the
- * browser bundle), so it lives here rather than in an env var.
+ * Analytics: PostHog (product analytics) and Google Analytics (gtag.js). The PostHog token
+ * and GA measurement ID are public by design (they ship in the browser bundle), so they
+ * live here rather than in env vars.
  */
 export const analyticsConfig = {
   posthog: {
@@ -11,6 +12,10 @@ export const analyticsConfig = {
     upstream: "https://us.i.posthog.com",
     upstreamAssets: "https://us-assets.i.posthog.com",
     uiHost: "https://us.posthog.com",
+  },
+  /** Google Analytics 4 (gtag.js). The measurement ID is public by design. */
+  googleTag: {
+    id: "G-HQJYYRWX7G",
   },
 } as const;
 
