@@ -27,7 +27,7 @@ export type ProductLine = {
 
 export type LineVariant = {
   name: string;
-  /** Tasting notes and body/acidity, one line. */
+  /** Tasting notes and body/acidity, one line. Leave empty to hide. */
   notes: string;
   /** Data sheet rows, in display order. */
   specs: { label: string; value: string }[];
@@ -49,41 +49,40 @@ export const productLines: ProductLine[] = [
     ],
     variants: [
       {
+        // Source: Finca Corahe technical sheet "FICHA TECNICA EUROPEA".
         name: "Lavado Veracruz",
-        notes: "Caramelo, piloncillo, miel, acidez citrica, balanceado, cuerpo sedoso",
+        notes: "Caramelo, piloncillo, miel, acidez cítrica, balanceado, cuerpo sedoso",
         specs: [
-          { label: "Región", value: "Huatusco, Veracruz" },
-          { label: "Altura", value: "1,000 a 1,400 msnm" },
-          { label: "Variedad", value: "Sarchimor/Colombia" },
+          { label: "Nombre de la finca", value: "Finca Corahe" },
+          { label: "Zona", value: "Huatusco" },
+          { label: "Estado", value: "Veracruz" },
+          { label: "Altitud", value: "1,100 msnm" },
+          { label: "Variedades de café", value: "Sarchimor / Colombia" },
           { label: "Proceso", value: "Lavado" },
-          { label: "Tueste", value: "Medio" },
-          { label: "Recomendado", value: "Espresso y bebidas con leche" },
-          { label: "Calificación SCA", value: "84.5" },
         ],
       },
       {
+        // Source: list provided by the team (no technical sheet yet).
         name: "Lavado Chiapas",
-        notes: "Chocolate amargo, nuez y caramelo. Cuerpo medio, acidez baja.",
+        notes: "Avellana, chocolate amargo, acidez tipo cereza.",
         specs: [
-          { label: "Región", value: "Soconusco, Chiapas" },
-          { label: "Altura", value: "1,300 a 1,600 msnm" },
-          { label: "Variedad", value: "Bourbon, Typica" },
-          { label: "Proceso", value: "Lavado" },
-          { label: "Tueste", value: "Medio" },
-          { label: "Recomendado", value: "Espresso y métodos de filtrado" },
+          { label: "Finca", value: "Cooperativa de Productores Tierra Sagrada" },
+          { label: "Origen", value: "Mapastepec, Chiapas" },
+          { label: "Altura", value: "1,650 msnm" },
+          { label: "Tipo de grano", value: "Typica, Bourbon y Caturra" },
         ],
       },
       {
+        // Source: Finca Corahe technical sheet "FICHA TECNICA Natural honey 2026".
         name: "Natural Honey Veracruz",
-        notes: "",
+        notes: "Cítricos, frambuesa, frutos rojos, azúcar mascabado",
         specs: [
-          { label: "Región", value: "Huatusco, Veracruz" },
-          { label: "Altura", value: "1,100 a 1,400 msnm" },
-          { label: "Variedad", value: "Marsellesa" },
-          { label: "Proceso", value: "Natural con fermentacion anaeróbica de 120hrs." },
-          { label: "Tueste", value: "Medio" },
-          { label: "Recomendado", value: "Espresso y métodos de filtrado" },
-          { label: "Calificación SCA", value: "84.5" },
+          { label: "Nombre de la finca", value: "Finca Corahe" },
+          { label: "Zona", value: "Huatusco" },
+          { label: "Estado", value: "Veracruz" },
+          { label: "Altitud", value: "1,000 a 1,400 msnm" },
+          { label: "Variedades de café", value: "Marsellesa" },
+          { label: "Proceso", value: "Natural con fermentación anaeróbica de 120 hrs" },
         ],
       },
     ],

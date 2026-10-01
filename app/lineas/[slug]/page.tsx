@@ -100,7 +100,7 @@ export default async function LinePage({ params }: PageProps<"/lineas/[slug]">) 
               <article key={variant.name} className={styles.variant}>
                 <div className={styles.variantHead}>
                   <h3 className={styles.variantName}>{variant.name}</h3>
-                  <p className={styles.variantNotes}>{variant.notes}</p>
+                  {variant.notes && <p className={styles.variantNotes}>{variant.notes}</p>}
                 </div>
                 <dl className={styles.specs}>
                   {variant.specs.map((spec) => (
