@@ -8,6 +8,7 @@ import { BackBar } from "@/components/site/BackBar";
 import { JsonLd } from "@/components/site/JsonLd";
 import { BentoTile, TileMedia } from "@/components/ui/BentoTile";
 import { Button } from "@/components/ui/Button";
+import { BeanIcon } from "@/components/ui/BeanIcon";
 import styles from "./page.module.css";
 import { trackAttrs } from "@/lib/analytics";
 import { analyticsEvents } from "@/config/analytics";
@@ -71,7 +72,7 @@ export default async function LinePage({ params }: PageProps<"/lineas/[slug]">) 
           <ul className={styles.highlights}>
             {line.highlights.map((item) => (
               <li key={item}>
-                <span className={styles.bullet} aria-hidden="true" />
+                <BeanIcon />
                 <span className={styles.highlightText}>{item}</span>
               </li>
             ))}

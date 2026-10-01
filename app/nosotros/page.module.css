@@ -185,14 +185,6 @@
   line-height: 1.35;
 }
 
-.bean {
-  flex: none;
-  display: block;
-  width: 14px;
-  height: 18px;
-  transform: rotate(-24deg);
-}
-
 .checkText {
   padding-top: 0.18em;
 }

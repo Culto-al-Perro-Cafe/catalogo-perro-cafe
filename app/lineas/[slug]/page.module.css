@@ -58,14 +58,6 @@
   line-height: 1.35;
 }
 
-.bullet {
-  flex: none;
-  width: 12px;
-  height: 12px;
-  background: var(--color-the-orange);
-  border: 2px solid var(--color-the-black);
-}
-
 .highlightText {
   padding-top: 0.18em;
 }

@@ -76,8 +76,27 @@
   padding-left: 1.3em;
 }
 
+/* Unordered lists use the coffee bean bullet (same drawing as components/ui/BeanIcon). */
 .prose ul {
-  list-style: square;
+  padding-left: 0;
+  list-style: none;
+}
+
+.prose ul > li {
+  position: relative;
+  padding-left: 1.6em;
+}
+
+.prose ul > li::before {
+  content: "";
+  position: absolute;
+  top: 0.3em;
+  left: 0.15em;
+  width: 14px;
+  height: 18px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 18'%3E%3Cellipse cx='7' cy='9' rx='6' ry='8' fill='%23e4734c' stroke='%23222222' stroke-width='1.6'/%3E%3Cpath d='M7.6 1.6 C 4.6 5.4, 9.4 12.6, 6.4 16.4' fill='none' stroke='%23222222' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+  transform: rotate(-24deg);
 }
 
 .prose ol {

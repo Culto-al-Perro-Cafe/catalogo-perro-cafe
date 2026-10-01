@@ -4,6 +4,7 @@ import { routes } from "@/lib/routes";
 import { pageMetadata } from "@/lib/seo";
 import { Button } from "@/components/ui/Button";
 import { Ticker } from "@/components/site/Ticker";
+import { BeanIcon } from "@/components/ui/BeanIcon";
 import styles from "./page.module.css";
 import { trackAttrs } from "@/lib/analytics";
 import { analyticsEvents } from "@/config/analytics";
@@ -44,22 +45,6 @@ function Actions({
         </Button>
       ))}
     </div>
-  );
-}
-
-/** Coffee bean bullet for the checklist. */
-function Bean() {
-  return (
-    <svg className={styles.bean} viewBox="0 0 14 18" aria-hidden="true">
-      <ellipse cx="7" cy="9" rx="6" ry="8" fill="var(--color-the-orange)" stroke="var(--color-the-black)" strokeWidth="1.6" />
-      <path
-        d="M7.6 1.6 C 4.6 5.4, 9.4 12.6, 6.4 16.4"
-        fill="none"
-        stroke="var(--color-the-black)"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-      />
-    </svg>
   );
 }
 
@@ -108,7 +93,7 @@ export default function AboutPage() {
                 <ul className={styles.checklist}>
                   {checklist.items.map((item) => (
                     <li key={item}>
-                      <Bean />
+                      <BeanIcon />
                       <span className={styles.checkText}>{item}</span>
                     </li>
                   ))}
