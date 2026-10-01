@@ -25,7 +25,7 @@ export const salesFormConfig = {
     },
   },
 
-  consumoOptions: ["5-10 kg", "11-15 kg", "Más de 15 kg"],
+  consumoOptions: ["5-10 kg", "11-15 kg", "16 kg o más"],
 
   businessTypes: [
     "Restaurante",
