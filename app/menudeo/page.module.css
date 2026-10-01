@@ -394,8 +394,9 @@
     grid-column: span 2;
   }
 
-  /* One product per row so "Comprar" and "Ver ficha" fit side by side. */
-  .item {
+  /* One product per row so "Comprar" and "Ver ficha" fit side by side; the closing tile too. */
+  .item,
+  .business {
     grid-column: span 2;
   }
 
