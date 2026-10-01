@@ -5,6 +5,7 @@ import { pageMetadata } from "@/lib/seo";
 import { withUtm } from "@/lib/utm";
 import { utmConfig } from "@/config/utm";
 import Image from "next/image";
+import Link from "next/link";
 import { BentoTile, TileMedia } from "@/components/ui/BentoTile";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
@@ -100,20 +101,16 @@ export default function MenudeoPage() {
           </article>
         ))}
 
-        <div className={styles.business}>
+        <Link
+          href={routes.home}
+          className={`cp-tile ${styles.business}`}
+          data-tone="orange"
+          {...trackAttrs(analyticsEvents.ctaClick, { cta: "menudeo_mayoreo" })}
+        >
           <h3 className={styles.businessTitle}>{cfg.businessCta.title}</h3>
           <p className={styles.businessBody}>{cfg.businessCta.body}</p>
-          <div>
-            <Button
-              href={routes.home}
-              variant="primary"
-              iconAfter="arrow_forward"
-              {...trackAttrs(analyticsEvents.ctaClick, { cta: "menudeo_mayoreo" })}
-            >
-              {cfg.businessCta.label}
-            </Button>
-          </div>
-        </div>
+          <span className={styles.businessMore}>{cfg.businessCta.label}</span>
+        </Link>
       </div>
 
       {/* Sample kit — same treatment as the home page "#ventas" block. */}

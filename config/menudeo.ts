@@ -38,8 +38,9 @@ export const menudeoConfig = {
 
   /** Closing tile that sends businesses to the B2B catalog. */
   businessCta: {
-    title: "¿Compras para tu negocio?",
+    title: "¿Buscas para tu negocio?",
     body: "Mayoreo desde 5 kg con envío a todo México.",
-    label: "Ver opciones",
+    /** The whole tile links to the B2B catalog; this label reads like the home cards' "Ver →". */
+    label: "Ver opciones →",
   },
 };

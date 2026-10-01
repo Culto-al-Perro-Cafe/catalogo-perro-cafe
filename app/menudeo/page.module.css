@@ -211,11 +211,13 @@
 
 
 /* Closing tile → B2B catalog; fills the last cell after the products. */
+/* Title and text stay together at the top; "Ver opciones →" sits at the bottom. */
 .business {
+  container-type: inline-size;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 12px;
+  justify-content: flex-start;
+  gap: 8px;
   min-height: 0;
   padding: 18px;
   background: var(--color-the-orange);
@@ -226,12 +228,24 @@
 .businessTitle {
   margin: 0;
   font-family: var(--font-headline);
-  font-size: clamp(20px, 1.7vw, 28px);
+  /* Same size as the featured card's title, capped so "NEGOCIO?" never outgrows a narrow tile. */
+  font-size: min(clamp(34px, 3.2vw, 56px), 21cqi);
   font-weight: 900;
-  line-height: 0.95;
-  letter-spacing: -0.02em;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
   text-transform: uppercase;
   text-wrap: balance;
+}
+
+/* "Ver opciones →": same look as the home cards' "Ver →" (ink here, for contrast on orange). */
+.businessMore {
+  margin-top: auto;
+  padding-top: 8px;
+  font-family: var(--font-label);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .businessBody {
@@ -242,15 +256,16 @@
   text-wrap: pretty;
 }
 
-/* On the orange tile the orange lift shadow needs an ink outline to read. */
-.business :global(.cp-btn:hover),
-.business :global(.cp-btn:focus-visible) {
+/* The tile is a link: the common lift on hover/active, with an ink outline so the orange shadow
+ * reads against the orange tile. */
+a.business:hover,
+a.business:focus-visible {
   box-shadow:
     8px 8px 0 0 var(--color-the-orange),
     8px 8px 0 2px var(--color-the-black);
 }
 
-.business :global(.cp-btn:active) {
+a.business:active {
   box-shadow:
     4px 4px 0 0 var(--color-the-orange),
     4px 4px 0 2px var(--color-the-black);
@@ -401,10 +416,6 @@
   }
 
 
-  .business :global(.cp-btn) {
-    width: 100%;
-    white-space: normal;
-  }
 
   .kitTile {
     padding: 24px;
