@@ -89,6 +89,32 @@ export default async function LinePage({ params }: PageProps<"/lineas/[slug]">) 
           </div>
         </BentoTile>
       </div>
+
+      {line.variants && line.variants.length > 0 && (
+        <section aria-labelledby="line-variants" className={styles.variants}>
+          <h2 id="line-variants" className={styles.variantsTitle}>
+            {siteConfig.line.variantsTitle}
+          </h2>
+          <div className={styles.variantGrid}>
+            {line.variants.map((variant) => (
+              <article key={variant.name} className={styles.variant}>
+                <div className={styles.variantHead}>
+                  <h3 className={styles.variantName}>{variant.name}</h3>
+                  <p className={styles.variantNotes}>{variant.notes}</p>
+                </div>
+                <dl className={styles.specs}>
+                  {variant.specs.map((spec) => (
+                    <div key={spec.label} className={styles.spec}>
+                      <dt>{spec.label}</dt>
+                      <dd>{spec.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
     </article>
   );
 }

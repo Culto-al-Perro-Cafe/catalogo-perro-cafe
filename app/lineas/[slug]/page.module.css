@@ -74,3 +74,94 @@
   display: flex;
   margin-top: auto;
 }
+
+/* ── Origins: one data sheet per variant ─────────────── */
+.variants {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 24px;
+}
+
+.variantsTitle {
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-headline);
+  font-size: clamp(36px, 4.4vw, 72px);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.variantGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  align-items: stretch;
+  gap: 16px;
+}
+
+.variant {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--color-paper-ivory);
+  color: var(--color-the-black);
+  border: 2px solid var(--color-the-black);
+}
+
+.variantHead {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px 24px 20px;
+  border-bottom: 2px solid var(--color-the-black);
+}
+
+.variantName {
+  margin: 0;
+  font-family: var(--font-headline);
+  font-size: clamp(28px, 2.6vw, 40px);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.variantNotes {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.specs {
+  margin: 0;
+  padding: 0 24px 8px;
+}
+
+/* Label | value rows with a rule between them (none under the last). */
+.spec {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  border-bottom: 2px solid var(--color-the-black);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.spec:last-child {
+  border-bottom: 0;
+}
+
+.spec dt {
+  padding: 13px 12px 11px 0;
+  font-weight: 700;
+}
+
+.spec dd {
+  margin: 0;
+  padding: 13px 0 11px;
+}

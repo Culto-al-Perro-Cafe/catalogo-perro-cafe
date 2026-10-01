@@ -21,6 +21,16 @@ export type ProductLine = {
   seoDescription?: string;
   /** Product photo in /public. Leave undefined to show the hatched placeholder. */
   image?: { src: string; alt: string };
+  /** Origins offered in this line, each with a data sheet ("Granos disponibles" on the detail page). */
+  variants?: LineVariant[];
+};
+
+export type LineVariant = {
+  name: string;
+  /** Tasting notes and body/acidity, one line. */
+  notes: string;
+  /** Data sheet rows, in display order. */
+  specs: { label: string; value: string }[];
 };
 
 export const productLines: ProductLine[] = [
@@ -36,6 +46,46 @@ export const productLines: ProductLine[] = [
     highlights: [
       "Perfil estable todo el año.",
       "Ideal para cafeterías de especialidad.",
+    ],
+    variants: [
+      {
+        name: "Lavado Veracruz",
+        notes: "Caramelo, piloncillo, miel, acidez citrica, balanceado, cuerpo sedoso",
+        specs: [
+          { label: "Región", value: "Huatusco, Veracruz" },
+          { label: "Altura", value: "1,000 a 1,400 msnm" },
+          { label: "Variedad", value: "Sarchimor/Colombia" },
+          { label: "Proceso", value: "Lavado" },
+          { label: "Tueste", value: "Medio" },
+          { label: "Recomendado", value: "Espresso y bebidas con leche" },
+          { label: "Calificación SCA", value: "84.5" },
+        ],
+      },
+      {
+        name: "Lavado Chiapas",
+        notes: "Chocolate amargo, nuez y caramelo. Cuerpo medio, acidez baja.",
+        specs: [
+          { label: "Región", value: "Soconusco, Chiapas" },
+          { label: "Altura", value: "1,300 a 1,600 msnm" },
+          { label: "Variedad", value: "Bourbon, Typica" },
+          { label: "Proceso", value: "Lavado" },
+          { label: "Tueste", value: "Medio" },
+          { label: "Recomendado", value: "Espresso y métodos de filtrado" },
+        ],
+      },
+      {
+        name: "Natural Honey Veracruz",
+        notes: "",
+        specs: [
+          { label: "Región", value: "Huatusco, Veracruz" },
+          { label: "Altura", value: "1,100 a 1,400 msnm" },
+          { label: "Variedad", value: "Marsellesa" },
+          { label: "Proceso", value: "Natural con fermentacion anaeróbica de 120hrs." },
+          { label: "Tueste", value: "Medio" },
+          { label: "Recomendado", value: "Espresso y métodos de filtrado" },
+          { label: "Calificación SCA", value: "84.5" },
+        ],
+      },
     ],
     seoDescription:
       "Café para espresso de mayoreo con perfil estable lote tras lote. Ideal para cafeterías de especialidad, máquina de espresso y métodos de filtrado. Envíos a todo México.",

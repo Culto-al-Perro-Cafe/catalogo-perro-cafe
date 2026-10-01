@@ -73,6 +73,8 @@ export const siteConfig = {
     breadcrumbRoot: "Nuestras líneas",
     backLabel: "Todas las líneas",
     quoteButton: "Cotizar pedido",
+    /** Heading of the origins/data-sheet section, shown when a line has variants. */
+    variantsTitle: "Granos disponibles",
   },
 
   sales: {
