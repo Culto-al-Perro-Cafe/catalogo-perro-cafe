@@ -126,28 +126,54 @@
   text-wrap: pretty;
 }
 
-.buy {
-  flex: none;
-  max-width: 100%;
-  display: inline-flex;
+/* Text label under a product name, e.g. "Lanzamiento: Oct 26". It takes the place of the
+ * card buttons, so it reserves their row height (42px) and the card lines up with the others. */
+.itemLabel {
+  display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 16px 20px 13px;
-  background: var(--color-the-orange);
-  border: 2px solid var(--color-the-black);
+  min-height: 42px;
+  margin: 0;
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
-  line-height: 1;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  line-height: 1.3;
+}
+
+/* Card actions: "Comprar" (Mercado Libre, 1 kg) + "Ver ficha". */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.actions :global(.cp-btn__label) {
+  transform: translateY(2px);
+}
+
+/* Small grid cards: compact buttons side by side, as wide as their labels. */
+.item .actions {
+  flex-wrap: nowrap;
+  gap: 6px;
+}
+
+.item .actions :global(.cp-btn) {
+  flex: none;
+  gap: 4px;
+  padding: 11px 10px 9px;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+.item .actions :global(.cp-icon) {
+  width: 14px;
+  height: 14px;
 }
 
 .itemBody {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: 14px 16px 16px;
+  gap: 10px;
+  padding: 14px 12px 14px;
 }
 
 .itemName {
@@ -161,16 +187,8 @@
   text-wrap: balance;
 }
 
-.itemBuy {
-  text-transform: uppercase;
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.3;
-  color: var(--color-secondary);
-}
 
-/* Closing tile → B2B catalog */
+/* Closing tile → B2B catalog; fills the last cell after the products. */
 .business {
   display: flex;
   flex-direction: column;
@@ -311,8 +329,8 @@
     4px 4px 0 2px var(--color-the-black);
 }
 
-/* Tablet: 3 columns, featured full width */
-@media (max-width: 1100px) {
+/* Tablet: 3 columns, featured full width (5 columns need ≥1280px for the card buttons) */
+@media (max-width: 1279px) {
   .grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     grid-template-rows: none;
@@ -327,6 +345,17 @@
   }
 }
 
+/* Small tablet: 2 columns, so each card fits its two buttons side by side */
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .featured {
+    grid-column: span 2;
+  }
+}
+
 /* Phone: 2 columns */
 @media (max-width: 640px) {
   .grid {
@@ -338,12 +367,11 @@
     grid-column: span 2;
   }
 
-  /* Buttons are wider than a phone card: let them wrap and span the card. */
-  .buy {
-    flex: 1 1 100%;
-    justify-content: center;
-    text-align: center;
+  /* One product per row so "Comprar" and "Ver ficha" fit side by side. */
+  .item {
+    grid-column: span 2;
   }
+
 
   .business :global(.cp-btn) {
     width: 100%;
@@ -380,5 +408,18 @@
     transform: rotate(90deg);
     /* rotate() keeps the wide layout box (72×45); reserve the rotated height (45×72). */
     margin-block: 14px;
+  }
+}
+
+/* Narrow phones: the featured card uses the compact buttons too, so both fit on one line. */
+@media (max-width: 420px) {
+  .featured .actions {
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
+
+  .featured .actions :global(.cp-btn) {
+    padding: 12px 8px 10px;
+    font-size: 13px;
   }
 }

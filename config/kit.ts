@@ -46,12 +46,13 @@ export const kitConfig = {
   contents: {
     title: "Lo que viene en la caja",
     body: "Cuatro granos tostados en Hermosillo, cada uno con su carácter.",
-    /** Each name renders on two lines: [line 1, line 2]. */
+    /** Each name renders on two lines: [line 1, line 2]. `ficha`: bean slug in config/beans.ts
+     *  for the "Ver ficha" button (hidden while that bean has no data sheet). */
     beans: [
-      { num: "01", name: ["Lavado", "Chiapas"], note: "Limpio y brillante, con acidez amable.", image: "/products/espresso.jpg" },
-      { num: "02", name: ["Lavado", "Veracruz"], note: "Balanceado y suave, para todos los días.", image: "/products/restaurante.jpg" },
-      { num: "03", name: ["Natural Honey", "Veracruz"], note: "Dulce y con cuerpo sedoso.", image: "/products/oficina.jpg" },
-      { num: "04", name: ["Tueste", "Intenso"], note: "Oscuro, fuerte y con carácter.", image: "/products/tueste-intenso.jpg" },
+      { num: "01", name: ["Lavado", "Chiapas"], ficha: "lavado-chiapas", note: "Limpio y brillante, con acidez amable.", image: "/products/espresso.jpg" },
+      { num: "02", name: ["Lavado", "Veracruz"], ficha: "lavado-veracruz", note: "Balanceado y suave, para todos los días.", image: "/products/restaurante.jpg" },
+      { num: "03", name: ["Natural Honey", "Veracruz"], ficha: "natural-honey-veracruz", note: "Dulce y con cuerpo sedoso.", image: "/products/oficina.jpg" },
+      { num: "04", name: ["Tueste", "Intenso"], ficha: "tueste-intenso", note: "Oscuro, fuerte y con carácter.", image: "/products/tueste-intenso.jpg" },
     ],
   },
 

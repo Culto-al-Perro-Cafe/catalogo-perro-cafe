@@ -21,16 +21,8 @@ export type ProductLine = {
   seoDescription?: string;
   /** Product photo in /public. Leave undefined to show the hatched placeholder. */
   image?: { src: string; alt: string };
-  /** Origins offered in this line, each with a data sheet ("Granos disponibles" on the detail page). */
-  variants?: LineVariant[];
-};
-
-export type LineVariant = {
-  name: string;
-  /** Tasting notes and body/acidity, one line. Leave empty to hide. */
-  notes: string;
-  /** Data sheet rows, in display order. */
-  specs: { label: string; value: string }[];
+  /** Coffees offered in this line ("Granos disponibles"), by slug from config/beans.ts. */
+  variants?: string[];
 };
 
 export const productLines: ProductLine[] = [
@@ -47,45 +39,8 @@ export const productLines: ProductLine[] = [
       "Perfil estable todo el año.",
       "Ideal para cafeterías de especialidad.",
     ],
-    variants: [
-      {
-        // Source: Finca Corahe technical sheet "FICHA TECNICA EUROPEA".
-        name: "Lavado Veracruz",
-        notes: "Caramelo, piloncillo, miel, acidez cítrica, balanceado, cuerpo sedoso",
-        specs: [
-          { label: "Nombre de la finca", value: "Finca Corahe" },
-          { label: "Zona", value: "Huatusco" },
-          { label: "Estado", value: "Veracruz" },
-          { label: "Altitud", value: "1,100 msnm" },
-          { label: "Variedades de café", value: "Sarchimor / Colombia" },
-          { label: "Proceso", value: "Lavado" },
-        ],
-      },
-      {
-        // Source: list provided by the team (no technical sheet yet).
-        name: "Lavado Chiapas",
-        notes: "Avellana, chocolate amargo, acidez tipo cereza.",
-        specs: [
-          { label: "Finca", value: "Cooperativa de Productores Tierra Sagrada" },
-          { label: "Origen", value: "Mapastepec, Chiapas" },
-          { label: "Altura", value: "1,650 msnm" },
-          { label: "Tipo de grano", value: "Typica, Bourbon y Caturra" },
-        ],
-      },
-      {
-        // Source: Finca Corahe technical sheet "FICHA TECNICA Natural honey 2026".
-        name: "Natural Honey Veracruz",
-        notes: "Cítricos, frambuesa, frutos rojos, azúcar mascabado",
-        specs: [
-          { label: "Nombre de la finca", value: "Finca Corahe" },
-          { label: "Zona", value: "Huatusco" },
-          { label: "Estado", value: "Veracruz" },
-          { label: "Altitud", value: "1,000 a 1,400 msnm" },
-          { label: "Variedades de café", value: "Marsellesa" },
-          { label: "Proceso", value: "Natural con fermentación anaeróbica de 120 hrs" },
-        ],
-      },
-    ],
+    // Data sheets live in config/beans.ts.
+    variants: ["lavado-veracruz", "lavado-chiapas", "natural-honey-veracruz"],
     seoDescription:
       "Café para espresso de mayoreo con perfil estable lote tras lote. Ideal para cafeterías de especialidad, máquina de espresso y métodos de filtrado. Envíos a todo México.",
   },

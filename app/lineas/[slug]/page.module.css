@@ -157,3 +157,13 @@
   margin: 0;
   padding: 13px 0 11px;
 }
+
+.variantAction {
+  display: flex;
+  margin-top: auto;
+  padding: 16px 24px 24px;
+}
+
+.variantAction :global(.cp-btn__label) {
+  transform: translateY(2px);
+}

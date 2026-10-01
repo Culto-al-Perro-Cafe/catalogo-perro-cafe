@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { blogs } from "@/config/blogs";
+import { beans, hasFicha } from "@/config/beans";
 import { productLines } from "@/config/lines";
 import { getAllArticles } from "@/lib/blog";
 import { routes } from "@/lib/routes";
@@ -17,6 +18,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: absoluteUrl(routes.menudeo), changeFrequency: "monthly", priority: 0.6 },
     { url: absoluteUrl(routes.kit), changeFrequency: "monthly", priority: 0.6 },
     { url: absoluteUrl(routes.about), changeFrequency: "yearly", priority: 0.5 },
+    ...beans.filter(hasFicha).map((bean) => ({
+      url: absoluteUrl(routes.ficha(bean.slug)),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })),
     { url: absoluteUrl(routes.blogs), changeFrequency: "weekly", priority: 0.6 },
     ...blogs.map((blog) => ({
       url: absoluteUrl(routes.blog(blog.slug)),

@@ -1,9 +1,11 @@
 import Image from "next/image";
 import { kitConfig as cfg } from "@/config/kit";
+import { fichaConfig, getBean, hasFicha } from "@/config/beans";
 import { routes } from "@/lib/routes";
 import { pageMetadata } from "@/lib/seo";
 import { withUtm } from "@/lib/utm";
 import { utmConfig } from "@/config/utm";
+import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import styles from "./page.module.css";
 import { trackAttrs } from "@/lib/analytics";
@@ -105,6 +107,18 @@ export default function KitPage() {
                   {bean.name[1]}
                 </h3>
                 <p className={styles.beanNote}>{bean.note}</p>
+                {hasFicha(getBean(bean.ficha)) && (
+                  <div className={styles.beanAction}>
+                    <Button
+                      href={routes.ficha(bean.ficha)}
+                      variant="secondary"
+                      iconAfter="arrow_forward"
+                      {...trackAttrs(analyticsEvents.ctaClick, { cta: "kit_ficha", bean: bean.ficha })}
+                    >
+                      {fichaConfig.linkLabel}
+                    </Button>
+                  </div>
+                )}
               </div>
             </div>
           ))}

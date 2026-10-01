@@ -1,0 +1,149 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px var(--page-pad) 56px;
+  color: #fff;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Josefin caps sit high — same optical nudge the catalog's back buttons use. */
+.bar :global(.cp-btn__label),
+.buyActions :global(.cp-btn__label) {
+  transform: translateY(2px);
+}
+
+.crumb {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  align-items: stretch;
+  gap: 16px;
+}
+
+.photo {
+  position: relative;
+  min-height: 420px;
+  overflow: hidden;
+  background: var(--color-paper-sand);
+  border: 2px solid var(--color-the-black);
+}
+
+.photo img {
+  object-fit: cover;
+}
+
+.sheet {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--color-paper-ivory);
+  color: var(--color-the-black);
+  border: 2px solid var(--color-the-black);
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 32px 32px 24px;
+  border-bottom: 2px solid var(--color-the-black);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-headline);
+  font-size: clamp(40px, 4.4vw, 72px);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.notes {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.specs {
+  margin: 0;
+  padding: 0 32px 12px;
+}
+
+/* Label | value rows with a rule between them (none under the last). */
+.spec {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  border-bottom: 2px solid var(--color-the-black);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.spec:last-child {
+  border-bottom: 0;
+}
+
+.spec dt {
+  padding: 15px 12px 13px 0;
+  font-weight: 700;
+}
+
+.spec dd {
+  margin: 0;
+  padding: 15px 0 13px;
+}
+
+.buy {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 8px;
+}
+
+.buyTitle {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.buyActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (max-width: 480px) {
+  .head {
+    padding: 24px 20px 20px;
+  }
+
+  .specs {
+    padding: 0 20px 8px;
+  }
+
+  .spec {
+    font-size: 16px;
+  }
+
+  .buyActions :global(.cp-btn) {
+    width: 100%;
+  }
+}

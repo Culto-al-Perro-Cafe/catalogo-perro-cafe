@@ -43,8 +43,9 @@ export const siteConfig = {
   logo: {
     src: "/brand/logo-header.svg",
     alt: "Culto al Perro Café",
-    width: 859,
-    height: 105,
+    // Intrinsic size from the SVG viewBox (1152.451 × 154.772).
+    width: 1152,
+    height: 155,
   },
 
   ticker: [

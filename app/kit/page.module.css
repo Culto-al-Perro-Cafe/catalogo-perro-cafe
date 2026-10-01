@@ -195,7 +195,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  aspect-ratio: 3 / 4;
+  /* Tall enough for the photo to show above the card with its "Ver ficha" button. */
+  min-height: clamp(340px, 30vw, 440px);
   min-width: 0;
   overflow: hidden;
   background: var(--color-paper-sand);
@@ -236,6 +237,15 @@
   text-wrap: nowrap;
   line-height: 0.95;
   letter-spacing: -0.02em;
+}
+
+.beanAction {
+  display: flex;
+  padding-top: 4px;
+}
+
+.beanAction :global(.cp-btn__label) {
+  transform: translateY(2px);
 }
 
 .beanNote {

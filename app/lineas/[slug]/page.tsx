@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { getBean, hasFicha, fichaConfig } from "@/config/beans";
 import { getProductLine, productLines } from "@/config/lines";
 import { siteConfig } from "@/config/site";
 import { routes } from "@/lib/routes";
@@ -39,6 +40,7 @@ export default async function LinePage({ params }: PageProps<"/lineas/[slug]">) 
   const { slug } = await params;
   const line = getProductLine(slug);
   if (!line) notFound();
+  const variants = (line.variants ?? []).map(getBean).filter(hasFicha);
 
   return (
     <article className={styles.page}>
@@ -91,14 +93,14 @@ export default async function LinePage({ params }: PageProps<"/lineas/[slug]">) 
         </BentoTile>
       </div>
 
-      {line.variants && line.variants.length > 0 && (
+      {variants.length > 0 && (
         <section aria-labelledby="line-variants" className={styles.variants}>
           <h2 id="line-variants" className={styles.variantsTitle}>
             {siteConfig.line.variantsTitle}
           </h2>
           <div className={styles.variantGrid}>
-            {line.variants.map((variant) => (
-              <article key={variant.name} className={styles.variant}>
+            {variants.map((variant) => (
+              <article key={variant.slug} className={styles.variant}>
                 <div className={styles.variantHead}>
                   <h3 className={styles.variantName}>{variant.name}</h3>
                   {variant.notes && <p className={styles.variantNotes}>{variant.notes}</p>}
@@ -111,6 +113,16 @@ export default async function LinePage({ params }: PageProps<"/lineas/[slug]">) 
                     </div>
                   ))}
                 </dl>
+                <div className={styles.variantAction}>
+                  <Button
+                    href={routes.ficha(variant.slug)}
+                    variant="secondary"
+                    iconAfter="arrow_forward"
+                    {...trackAttrs(analyticsEvents.ctaClick, { cta: "line_ficha", line: line.slug, bean: variant.slug })}
+                  >
+                    {fichaConfig.linkLabelLong}
+                  </Button>
+                </div>
               </article>
             ))}
           </div>
