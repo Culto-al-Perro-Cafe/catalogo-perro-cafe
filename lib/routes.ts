@@ -4,6 +4,7 @@ export const routes = {
   menudeo: "/menudeo",
   kit: "/kit",
   about: "/nosotros",
+  payments: "/metodos-de-pago",
   /** Ficha técnica of a coffee (config/beans.ts). */
   ficha: (slug: string) => `/fichas/${slug}`,
   line: (slug: string) => `/lineas/${slug}`,

@@ -21,6 +21,9 @@ export const legacyRedirects: { source: string; destination: string }[] = [
   // About page.
   { source: "/pages/sobre-nosotros", destination: "/nosotros" },
 
+  // Payment methods page.
+  { source: "/pages/metodos-de-pago", destination: "/metodos-de-pago" },
+
   // Wholesale and contact pages → B2B catalog and sales form.
   { source: "/pages/mayoreo", destination: "/" },
   { source: "/pages/contact", destination: "/ventas" },

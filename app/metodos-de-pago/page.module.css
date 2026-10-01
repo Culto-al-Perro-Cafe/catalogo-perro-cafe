@@ -1,0 +1,146 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px var(--page-pad) 56px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 8px;
+}
+
+.title {
+  font-size: clamp(40px, 3.6vw, 72px);
+  color: #fff;
+  text-wrap: balance;
+}
+
+.intro {
+  max-width: 560px;
+  color: #fff;
+  text-wrap: pretty;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  align-items: stretch;
+  gap: 16px;
+}
+
+.tile {
+  justify-content: flex-start;
+  gap: 12px;
+  padding: clamp(24px, 3vw, 40px);
+}
+
+.tileTitle {
+  margin: 0;
+  font-family: var(--font-headline);
+  font-size: clamp(36px, 4vw, 64px);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+/* Label | value rows, same rules as the fichas' data sheets. */
+.rows {
+  margin: 12px 0 0;
+  border-top: 2px solid var(--color-the-black);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  border-bottom: 2px solid var(--color-the-black);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.row dt {
+  padding: 15px 12px 13px 0;
+  font-weight: 700;
+}
+
+.row dd {
+  margin: 0;
+  padding: 15px 0 13px;
+  overflow-wrap: anywhere;
+}
+
+/* The CLABE is copied by hand often: bigger and spaced so it's easy to read. */
+.clabe {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+}
+
+.actions {
+  display: flex;
+  margin-top: 8px;
+}
+
+.actions :global(.cp-btn__label) {
+  transform: translateY(2px);
+}
+
+/* CoDi how-to, numbered. */
+.steps {
+  margin: 8px 0 0;
+  padding-left: 1.4em;
+  list-style: decimal;
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.steps li::marker {
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
+.whatsapp {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.whatsapp:hover {
+  color: var(--color-the-orange);
+}
+
+.qr {
+  align-self: center;
+  width: min(100%, 300px);
+  margin-top: 12px;
+  padding: 12px;
+  background: #fff;
+  border: 2px solid var(--color-the-black);
+}
+
+.qr img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 480px) {
+  .row {
+    font-size: 16px;
+  }
+
+  .clabe {
+    font-size: 17px;
+    letter-spacing: 0.03em;
+  }
+
+  .actions :global(.cp-btn) {
+    width: 100%;
+  }
+}

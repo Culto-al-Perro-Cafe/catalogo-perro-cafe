@@ -23,7 +23,7 @@ El *cold brew* no es un invento hipster, es una forma deliciosa y super fácil 
 **💡 Tip del Culto:**\
 Con **Veracruz Corahe Lavado** tendrás un cold brew achocolatado con caramelo y frutos secos.\
 Con **Veracruz Corahe Honey** obtendrás uno floral y frutal, con un toque dulce y mantequilloso.\
-Pide tu bolsa molida para cold brew directo por [WhatsApp](https://wa.me/5216627308219?text=Hola%2C%20me%20interesa%20un%20poco%20de%20cafe%20molido%20para%20coldbrew...).
+Pide tu bolsa molida para cold brew directo por [Whatsapp](https://wa.me/5216627308219?text=Hola%2C%20me%20interesa%20un%20poco%20de%20cafe%20molido%20para%20coldbrew...).
 
 ## ☕ Receta paso a paso: cómo hacer cold brew en México
 
@@ -52,7 +52,7 @@ Pide tu bolsa molida para cold brew directo por [WhatsApp](https://wa.me/5216627
 | **[Veracruz Corahe Lavado](https://www.perro.cafe/products/cafe-tostado-veracruz)** *Tueste medio* | Olor seco: campo Olor en agua: seco | Nuez, almendro, caramelo, fruto seco, amargo ligero | Caramelo, dulce de leche estilo Tutsi Roll, acidez tipo limón |
 | **[Veracruz Corahe Honey](https://www.perro.cafe/products/cafe-tostado-veracruz-honey-natural)** *Tueste medio-claro* | Olor seco: chicle, frutal, moras, floral Olor en agua: dulce, frutal | Miel / maple, chocolate, caramelo de leche, acidez ligera rica | Ciruela jugosa, plátano verde, dulzor tipo chicle, cuerpo mantequilloso, funkiness ligero |
 
-Pide cualquiera directo en [**perro.cafe**](https://www.perro.cafe/tienda) o escríbenos por [WhatsApp](https://wa.me/5216627308219?text=Hola%2C%20me%20interesa%20un%20poco%20de%20cafe%20molido%20para%20coldbrew...). Te lo damos ya **molido para cold brew**, sin costo extra.
+Pide cualquiera directo en [**perro.cafe**](https://www.perro.cafe/tienda) o escríbenos por [Whatsapp](https://wa.me/5216627308219?text=Hola%2C%20me%20interesa%20un%20poco%20de%20cafe%20molido%20para%20coldbrew...). Te lo damos ya **molido para cold brew**, sin costo extra.
 
 ## ¿Por qué el cold brew es perfecto para el clima de México?
 
@@ -61,7 +61,7 @@ Porque es **refrescante, bajo en acidez y cargado de cafeína**, ideal para el c
 ## 📦 Pide tu café tostado para Cold Brew
 
 - 🔥 **Envío gratis** en pedidos de +2 kg
-- 💬 Pide directo por [WhatsApp](https://wa.me/5216627308219?text=Hola%2C%20me%20interesa%20un%20poco%20de%20cafe%20molido%20para%20coldbrew...)
+- 💬 Pide directo por [Whatsapp](https://wa.me/5216627308219?text=Hola%2C%20me%20interesa%20un%20poco%20de%20cafe%20molido%20para%20coldbrew...)
 - 🌎 Compra en línea en [**perro.cafe/**](https://www.perro.cafe/tienda)
 
 Culto al Perro Café — Tostado bien perrón, servido con amor ☕🐶

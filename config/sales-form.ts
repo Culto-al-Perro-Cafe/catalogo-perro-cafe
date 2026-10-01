@@ -9,7 +9,7 @@ export const salesFormConfig = {
   fields: {
     nombre: { label: "Nombre completo", placeholder: "Ej. María López García" },
     email: { label: "Email", placeholder: "tu@negocio.com" },
-    whatsapp: { label: "Número de WhatsApp", placeholder: "+52 662 123 4567" },
+    whatsapp: { label: "Número de Whatsapp", placeholder: "+52 662 123 4567" },
     cp: { label: "Código postal", placeholder: "83000" },
     consumo: {
       label: "¿Cuál es el consumo estimado de café en tu negocio al mes?",
