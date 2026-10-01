@@ -6,22 +6,9 @@
   color: #fff;
 }
 
-.bar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-/* Josefin caps sit high — same optical nudge the catalog's back buttons use. */
-.bar :global(.cp-btn__label),
+/* Josefin caps sit high — same optical nudge the catalog's buttons use. */
 .buyActions :global(.cp-btn__label) {
   transform: translateY(2px);
-}
-
-.crumb {
-  font-family: var(--font-body);
-  font-size: 14px;
-  line-height: 1.4;
 }
 
 .grid {
@@ -115,12 +102,9 @@
   padding-top: 8px;
 }
 
+/* Same type as the breadcrumb (.t-label). */
 .buyTitle {
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.35;
+  color: #fff;
 }
 
 .buyActions {

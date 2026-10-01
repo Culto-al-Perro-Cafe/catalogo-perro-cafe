@@ -4,9 +4,6 @@
  * cards on a catalog line (config/lines.ts) and the bean cards on /kit (config/kit.ts).
  */
 
-/** Our Mercado Libre store. Used until a product has its own listing URL. */
-export const MERCADO_LIBRE_STORE = "https://mercadolibre.perro.cafe";
-
 type Photo = { src: string; alt: string };
 
 export type Bean = {
@@ -22,8 +19,8 @@ export type Bean = {
   specs: { label: string; value: string }[];
   /** Roasted-bean photo for the ficha page. */
   image: Photo;
-  /** Mercado Libre listings per bag size. Leave undefined while it isn't on sale: no buy buttons. */
-  mercadoLibre?: { kg1: string; g250: string };
+  /** Mercado Libre listings per bag size. Leave a size out when it isn't sold: its button is hidden. */
+  mercadoLibre?: { kg1?: string; g250?: string };
   /** Retail card on /menudeo. */
   retail: {
     /** One line under the name. */
@@ -51,10 +48,10 @@ export const beans: Bean[] = [
       { label: "Variedades de café", value: "Sarchimor / Colombia" },
       { label: "Proceso", value: "Lavado" },
     ],
-    image: { src: "/products/restaurante.jpg", alt: "Grano tostado — Lavado Veracruz" },
+    image: { src: "/products/espresso.jpg", alt: "Grano tostado — Lavado Veracruz" },
     mercadoLibre: {
-      kg1: "https://www.mercadolibre.com.mx/up/MLMU5270060645",
-      g250: MERCADO_LIBRE_STORE, // TODO: 250 g listing
+      kg1: "https://www.mercadolibre.com.mx/cafe-de-especialidad-en-grano-1-kg-veracruz-culto-al-perro/p/MLM2118759400?pdp_filters=item_id:MLM6290203632",
+      g250: "https://www.mercadolibre.com.mx/up/MLMU5364935764",
     },
     retail: {
       short: "Caramelo, piloncillo y miel. Balanceado y de cuerpo sedoso.",
@@ -75,8 +72,8 @@ export const beans: Bean[] = [
     ],
     image: { src: "/products/espresso.jpg", alt: "Grano tostado — Lavado Chiapas" },
     mercadoLibre: {
-      kg1: MERCADO_LIBRE_STORE, // TODO: 1 kg listing
-      g250: MERCADO_LIBRE_STORE, // TODO: 250 g listing
+      kg1: "https://www.mercadolibre.com.mx/cafe-de-especialidad-en-grano-1-kg-chiapas-culto-al-perro/p/MLM2118759400?pdp_filters=item_id:MLM2880691733",
+      g250: "https://www.mercadolibre.com.mx/up/MLMU3908638597",
     },
     retail: {
       short: "Avellana y chocolate amargo, con acidez tipo cereza.",
@@ -97,10 +94,10 @@ export const beans: Bean[] = [
       { label: "Variedades de café", value: "Marsellesa" },
       { label: "Proceso", value: "Natural con fermentación anaeróbica de 120 hrs" },
     ],
-    image: { src: "/products/oficina.jpg", alt: "Grano tostado — Natural Honey Veracruz" },
+    image: { src: "/products/espresso.jpg", alt: "Grano tostado — Natural Honey Veracruz" },
     mercadoLibre: {
       kg1: "https://www.mercadolibre.com.mx/up/MLMU4615173825",
-      g250: MERCADO_LIBRE_STORE, // TODO: 250 g listing
+      g250: "https://www.mercadolibre.com.mx/up/MLMU4615235017",
     },
     retail: {
       short: "Dulce, frutal y con cuerpo sedoso. Nuestro favorito para métodos de filtrado en casa.",
@@ -116,7 +113,7 @@ export const beans: Bean[] = [
     image: { src: "/products/tueste-intenso.jpg", alt: "Grano tostado — Tueste Intenso" },
     mercadoLibre: {
       kg1: "https://www.mercadolibre.com.mx/up/MLMU3908637861",
-      g250: MERCADO_LIBRE_STORE, // TODO: 250 g listing
+      // No 250 g bag.
     },
     retail: {
       short: "Fuerte y con carácter.",
@@ -132,7 +129,7 @@ export const beans: Bean[] = [
     image: { src: "/products/restaurante.jpg", alt: "Grano tostado — Descafeinado" },
     mercadoLibre: {
       kg1: "https://www.mercadolibre.com.mx/up/MLMU4615380893",
-      g250: MERCADO_LIBRE_STORE, // TODO: 250 g listing
+      g250: "https://www.mercadolibre.com.mx/up/MLMU4642385558",
     },
     retail: {
       short: "Todo el sabor, sin cafeína. Para la taza de la noche.",

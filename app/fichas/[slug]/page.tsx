@@ -3,11 +3,13 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { beans, fichaConfig as cfg, getBean, hasFicha } from "@/config/beans";
 import { analyticsEvents } from "@/config/analytics";
+import { productLines } from "@/config/lines";
 import { utmConfig } from "@/config/utm";
 import { trackAttrs } from "@/lib/analytics";
 import { routes } from "@/lib/routes";
 import { pageMetadata } from "@/lib/seo";
 import { withUtm } from "@/lib/utm";
+import { BackBar } from "@/components/site/BackBar";
 import { BackButton } from "@/components/ui/BackButton";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
@@ -37,19 +39,25 @@ export default async function FichaPage({ params }: PageProps<"/fichas/[slug]">)
   const bean = getBean((await params).slug);
   if (!hasFicha(bean)) notFound();
 
-  const buy = bean.mercadoLibre
-    ? [
-        { label: cfg.buy1kgLabel, url: bean.mercadoLibre.kg1, size: "1kg" },
-        { label: cfg.buy250gLabel, url: bean.mercadoLibre.g250, size: "250g" },
-      ]
-    : [];
+  // The catalog line that offers this coffee: "Cotizar al mayoreo" opens the sales form with it selected.
+  const line = productLines.find((l) => l.variants?.includes(bean.slug));
+
+  // Only the bag sizes that are on sale.
+  const buy = [
+    { label: cfg.buy1kgLabel, url: bean.mercadoLibre?.kg1, size: "1kg" },
+    { label: cfg.buy250gLabel, url: bean.mercadoLibre?.g250, size: "250g" },
+  ].filter((option): option is { label: string; url: string; size: string } => Boolean(option.url));
 
   return (
     <div className={styles.page}>
-      <div className={styles.bar}>
-        <BackButton label={cfg.backLabel} fallbackHref={routes.menudeo} />
-        <span className={styles.crumb}>{cfg.label}</span>
-      </div>
+      <BackBar
+        back={<BackButton label={cfg.backLabel} fallbackHref={routes.menudeo} />}
+        breadcrumb={
+          <>
+            {cfg.label} / <span aria-current="page">{bean.name}</span>
+          </>
+        }
+      />
 
       <div className={styles.grid}>
         <div className={styles.photo}>
@@ -72,12 +80,12 @@ export default async function FichaPage({ params }: PageProps<"/fichas/[slug]">)
       </div>
 
       <section aria-labelledby="ficha-buy" className={styles.buy}>
-        <h2 id="ficha-buy" className={styles.buyTitle}>
+        <h2 id="ficha-buy" className={`t-label ${styles.buyTitle}`}>
           {cfg.buyTitle}
         </h2>
         <div className={styles.buyActions}>
           <Button
-            href={routes.sales}
+            href={line ? routes.quote(line.slug) : routes.sales}
             variant="roast"
             size="xl"
             iconAfter="arrow_forward"
@@ -98,7 +106,7 @@ export default async function FichaPage({ params }: PageProps<"/fichas/[slug]">)
               {...trackAttrs(analyticsEvents.mercadoLibreClick, { product: bean.slug, placement: `ficha_${option.size}` })}
             >
               <span className="cp-btn__label">{option.label}</span>
-              <Icon name="arrow_forward" size={24} />
+              <Icon name="arrow_outward" size={24} />
             </a>
           ))}
         </div>

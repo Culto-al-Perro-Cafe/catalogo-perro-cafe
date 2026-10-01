@@ -2,7 +2,8 @@ import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 import { Icon, type IconName } from "./Icon";
 
-type Variant = "primary" | "secondary" | "roast";
+/** "link" is a text link (underlined small caps, no box). */
+type Variant = "primary" | "secondary" | "roast" | "link";
 type Size = "md" | "lg" | "xl";
 
 type ButtonProps = Omit<ComponentProps<"button">, "children" | "className"> & {

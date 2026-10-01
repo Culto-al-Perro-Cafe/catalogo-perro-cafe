@@ -83,11 +83,9 @@
   left: 16px;
   padding: 6px 10px 4px;
   background: var(--color-the-orange);
+  color: var(--color-the-black);
   border: 2px solid var(--color-the-black);
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.2;
+  /* Type comes from .t-label (same as the breadcrumbs). */
 }
 
 .featuredBody {
@@ -100,7 +98,7 @@
 }
 
 .featuredText {
-  flex: 1 1 260px;
+  flex: 1 1 150px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -127,10 +125,11 @@
 }
 
 /* Text label under a product name, e.g. "Lanzamiento: Oct 26". It takes the place of the
- * card buttons, so it reserves their row height (42px) and the card lines up with the others. */
+ * card buttons: same row height (42px) and bottom-right aligned like the "Ver ficha" link. */
 .itemLabel {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  justify-content: flex-end;
   min-height: 42px;
   margin: 0;
   font-family: var(--font-body);
@@ -139,10 +138,12 @@
   line-height: 1.3;
 }
 
-/* Card actions: "Comprar" (Mercado Libre, 1 kg) + "Ver ficha". */
+/* Card actions: "Comprar" (Mercado Libre, 1 kg) at half width + "Ver ficha" text link on the right. */
 .actions {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
   gap: 8px;
 }
 
@@ -150,23 +151,44 @@
   transform: translateY(2px);
 }
 
-/* Small grid cards: compact buttons side by side, as wide as their labels. */
-.item .actions {
-  flex-wrap: nowrap;
-  gap: 6px;
+.buy {
+  flex: 0 0 50%;
+  min-width: 0;
 }
 
-.item .actions :global(.cp-btn) {
-  flex: none;
+/* Bottom-right corner of the actions row. */
+.fichaLink {
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+/* Small cards: compact "Comprar". */
+.item .buy {
   gap: 4px;
   padding: 11px 10px 9px;
   font-size: 12px;
   letter-spacing: 0.02em;
 }
 
-.item .actions :global(.cp-icon) {
+.item .buy :global(.cp-icon) {
   width: 14px;
   height: 14px;
+}
+
+/* Featured: text | actions columns; the actions stack "Comprar" (full column width) over the link. */
+.featured .actions {
+  flex: none;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.featured .buy {
+  flex: none;
+  width: 100%;
+}
+
+.featured .fichaLink {
+  align-self: flex-end;
 }
 
 .itemBody {
@@ -329,8 +351,8 @@
     4px 4px 0 2px var(--color-the-black);
 }
 
-/* Tablet: 3 columns, featured full width (5 columns need ≥1280px for the card buttons) */
-@media (max-width: 1279px) {
+/* Tablet: 3 columns, featured full width */
+@media (max-width: 1100px) {
   .grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     grid-template-rows: none;
@@ -358,6 +380,11 @@
 
 /* Phone: 2 columns */
 @media (max-width: 640px) {
+  /* Featured actions drop below the text: "Comprar" spans the card, link under it on the right. */
+  .featured .actions {
+    width: 100%;
+  }
+
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
@@ -408,18 +435,5 @@
     transform: rotate(90deg);
     /* rotate() keeps the wide layout box (72×45); reserve the rotated height (45×72). */
     margin-block: 14px;
-  }
-}
-
-/* Narrow phones: the featured card uses the compact buttons too, so both fit on one line. */
-@media (max-width: 420px) {
-  .featured .actions {
-    flex-wrap: nowrap;
-    gap: 6px;
-  }
-
-  .featured .actions :global(.cp-btn) {
-    padding: 12px 8px 10px;
-    font-size: 13px;
   }
 }

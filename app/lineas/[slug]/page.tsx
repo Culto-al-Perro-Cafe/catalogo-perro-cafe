@@ -7,6 +7,7 @@ import { routes } from "@/lib/routes";
 import { pageMetadata, productLineJsonLd } from "@/lib/seo";
 import { BackBar } from "@/components/site/BackBar";
 import { JsonLd } from "@/components/site/JsonLd";
+import { SalesBlock } from "@/components/site/SalesBlock";
 import { BentoTile, TileMedia } from "@/components/ui/BentoTile";
 import { Button } from "@/components/ui/Button";
 import { BeanIcon } from "@/components/ui/BeanIcon";
@@ -128,6 +129,8 @@ export default async function LinePage({ params }: PageProps<"/lineas/[slug]">) 
           </div>
         </section>
       )}
+
+      <SalesBlock href={routes.quote(line.slug)} cta="line_ventas" />
     </article>
   );
 }

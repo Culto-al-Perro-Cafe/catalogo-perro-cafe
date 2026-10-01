@@ -1,0 +1,84 @@
+/* "#ventas" block: orange tile, headline, pointing hand + "Platica con ventas". */
+.tile {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 32px;
+}
+
+.action {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hand {
+  flex: none;
+  width: clamp(80px, 8vw, 124px);
+  height: auto;
+  transition: transform var(--dur-base) var(--ease-panel);
+}
+
+/* Nudge toward the button when the CTA is hovered/focused. */
+.tile:hover .hand,
+.tile:focus-within .hand {
+  transform: translateX(6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hand {
+    transition: none;
+  }
+  .tile:hover .hand,
+  .tile:focus-within .hand {
+    transform: none;
+  }
+}
+
+.title {
+  /* Shrinks (text wraps) so the hand + button stay beside it on wide screens. */
+  flex: 1 1 420px;
+  max-width: 760px;
+  font-size: clamp(32px, 4.2vw, 64px);
+  text-wrap: balance;
+}
+
+@media (max-width: 639px) {
+  .tile {
+    padding: 24px;
+  }
+  .tile :global(.cp-btn) {
+    width: 100%;
+    white-space: normal;
+  }
+  /* Stacked: the button is full width below, so the hand points down at it. */
+  .action {
+    flex-direction: column;
+    width: 100%;
+    gap: 4px;
+  }
+  .hand,
+  .tile:hover .hand,
+  .tile:focus-within .hand {
+    width: 72px;
+    transform: rotate(90deg);
+    /* rotate() keeps the wide layout box (72×45); reserve the rotated height (45×72). */
+    margin-block: 14px;
+  }
+}
+
+/* On the orange tile the orange lift shadow needs an ink outline to read. */
+.tile :global(.cp-btn:hover),
+.tile :global(.cp-btn:focus-visible) {
+  box-shadow:
+    8px 8px 0 0 var(--color-the-orange),
+    8px 8px 0 2px var(--color-the-black);
+}
+.tile :global(.cp-btn:active) {
+  box-shadow:
+    4px 4px 0 0 var(--color-the-orange),
+    4px 4px 0 2px var(--color-the-black);
+}

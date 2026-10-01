@@ -1,15 +1,10 @@
 import { productLines } from "@/config/lines";
 import { siteConfig } from "@/config/site";
-import { routes } from "@/lib/routes";
 import { catalogJsonLd } from "@/lib/seo";
 import { LineCard } from "@/components/catalog/LineCard";
 import { JsonLd } from "@/components/site/JsonLd";
-import { BentoTile } from "@/components/ui/BentoTile";
-import { Button } from "@/components/ui/Button";
-import { PointingHand } from "@/components/ui/PointingHand";
+import { SalesBlock } from "@/components/site/SalesBlock";
 import styles from "./page.module.css";
-import { trackAttrs } from "@/lib/analytics";
-import { analyticsEvents } from "@/config/analytics";
 
 export default function CatalogPage() {
   const { home } = siteConfig;
@@ -46,21 +41,7 @@ export default function CatalogPage() {
       </section>
 
       <section id="ventas" className={styles.cta}>
-        <BentoTile tone="orange" shadow="offset" className={styles.ctaTile}>
-          <h2 className={`t-display-sm ${styles.ctaTitle}`}>{home.cta.title}</h2>
-          <div className={styles.ctaAction}>
-            <PointingHand className={styles.ctaHand} />
-            <Button
-              href={routes.sales}
-              variant="primary"
-              size="xl"
-              iconAfter="arrow_forward"
-              {...trackAttrs(analyticsEvents.ctaClick, { cta: "home_ventas" })}
-            >
-              {home.cta.button}
-            </Button>
-          </div>
-        </BentoTile>
+        <SalesBlock cta="home_ventas" />
       </section>
     </>
   );

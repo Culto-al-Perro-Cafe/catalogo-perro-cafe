@@ -110,6 +110,32 @@
     background: var(--color-the-orange);
     color: #fff;
   }
+  /* Text link: no box, small caps with a dotted underline (e.g. "Ver ficha" next to a main button). */
+  .cp-btn[data-variant="link"] {
+    min-height: 0;
+    padding: 4px 0 2px;
+    border: 0;
+    background: none;
+    color: inherit;
+    font-family: var(--font-label);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-decoration: underline dotted;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+  .cp-btn[data-variant="link"]:hover:not(:disabled),
+  .cp-btn[data-variant="link"]:focus-visible,
+  .cp-btn[data-variant="link"]:active:not(:disabled) {
+    transform: none;
+    box-shadow: none;
+    color: var(--color-secondary);
+  }
+  .cp-btn[data-variant="link"]:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
   .cp-btn[data-size="lg"] {
     min-height: 44px;
     font-family: var(--font-headline);

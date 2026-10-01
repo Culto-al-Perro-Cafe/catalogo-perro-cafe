@@ -17,17 +17,18 @@ export const metadata = pageMetadata({ title: cfg.seoTitle, description: cfg.seo
 
 /** The card's two actions: buy the 1 kg bag on Mercado Libre, and its ficha técnica (when there is one). */
 function ProductActions({ bean, placement }: { bean: Bean; placement: "featured" | "grid" }) {
-  if (!bean.mercadoLibre && !hasFicha(bean)) return null;
+  const kg1 = bean.mercadoLibre?.kg1;
+  if (!kg1 && !hasFicha(bean)) return null;
   return (
     <div className={styles.actions}>
-      {bean.mercadoLibre && (
+      {kg1 && (
         <a
-          href={withUtm(bean.mercadoLibre.kg1, { campaign: utmConfig.campaigns.menudeo, content: bean.slug })}
+          href={withUtm(kg1, { campaign: utmConfig.campaigns.menudeo, content: bean.slug })}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`${bean.name}, 1 kg — ${cfg.linkLabelSuffix}`}
           {...trackAttrs(analyticsEvents.mercadoLibreClick, { product: bean.slug, placement })}
-          className="cp-btn"
+          className={`cp-btn ${styles.buy}`}
           data-variant="roast"
           data-size={placement === "featured" ? "xl" : "md"}
         >
@@ -38,8 +39,8 @@ function ProductActions({ bean, placement }: { bean: Bean; placement: "featured"
       {hasFicha(bean) && (
         <Button
           href={routes.ficha(bean.slug)}
-          variant="secondary"
-          size={placement === "featured" ? "lg" : "md"}
+          variant="link"
+          className={styles.fichaLink}
           {...trackAttrs(analyticsEvents.ctaClick, { cta: "menudeo_ficha", bean: bean.slug })}
         >
           {fichaConfig.linkLabel}
@@ -71,7 +72,7 @@ export default function MenudeoPage() {
               sizes="(max-width: 1100px) 100vw, 40vw"
               priority
             />
-            <span className={styles.badge}>{cfg.featuredBadge}</span>
+            <span className={`t-label ${styles.badge}`}>{cfg.featuredBadge}</span>
           </div>
           <div className={styles.featuredBody}>
             <div className={styles.featuredText}>
