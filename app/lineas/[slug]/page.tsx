@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getBean, hasFicha, fichaConfig } from "@/config/beans";
+import { getBean, hasFicha, fichaConfig, specRows } from "@/config/beans";
 import { getProductLine, productLines } from "@/config/lines";
 import { siteConfig } from "@/config/site";
 import { routes } from "@/lib/routes";
@@ -107,8 +107,8 @@ export default async function LinePage({ params }: PageProps<"/lineas/[slug]">) 
                   {variant.notes && <p className={styles.variantNotes}>{variant.notes}</p>}
                 </div>
                 <dl className={styles.specs}>
-                  {variant.specs.map((spec) => (
-                    <div key={spec.label} className={styles.spec}>
+                  {specRows(variant).map((spec) => (
+                    <div key={spec.key} className={styles.spec}>
                       <dt>{spec.label}</dt>
                       <dd>{spec.value}</dd>
                     </div>

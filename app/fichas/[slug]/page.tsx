@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { beans, fichaConfig as cfg, getBean, hasFicha } from "@/config/beans";
+import { beans, fichaConfig as cfg, getBean, hasFicha, specRows } from "@/config/beans";
 import { analyticsEvents } from "@/config/analytics";
 import { productLines } from "@/config/lines";
 import { utmConfig } from "@/config/utm";
@@ -25,7 +25,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/fichas/[slug]">): Promise<Metadata> {
   const bean = getBean((await params).slug);
   if (!hasFicha(bean)) return {};
-  const facts = bean.specs.map((s) => `${s.label}: ${s.value}`).join(". ");
+  const facts = specRows(bean).map((s) => `${s.label}: ${s.value}`).join(". ");
   return pageMetadata({
     title: `${bean.name} · ${cfg.label}`,
     description: [bean.notes, facts].filter(Boolean).join(". ").slice(0, 300),
@@ -69,8 +69,8 @@ export default async function FichaPage({ params }: PageProps<"/fichas/[slug]">)
             {bean.notes && <p className={styles.notes}>{bean.notes}</p>}
           </div>
           <dl className={styles.specs}>
-            {bean.specs.map((spec) => (
-              <div key={spec.label} className={styles.spec}>
+            {specRows(bean).map((spec) => (
+              <div key={spec.key} className={styles.spec}>
                 <dt>{spec.label}</dt>
                 <dd>{spec.value}</dd>
               </div>
