@@ -12,7 +12,7 @@ export const menudeoConfig = {
     "Compra nuestro café tostado en bolsa para tu casa directo en Mercado Libre: Natural Honey Veracruz, Lavado Veracruz, Lavado Chiapas, Tueste Intenso, Descafeinado y Geisha/Marsellesa.",
 
   /** Bean slugs sold here, in order (config/beans.ts). */
-  products: ["natural-honey-veracruz", "lavado-veracruz", "lavado-chiapas", "tueste-intenso", "descafeinado", "geisha-marsellesa"],
+  products: ["natural-honey-veracruz", "lavado-veracruz", "lavado-chiapas", "tueste-intenso", "descafeinado", "ambar-bourbon-puebla"],
   /** Slug of the product shown large (2×2) at the start of the grid. */
   featured: "natural-honey-veracruz",
   featuredBadge: "Destacado",

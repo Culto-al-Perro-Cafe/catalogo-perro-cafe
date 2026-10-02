@@ -16,6 +16,7 @@ export const SPEC_LABELS = {
   altitud: "Altitud",
   variedades: "Variedad",
   finca: "Finca",
+  sca: "Puntaje SCA",
 } as const;
 
 export type SpecKey = keyof typeof SPEC_LABELS;
@@ -59,7 +60,8 @@ export const beans: Bean[] = [
       proceso: "Lavado",
       altitud: "1,100 msnm",
       variedades: "Sarchimor / Colombia",
-      finca: "Finca Corahe",
+      finca: "Corahe",
+      sca: "84.5",
     },
     image: { src: "/products/espresso.jpg", alt: "Grano tostado — Lavado Veracruz" },
     mercadoLibre: {
@@ -105,7 +107,8 @@ export const beans: Bean[] = [
       proceso: "Natural con fermentación anaeróbica de 120 hrs",
       altitud: "1,000 a 1,400 msnm",
       variedades: "Marsellesa",
-      finca: "Finca Corahe",
+      finca: "Corahe",
+      sca: "84.5",
     },
     image: { src: "/products/espresso.jpg", alt: "Grano tostado — Natural Honey Veracruz" },
     mercadoLibre: {
@@ -115,6 +118,27 @@ export const beans: Bean[] = [
     retail: {
       short: "Dulce, frutal y con cuerpo sedoso. Nuestro favorito para métodos de filtrado en casa.",
       image: { src: "/images/menudeo/bolsa-1.jpg", alt: "Bolsa de Natural Honey Veracruz, café tostado Culto al Perro Café" },
+      backdrop: "linear-gradient(90deg, #feddb2, #fec696)",
+    },
+  },
+  {
+    // Source: Team
+    slug: "ambar-bourbon-puebla",
+    name: "Ambar Bourbon Puebla",
+    notes: "Uva roja, carambola, manzana, nips de cacao, frambuesa, vainilla con acidez málica y cuerpo alto con textura sedosa.",
+    specs: {
+      origen: "Zapotitlán de Méndez, Puebla",
+      proceso: "Natural con reposo extendido",
+      altitud: "1,300 msnm",
+      variedades: "Bourbon rojo",
+      finca: "Cagstin",
+      sca: "86.25",
+    },
+    image: { src: "/products/ambar-bourbon-puebla.jpg", alt: "Grano tostado — Ambar Bourbon Puebla" },
+    // TODO: Mercado Libre listings (no buy buttons until they exist).
+    retail: {
+      short: "Frutal con acidez málica y cuerpo alto con textura sedosa.",
+      image: { src: "/images/menudeo/bolsa-1.jpg", alt: "Bolsa de Ambar Bourbon Puebla, café tostado Culto al Perro Café" },
       backdrop: "linear-gradient(90deg, #feddb2, #fec696)",
     },
   },

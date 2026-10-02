@@ -41,7 +41,7 @@ export const productLines: ProductLine[] = [
       "Tueste medio a 215° con curva.",
     ],
     // Data sheets live in config/beans.ts.
-    variants: ["lavado-veracruz", "lavado-chiapas", "natural-honey-veracruz"],
+    variants: ["lavado-veracruz", "lavado-chiapas", "natural-honey-veracruz", "ambar-bourbon-puebla"],
     seoDescription:
       "Café para espresso de mayoreo con perfil estable lote tras lote. Ideal para cafeterías de especialidad, máquina de espresso y métodos de filtrado. Envíos a todo México.",
   },
