@@ -41,6 +41,11 @@
   padding-top: 6px;
 }
 
+/* A bit taller than its content, so the block below doesn't jump all the way up after sending. */
+.success {
+  min-height: 360px;
+}
+
 .successTitle {
   font-size: clamp(20px, 2vw, 34px);
   line-height: 0.95;
@@ -49,5 +54,6 @@
 
 .successActions {
   display: flex;
+  margin-top: auto;
   padding-top: 8px;
 }

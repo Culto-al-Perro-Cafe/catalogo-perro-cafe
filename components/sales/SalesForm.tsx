@@ -7,6 +7,7 @@ import { getProductLine, productLines } from "@/config/lines";
 import {
   OTHER_BUSINESS_TYPE,
   RECOMMEND_OPTION,
+  getBeanOption,
   salesFormConfig as cfg,
 } from "@/config/sales-form";
 import { routes } from "@/lib/routes";
@@ -41,12 +42,14 @@ const FIELD_ORDER: (keyof SalesLead)[] = [
 
 /**
  * Shows the thank-you panel on `?enviado`, otherwise the form (with `?linea=<slug>`
- * preselecting the product line). Wrap in <Suspense>.
+ * preselecting the product line, or adding and preselecting a hidden bean option). Wrap in <Suspense>.
  */
 export function SalesFormFromParams() {
   const params = useSearchParams();
   if (params.has(SENT_PARAM)) return <SalesSuccess />;
   const slug = params.get("linea");
+  const bean = slug ? getBeanOption(slug) : undefined;
+  if (bean) return <SalesForm key={bean.slug} initialLine={bean.name} extraLine={bean.name} />;
   const line = slug ? getProductLine(slug) : undefined;
   return <SalesForm key={line?.slug} initialLine={line?.name} />;
 }
@@ -56,9 +59,9 @@ export function SalesSuccess() {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => ref.current?.focus(), []);
   return (
-    <div ref={ref} tabIndex={-1} className={styles.panel} role="status">
+    <div ref={ref} tabIndex={-1} className={`${styles.panel} ${styles.success}`} role="status">
       <h2 className={`t-display-sm ${styles.successTitle}`}>{cfg.success.title}</h2>
-      <p className="t-body">{cfg.success.body}</p>
+      <p className="t-body-lg">{cfg.success.body}</p>
       <div className={styles.successActions}>
         <Button href={routes.home} variant="secondary" size="lg" icon="arrow_back">
           {cfg.success.back}
@@ -68,7 +71,7 @@ export function SalesSuccess() {
   );
 }
 
-export function SalesForm({ initialLine }: { initialLine?: string }) {
+export function SalesForm({ initialLine, extraLine }: { initialLine?: string; extraLine?: string }) {
   const [form, setForm] = useState<SalesLead>({
     ...emptySalesLead,
     linea: initialLine ?? RECOMMEND_OPTION,
@@ -179,7 +182,7 @@ export function SalesForm({ initialLine }: { initialLine?: string }) {
         <SelectField
           label={f.linea.label}
           name="linea"
-          options={lineOptions}
+          options={extraLine ? [...lineOptions, extraLine] : lineOptions}
           value={form.linea}
           onChange={(e) => set("linea", e.target.value)}
         />

@@ -1,7 +1,7 @@
 "use server";
 
 import { productLines } from "@/config/lines";
-import { RECOMMEND_OPTION, salesFormConfig } from "@/config/sales-form";
+import { RECOMMEND_OPTION, beanOptionNames, salesFormConfig } from "@/config/sales-form";
 import {
   emptySalesLead,
   validateSalesLead,
@@ -22,7 +22,7 @@ export async function submitSalesLead(input: SalesLead): Promise<SubmitSalesLead
     ]),
   ) as SalesLead;
 
-  const validLines = [RECOMMEND_OPTION, ...productLines.map((l) => l.name)];
+  const validLines = [RECOMMEND_OPTION, ...productLines.map((l) => l.name), ...beanOptionNames];
   if (!validLines.includes(lead.linea)) lead.linea = RECOMMEND_OPTION;
 
   const errors = validateSalesLead(lead);

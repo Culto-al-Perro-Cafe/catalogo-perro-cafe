@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { beans, fichaConfig as cfg, getBean, hasFicha, specRows } from "@/config/beans";
 import { analyticsEvents } from "@/config/analytics";
 import { productLines } from "@/config/lines";
+import { salesFormConfig } from "@/config/sales-form";
 import { utmConfig } from "@/config/utm";
 import { trackAttrs } from "@/lib/analytics";
 import { routes } from "@/lib/routes";
@@ -39,8 +40,11 @@ export default async function FichaPage({ params }: PageProps<"/fichas/[slug]">)
   const bean = getBean((await params).slug);
   if (!hasFicha(bean)) notFound();
 
-  // The catalog line that offers this coffee: "Cotizar al mayoreo" opens the sales form with it selected.
+  // "Cotizar al mayoreo" opens the sales form with this coffee selected (config/sales-form.ts beanOptions),
+  // or else the catalog line that offers it.
+  const beanOption = salesFormConfig.beanOptions.find((o) => o.bean === bean.slug);
   const line = productLines.find((l) => l.variants?.includes(bean.slug));
+  const quoteHref = beanOption ? routes.quote(beanOption.slug) : line ? routes.quote(line.slug) : routes.sales;
 
   // Only the bag sizes that are on sale.
   const buy = [
@@ -85,7 +89,7 @@ export default async function FichaPage({ params }: PageProps<"/fichas/[slug]">)
         </h2>
         <div className={styles.buyActions}>
           <Button
-            href={line ? routes.quote(line.slug) : routes.sales}
+            href={quoteHref}
             variant="roast"
             size="xl"
             iconAfter="arrow_forward"
