@@ -135,7 +135,10 @@ export const beans: Bean[] = [
       sca: "86.25",
     },
     image: { src: "/products/ambar-bourbon-puebla.jpg", alt: "Grano tostado — Ambar Bourbon Puebla" },
-    // TODO: Mercado Libre listings (no buy buttons until they exist).
+    mercadoLibre: {
+      kg1: "https://www.mercadolibre.com.mx/up/MLMU5338937823?pdp_filters=item_id:MLM3582971095",
+      g250: "https://www.mercadolibre.com.mx/up/MLMU5338877107?pdp_filters=item_id:MLM6330683162",
+    },
     retail: {
       short: "Frutal con acidez málica y cuerpo alto con textura sedosa.",
       image: { src: "/images/menudeo/bolsa-1.jpg", alt: "Bolsa de Ambar Bourbon Puebla, café tostado Culto al Perro Café" },
