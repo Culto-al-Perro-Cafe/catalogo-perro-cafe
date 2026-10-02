@@ -5,6 +5,21 @@ import type { Article } from "@/lib/blog";
 import { siteConfig } from "@/config/site";
 import { routes } from "@/lib/routes";
 
+/** Keep complete words when a description exceeds the supplied character budget. */
+export function metaDescription(text: string, maxLength = 160): string {
+  const normalized = text.replace(/\s+/g, " ").trim();
+  if (normalized.length <= maxLength) return normalized;
+  const words = normalized.split(" ");
+  let result = "";
+  for (const word of words) {
+    const next = result ? `${result} ${word}` : word;
+    if (next.length > maxLength - 1) break;
+    result = next;
+  }
+  // An unusually long first word is safer intact than misleadingly cut in half.
+  return result ? `${result}…` : words[0];
+}
+
 export function absoluteUrl(path = "/") {
   return new URL(path, siteConfig.url).toString();
 }

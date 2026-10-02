@@ -4,7 +4,7 @@
  */
 
 const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
+  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://www.perro.cafe"
 ).replace(/\/$/, "");
 
 export const siteConfig = {
@@ -119,6 +119,7 @@ export const siteConfig = {
         links: [
           { label: "Platica con ventas", href: "/ventas" },
           { label: "Menudeo", href: "/menudeo" },
+          { label: "Kit de muestras", href: "/kit" },
           { label: "Blog", href: "/blogs" },
           { label: "Nosotros", href: "/nosotros" },
         ],

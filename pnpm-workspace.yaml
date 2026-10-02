@@ -2,3 +2,4 @@ allowBuilds:
   unrs-resolver: true
   # Only prints a funding message on install.
   core-js: false
+  esbuild: true
