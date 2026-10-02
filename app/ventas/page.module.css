@@ -30,13 +30,3 @@
   color: #fff;
   text-wrap: pretty;
 }
-
-.whatsapp {
-  color: inherit;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.whatsapp:hover {
-  color: var(--color-the-orange);
-}

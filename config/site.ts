@@ -83,8 +83,15 @@ export const siteConfig = {
     title: "Platica con",
     titleHighlight: "ventas",
     subtitle: "Solicita una cotización. Te la enviamos por correo.",
-    /** Second paragraph: Whatsapp alternative to the form. */
-    whatsapp: { label: "O envíanos un Whatsapp", url: "https://wa.me/5216627308219" },
+    /** Whatsapp block at the bottom of /ventas (the number is also used on /metodos-de-pago). */
+    whatsapp: {
+      title: "¿Prefieres atención inmediata?",
+      body: "Escríbenos directamente por Whatsapp y un asesor te atenderá al instante.",
+      label: "Cotizar por Whatsapp",
+      url: "https://wa.me/5216627308219",
+      /** Brand green (same as the Menudeo "¿No te decides?" block). */
+      background: "#2da598",
+    },
     seoTitle: "Platica con ventas · Cotiza café para tu negocio",
     seoDescription:
       "Cuéntanos de tu negocio y te recomendamos la línea de café ideal. Cotiza café tostado de mayoreo con envío a todo México.",
