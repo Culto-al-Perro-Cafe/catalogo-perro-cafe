@@ -33,7 +33,10 @@ export const salesFormConfig = {
    * Specific coffees for "Línea de interés", by `?linea=<slug>` → bean (config/beans.ts).
    * Hidden from the dropdown unless the URL asks for one; the lead is sent with the bean's name.
    */
-  beanOptions: [{ slug: "natural-honey", bean: "natural-honey-veracruz" }],
+  beanOptions: [
+    { slug: "natural-honey", bean: "natural-honey-veracruz" },
+    { slug: "ambar-bourbon", bean: "ambar-bourbon-puebla" },
+  ],
 
   businessTypes: [
     "Restaurante",
