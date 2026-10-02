@@ -5,6 +5,7 @@ import { pageMetadata } from "@/lib/seo";
 import { SalesForm, SalesFormFromParams } from "@/components/sales/SalesForm";
 import { BackBar } from "@/components/site/BackBar";
 import { SalesBlock } from "@/components/site/SalesBlock";
+import { BeanIcon } from "@/components/ui/BeanIcon";
 import styles from "./page.module.css";
 
 export const metadata = pageMetadata({
@@ -24,6 +25,14 @@ export default function SalesPage() {
             {sales.title} <span className="t-accent">{sales.titleHighlight}</span>
           </h1>
           <p className={`t-body-lg ${styles.subtitle}`}>{sales.subtitle}</p>
+          <ul className={styles.benefits}>
+            {sales.benefits.map((benefit) => (
+              <li key={benefit}>
+                <BeanIcon />
+                <span>{benefit.replace("{years}", String(new Date().getFullYear() - sales.since))}</span>
+              </li>
+            ))}
+          </ul>
         </div>
         {/* The page stays static; ?linea= is read on the client. */}
         <Suspense fallback={<SalesForm />}>

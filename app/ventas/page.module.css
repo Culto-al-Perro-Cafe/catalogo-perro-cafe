@@ -30,3 +30,30 @@
   color: #fff;
   text-wrap: pretty;
 }
+
+/* Benefits: 2×2 grid with the bean bullet; drops to one column when a column would be
+ * narrower than 220px (max-width keeps it at two columns at most). */
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 16px 24px;
+  max-width: 560px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+  color: #fff;
+}
+
+.benefits li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+.benefits li svg {
+  margin-top: 2px;
+}

@@ -38,6 +38,7 @@ export const productLines: ProductLine[] = [
     highlights: [
       "Perfil estable todo el año.",
       "Ideal para cafeterías de especialidad.",
+      "Tueste medio a 215° con curva.",
     ],
     // Data sheets live in config/beans.ts.
     variants: ["lavado-veracruz", "lavado-chiapas", "natural-honey-veracruz"],
@@ -52,10 +53,11 @@ export const productLines: ProductLine[] = [
     titleMain: "Restaurante",
     summary: "La mejor taza en cada mesa, sin batallar. Cero amargor.",
     description:
-      "Sirve una taza excelente al final de cada comida, sin batallar. Logramos un perfil balanceado y constante que le gusta a todos, eliminando por completo ese sabor «amargo» o quemado del café comercial de baja calidad. Tus clientes lo van a notar.",
+      "Sirve una taza de buen café antes de cada comida, dales una excelente primera impresión. Logramos un perfil balanceado y constante que le gusta a todos, eliminando por completo ese sabor \"amargo\" o quemado del café comercial de baja calidad. Tus clientes lo van a notar.",
     highlights: [
       "Sabor amigable para todos los paladares.",
-      "Fácil de preparar para tu personal de piso.",
+      "En grano o molido, ya listo para trabajar.",
+      "Tostado antes de enviarse, para que tengas café fresco.",
     ],
     seoDescription:
       "Café para restaurantes: perfil balanceado, sin amargor y fácil de preparar para tu personal. Café tostado de mayoreo con envíos a todo México.",
@@ -72,6 +74,8 @@ export const productLines: ProductLine[] = [
     highlights: [
       "Grano de bajo costo.",
       "Para percoladoras y cafeteras de filtro.",
+      "Molido, ya listo para trabajar.",
+      "Tostado antes de enviarse, para que tengas café fresco.",
     ],
     seoDescription:
       "Café para oficina con el mejor costo-beneficio. Ideal para cafeteras de goteo y percoladoras. Café tostado de mayoreo con facturación y envíos a todo México.",
@@ -88,6 +92,8 @@ export const productLines: ProductLine[] = [
     highlights: [
       "Tueste oscuro, cuerpo pesado.",
       "Rinde perfecto para estaciones de cortesía.",
+      "Molido, ya listo para trabajar.",
+      "Tostado antes de enviarse, para que tengas café fresco.",
     ],
     seoDescription:
       "Café de tueste oscuro y cuerpo pesado para hoteles, agencias y salas de espera. Café tostado de mayoreo con envíos a todo México.",

@@ -83,6 +83,14 @@ export const siteConfig = {
     title: "Platica con",
     titleHighlight: "ventas",
     subtitle: "Solicita una cotización. Te la enviamos por correo.",
+    /** Benefits under the subtitle (2×2 grid). `{years}` = years since `since` (computed at build). */
+    benefits: [
+      "Cotiza ahora y recibe una respuesta en menos de 24 horas",
+      "Asesoría personalizada para tu negocio",
+      "Servicio de café adaptado a tus necesidades",
+      "Servicio profesional con más de {years} años de experiencia",
+    ],
+    since: 2020,
     /** Whatsapp block at the bottom of /ventas (the number is also used on /metodos-de-pago). */
     whatsapp: {
       title: "¿Prefieres atención inmediata?",
