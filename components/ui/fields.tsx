@@ -125,12 +125,21 @@ export function SegmentedChoice({
         aria-describedby={error ? errorId : undefined}
         className="cp-seg"
       >
-        {options.map((option) => (
+        {options.map((option, index) => (
           <button
             key={option}
             type="button"
             role="radio"
             aria-checked={option === value}
+            tabIndex={index === Math.max(0, options.indexOf(value)) ? 0 : -1}
+            onKeyDown={(event) => {
+              const direction = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[event.key];
+              if (direction === undefined) return;
+              event.preventDefault();
+              const next = (index + direction + options.length) % options.length;
+              onChange(options[next]);
+              event.currentTarget.parentElement?.querySelectorAll<HTMLButtonElement>('[role="radio"]')[next]?.focus();
+            }}
             className="cp-seg__opt"
             onClick={() => onChange(option)}
           >
@@ -138,7 +147,7 @@ export function SegmentedChoice({
           </button>
         ))}
       </div>
-      {/* Keeps the value in native FormData / no-JS submissions. */}
+      {/* Keeps the value in native FormData. */}
       <input type="hidden" name={name} value={value} />
       {error && (
         <span id={errorId} className="cp-field-error">

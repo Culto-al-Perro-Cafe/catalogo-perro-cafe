@@ -8,7 +8,7 @@ import { salesFormConfig } from "@/config/sales-form";
 import { utmConfig } from "@/config/utm";
 import { trackAttrs } from "@/lib/analytics";
 import { routes } from "@/lib/routes";
-import { pageMetadata } from "@/lib/seo";
+import { metaDescription, pageMetadata } from "@/lib/seo";
 import { withUtm } from "@/lib/utm";
 import { BackBar } from "@/components/site/BackBar";
 import { BackButton } from "@/components/ui/BackButton";
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: PageProps<"/fichas/[slug]">):
   const facts = specRows(bean).map((s) => `${s.label}: ${s.value}`).join(". ");
   return pageMetadata({
     title: `${bean.name} · ${cfg.label}`,
-    description: [bean.notes, facts].filter(Boolean).join(". ").slice(0, 300),
+    description: metaDescription([bean.notes, facts].filter(Boolean).join(". "), 300),
     path: routes.ficha(bean.slug),
     image: bean.image,
   });
@@ -40,11 +40,10 @@ export default async function FichaPage({ params }: PageProps<"/fichas/[slug]">)
   const bean = getBean((await params).slug);
   if (!hasFicha(bean)) notFound();
 
-  // "Cotizar al mayoreo" opens the sales form with this coffee selected (config/sales-form.ts beanOptions),
-  // or else the catalog line that offers it.
+  // Keep both the bean and its catalog line in the quote; retain legacy bean-only links as a fallback.
   const beanOption = salesFormConfig.beanOptions.find((o) => o.bean === bean.slug);
   const line = productLines.find((l) => l.variants?.includes(bean.slug));
-  const quoteHref = beanOption ? routes.quote(beanOption.slug) : line ? routes.quote(line.slug) : routes.sales;
+  const quoteHref = line ? routes.quote(line.slug, bean.slug) : beanOption ? routes.quote(beanOption.slug) : routes.sales;
 
   // Only the bag sizes that are on sale.
   const buy = [

@@ -108,7 +108,7 @@
   .cp-btn[data-variant="roast"],
   .cp-btn[data-variant="roast"]:hover {
     background: var(--color-the-orange);
-    color: #fff;
+    color: var(--color-the-black);
   }
   /* Text link: no box, small caps with a dotted underline (e.g. "Ver ficha" next to a main button). */
   .cp-btn[data-variant="link"] {
@@ -351,7 +351,7 @@
   }
   .cp-seg__opt[aria-checked="true"] {
     background: var(--color-the-orange);
-    color: #fff;
+    color: var(--color-the-black);
   }
   .cp-seg__opt:focus-visible {
     outline: none;
