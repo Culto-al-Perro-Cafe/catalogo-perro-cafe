@@ -61,7 +61,6 @@ export const beans: Bean[] = [
       altitud: "1,100 msnm",
       variedades: "Sarchimor / Colombia",
       finca: "Corahe",
-      sca: "84.5",
     },
     image: { src: "/products/espresso.jpg", alt: "Grano tostado — Lavado Veracruz" },
     mercadoLibre: {
