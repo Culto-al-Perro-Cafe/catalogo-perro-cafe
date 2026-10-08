@@ -27,4 +27,7 @@ export const legacyRedirects: { source: string; destination: string }[] = [
   // Wholesale and contact pages → B2B catalog and sales form.
   { source: "/pages/mayoreo", destination: "/" },
   { source: "/pages/contact", destination: "/ventas" },
+
+  // Mistyped link in circulation.
+  { source: "/lineas/espress", destination: "/lineas/espresso" },
 ];
