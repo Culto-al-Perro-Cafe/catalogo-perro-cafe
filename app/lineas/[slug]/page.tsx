@@ -90,6 +90,7 @@ export default async function LinePage({ params }: PageProps<"/lineas/[slug]">) 
             >
               {siteConfig.line.quoteButton}
             </Button>
+            <Button href={routes.kit} variant="secondary" size="xl">Ver kit de muestras</Button>
           </div>
         </BentoTile>
       </div>

@@ -9,7 +9,8 @@ export const routes = {
   ficha: (slug: string) => `/fichas/${slug}`,
   line: (slug: string) => `/lineas/${slug}`,
   /** Sales form with a product line preselected. */
-  quote: (slug: string) => `/ventas?linea=${encodeURIComponent(slug)}`,
+  quote: (slug: string, bean?: string) =>
+    `/ventas?linea=${encodeURIComponent(slug)}${bean ? `&grano=${encodeURIComponent(bean)}` : ""}`,
   blogs: "/blogs",
   blog: (blog: string) => `/blogs/${blog}`,
   article: (blog: string, slug: string) => `/blogs/${blog}/${slug}`,

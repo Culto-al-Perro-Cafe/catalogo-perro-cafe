@@ -33,6 +33,6 @@ Ahí está el dato, por si te interesa. Ya hablaremos luego de por qué en **Cul
 Actualmente, estamos trabajando con los últimos granos de la cosecha 2024, así que si aún no has probado Bayunka, ¡este es el momento! Esta partida representa la esencia de este blend, y estamos ansiosos de ver cómo evoluciona con la siguiente cosecha, ya que hablé con Carlos de Finca Nuevo México en estos dias de Noviembre de 2024 y me mencionó que nos iba a mandar lo ultimo de la cosecha 2024 y listos apra 2025.
 
 **Ven a Probar Bayunka**\
-Te invitamos a pasar a la barra del **Culto al Perro Café** y probar una taza de Bayunka ó animate y [pide una bolsa desde la tienda en linea.](https://tienda.perro.cafe/products/cafe-tostado-chiapas-nuevo-mexico-bayunka)
+Este artículo describe el lote Bayunka de 2024. Para conocer las opciones actuales, consulta nuestros [cafés disponibles](/menudeo).
 
 Porque a veces, lo único que necesitas para mejorar el día es un buen café y un rato para disfrutarlo.

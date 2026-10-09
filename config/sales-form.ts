@@ -2,6 +2,7 @@
  * Copy and options for the "Platica con ventas" quote form.
  */
 
+import { getProductLine, productLines } from "@/config/lines";
 import { getBean } from "@/config/beans";
 
 export const RECOMMEND_OPTION = "Recomiéndenme algo";
@@ -76,3 +77,20 @@ export function getBeanOption(slug: string): { slug: string; name: string } | un
 
 /** Bean options' names: always valid "linea" values for the server. */
 export const beanOptionNames = salesFormConfig.beanOptions.map((o) => getBean(o.bean)?.name).filter(Boolean) as string[];
+
+/** Only catalogued line/bean pairs become quote values; arbitrary URL text is ignored. */
+export function getQuoteSelection(lineSlug: string | null, beanSlug: string | null) {
+  const line = lineSlug ? getProductLine(lineSlug) : undefined;
+  const bean = beanSlug && line?.variants?.includes(beanSlug) ? getBean(beanSlug) : undefined;
+  if (line && bean) return { name: `${line.name} · ${bean.name}`, extra: true };
+  if (line) return { name: line.name, extra: false };
+  const legacyBean = lineSlug ? getBeanOption(lineSlug) : undefined;
+  return legacyBean ? { name: legacyBean.name, extra: true } : undefined;
+}
+
+export const quotePairNames = productLines.flatMap((line) =>
+  (line.variants ?? []).flatMap((slug) => {
+    const selection = getQuoteSelection(line.slug, slug);
+    return selection?.extra ? [selection.name] : [];
+  }),
+);

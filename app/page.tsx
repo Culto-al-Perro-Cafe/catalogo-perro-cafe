@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/Button";
+import { routes } from "@/lib/routes";
 import { productLines } from "@/config/lines";
 import { siteConfig } from "@/config/site";
 import { catalogJsonLd } from "@/lib/seo";
@@ -25,6 +27,7 @@ export default function CatalogPage() {
             </span>
           ))}
         </p>
+        <Button href={routes.kit} variant="secondary" size="lg">Prueba el kit de muestras</Button>
       </section>
 
       <section id="lineas" aria-labelledby="lineas-title" className={styles.lines}>

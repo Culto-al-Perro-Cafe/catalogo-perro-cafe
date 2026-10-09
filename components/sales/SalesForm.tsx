@@ -3,11 +3,11 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState, useTransition, type FormEvent } from "react";
 import { submitSalesLead } from "@/app/ventas/actions";
-import { getProductLine, productLines } from "@/config/lines";
+import { productLines } from "@/config/lines";
 import {
   OTHER_BUSINESS_TYPE,
   RECOMMEND_OPTION,
-  getBeanOption,
+  getQuoteSelection,
   salesFormConfig as cfg,
 } from "@/config/sales-form";
 import { routes } from "@/lib/routes";
@@ -42,16 +42,13 @@ const FIELD_ORDER: (keyof SalesLead)[] = [
 
 /**
  * Shows the thank-you panel on `?enviado`, otherwise the form (with `?linea=<slug>`
- * preselecting the product line, or adding and preselecting a hidden bean option). Wrap in <Suspense>.
+ * preselecting the product line and optional validated `?grano=` pair, or a legacy bean option). Wrap in <Suspense>.
  */
 export function SalesFormFromParams() {
   const params = useSearchParams();
   if (params.has(SENT_PARAM)) return <SalesSuccess />;
-  const slug = params.get("linea");
-  const bean = slug ? getBeanOption(slug) : undefined;
-  if (bean) return <SalesForm key={bean.slug} initialLine={bean.name} extraLine={bean.name} />;
-  const line = slug ? getProductLine(slug) : undefined;
-  return <SalesForm key={line?.slug} initialLine={line?.name} />;
+  const selection = getQuoteSelection(params.get("linea"), params.get("grano"));
+  return <SalesForm key={selection?.name} initialLine={selection?.name} extraLine={selection?.extra ? selection.name : undefined} />;
 }
 
 /** Deliberately shows no submitted data (it would end up in the URL or screenshots). */
