@@ -96,7 +96,7 @@ export const siteConfig = {
       title: "¿Prefieres atención inmediata?",
       body: "Escríbenos directamente por Whatsapp y un asesor te atenderá al instante.",
       label: "Cotizar por Whatsapp",
-      url: "https://wa.me/5216627308219",
+      url: "https://wa.me/526623662547",
       /** Brand green (same as the Menudeo "¿No te decides?" block). */
       background: "#2da598",
     },

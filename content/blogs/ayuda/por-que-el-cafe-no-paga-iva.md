@@ -37,7 +37,7 @@ Todo ingreso paga **ISR** (Ley del ISR, Arts. 1 y 106). Vendamos bolsas o tazas,
 Pásanos tus datos y te facturamos como se debe:
 
 👉 [Enviar datos de facturación](https://forms.gle/xDs3cnbJQLitn1jh6)\
-👉 [Whatsapp](https://wa.me/5216627308219?text=Hola%2C%20voy%20a%20solicitar%20una%20factura%20de%20caf%C3%A9%20tostado%2C%20lo%20vi%20en%20su%20blog.)
+👉 [Whatsapp](https://wa.me/526623662547?text=Hola%2C%20voy%20a%20solicitar%20una%20factura%20de%20caf%C3%A9%20tostado%2C%20lo%20vi%20en%20su%20blog.)
 
 :::details[🧠 Tip Culto para empresas (regalos / consumo interno)]
 Si tu negocio compra café para regalar o usar en oficina (ej. **Una oficina que nos compra café**), puedes **deducirlo fiscalmente** aunque no lleve IVA. En la factura pondremos la leyenda:
