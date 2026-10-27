@@ -16,6 +16,8 @@ if (process.env.NODE_ENV === "production" || process.env.NEXT_PUBLIC_POSTHOG_DEV
       // Session recordings on; everything typed into inputs is masked.
       disable_session_recording: false,
       session_recording: { maskAllInputs: true },
+      // Heatmaps: clicks, rage clicks and scroll depth (positions only, no content).
+      enable_heatmaps: true,
     });
   } catch {
     // Analytics must never break the page.
