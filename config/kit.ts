@@ -49,10 +49,10 @@ export const kitConfig = {
     /** Each name renders on two lines: [line 1, line 2]. `ficha`: bean slug in config/beans.ts
      *  for the "Ver ficha" button (hidden while that bean has no data sheet). */
     beans: [
-      { num: "01", name: ["Lavado", "Chiapas"], ficha: "lavado-chiapas", note: "Limpio y brillante, con acidez amable.", image: "/products/espresso.jpg" },
-      { num: "02", name: ["Lavado", "Veracruz"], ficha: "lavado-veracruz", note: "Balanceado y suave, para todos los días.", image: "/products/restaurante.jpg" },
+      { num: "01", name: ["Lavado", "Veracruz"], ficha: "lavado-veracruz", note: "Balanceado y suave, para todos los días.", image: "/products/restaurante.jpg" },
+      { num: "02", name: ["Lavado", "Chiapas"], ficha: "lavado-chiapas", note: "Limpio y brillante, con acidez amable.", image: "/products/espresso.jpg" },
       { num: "03", name: ["Natural Honey", "Veracruz"], ficha: "natural-honey-veracruz", note: "Dulce y con cuerpo sedoso.", image: "/products/oficina.jpg" },
-      { num: "04", name: ["Tueste", "Intenso"], ficha: "tueste-intenso", note: "Oscuro, fuerte y con carácter.", image: "/products/tueste-intenso.jpg" },
+      { num: "04", name: ["Ambar Bourbon", "Puebla"], ficha: "ambar-bourbon-puebla", note: "Frutal, con acidez málica y cuerpo alto.", image: "/products/ambar-bourbon-puebla.jpg" },
     ],
   },
 
