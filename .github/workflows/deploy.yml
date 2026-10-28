@@ -5,7 +5,7 @@
 #   - secret CAPROVER_APP_TOKEN (CapRover → Apps → catalogo-perro-cafe → Deployment → "Enable App Token")
 #   - CapRover able to pull from ghcr.io (public package, or a ghcr.io remote registry in CapRover)
 # Optional:
-#   - variable NEXT_PUBLIC_SITE_URL (defaults to https://catalogo.perro.cafe; inlined at build time)
+#   - variable NEXT_PUBLIC_SITE_URL (defaults to https://www.perro.cafe; inlined at build time)
 name: Deploy
 
 on:
@@ -68,7 +68,7 @@ jobs:
           platforms: linux/amd64
           push: true
           build-args: |
-            NEXT_PUBLIC_SITE_URL=${{ vars.NEXT_PUBLIC_SITE_URL || 'https://catalogo.perro.cafe' }}
+            NEXT_PUBLIC_SITE_URL=${{ vars.NEXT_PUBLIC_SITE_URL || 'https://www.perro.cafe' }}
           tags: |
             ${{ env.IMAGE }}:${{ env.VERSION }}
             ${{ env.IMAGE }}:latest

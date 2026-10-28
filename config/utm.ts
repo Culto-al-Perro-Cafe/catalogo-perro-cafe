@@ -4,7 +4,7 @@
  */
 export const utmConfig = {
   /** Who is sending the visitor: this site. */
-  source: "catalogo.perro.cafe",
+  source: "www.perro.cafe",
   medium: "referral",
 
   /** utm_campaign per area of the site. */
