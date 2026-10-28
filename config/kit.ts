@@ -7,9 +7,9 @@ import { menudeoConfig } from "./menudeo";
 type Photo = { src: string; alt: string };
 
 export const kitConfig = {
-  seoTitle: "Kit de muestras · Prueba nuestros 4 granos",
+  seoTitle: "Kit para probar café de especialidad · Prueba nuestros 4 granos",
   seoDescription:
-    "El kit de muestras trae nuestros cuatro granos en una sola caja, para que los pruebes en tu negocio o en tu casa. Envío gratis a todo México.",
+    "El kit para probar café de especialidad trae nuestros cuatro granos para espresso en una caja, para que los pruebes en tu negocio o en tu casa. Envío gratis a todo México.",
 
   /** Mercado Libre listing — shared with the Menudeo "¿No te decides?" block. */
   url: menudeoConfig.sampleKit.url,
@@ -18,10 +18,10 @@ export const kitConfig = {
   linkLabelSuffix: "comprar el kit en Mercado Libre (abre en una pestaña nueva)",
 
   hero: {
-    eyebrow: "Kit de muestras · 4 granos",
+    eyebrow: "Prueba 4 granos. Compara. Descubre.",
     title: "Prueba antes",
     titleAccent: "de elegir",
-    body: "El kit de muestras trae nuestros granos en una sola caja, para que los pruebes en tu negocio o en tu casa.",
+    body: "Nuestros granos para espresso en una caja, para que los pruebes en tu negocio o en tu casa.",
     shipping: "Envío gratis a todo México",
     image: { src: "/images/kit/cenital-2.jpg", alt: "Kit de muestras abierto con cuatro bolsas de café" } as Photo,
   },
@@ -45,7 +45,7 @@ export const kitConfig = {
 
   contents: {
     title: "Lo que viene en la caja",
-    body: "Cuatro granos tostados en Hermosillo, cada uno con su carácter.",
+    body: "Cuatro granos distintos. Tueste medio. Bolsas de 250g",
     /** Each name renders on two lines: [line 1, line 2]. `ficha`: bean slug in config/beans.ts
      *  for the "Ver ficha" button (hidden while that bean has no data sheet). */
     beans: [
@@ -60,7 +60,7 @@ export const kitConfig = {
     title: "Cómo funciona",
     image: { src: "/images/kit/detalle-1.jpg", alt: "Bolsa del kit junto a la caja con la cinta «Llegó el café»" } as Photo,
     items: [
-      "Pide tu kit en Mercado Libre.",
+      "Pide tu caja desde Mercado Libre, Amazon México o TikTok Shops.",
       "Prueba los cuatro granos en casa o en tu barra.",
       "Quédate con tu favorito: en bolsa para casa o en mayoreo para tu negocio.",
     ],

@@ -119,6 +119,7 @@ export const siteConfig = {
         links: [
           { label: "Platica con ventas", href: "/ventas" },
           { label: "Menudeo", href: "/menudeo" },
+          { label: "Kit de especialidad", href: "/kit" },
           { label: "Blog", href: "/blogs" },
           { label: "Nosotros", href: "/nosotros" },
         ],

@@ -25,7 +25,7 @@ export const menudeoConfig = {
   /** Section after the grid offering the sample kit (styled like the home "#ventas" block). */
   sampleKit: {
     title: "¿No te decides?",
-    body: "Prueba el Kit de Degustación: una muestra de cada grano para encontrar tu favorito.",
+    body: "Pide el Kit para probar café de especialidad: una muestra de cada grano para encontrar tu favorito.",
     label: "Comprar Ahora ↗",
     url: "https://www.mercadolibre.com.mx/up/MLMU3920166824",
     /** Section background (overrides the default orange tile). */

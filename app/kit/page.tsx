@@ -51,10 +51,10 @@ export default function KitPage() {
           className={styles.heroImage}
         />
         <div className={styles.heroCard}>
-          <span className={styles.eyebrow}>{cfg.hero.eyebrow}</span>
           <h1 id="kit-hero-title" className={styles.heroTitle}>
             {cfg.hero.title} <span className={styles.accent}>{cfg.hero.titleAccent}</span>
           </h1>
+          <span className={styles.eyebrow}>{cfg.hero.eyebrow}</span>
           <p className={styles.heroBody}>{cfg.hero.body}</p>
           <div className={styles.heroActions}>
             <BuyLink variant="roast" placement="hero" />
