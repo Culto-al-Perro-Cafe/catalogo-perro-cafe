@@ -161,10 +161,18 @@ export const beans: Bean[] = [
     },
   },
   {
+    // Source: Cafetalera San Felipe, "Café Verde Arábica Decaf MWP Natural" product page.
     slug: "descafeinado",
     name: "Descafeinado",
-    notes: "",
-    specs: {}, // TODO: technical sheet
+    notes:
+      "Cítricas, cáscara de naranja, chocolate, dulzura a caramelo, acidez cítrica sutil, cuerpo medio, retrogusto cítrico",
+    specs: {
+      origen: "Chocamán, Veracruz",
+      proceso: "Natural, descafeinado Mountain Water Process (MWP)",
+      altitud: "1,350 msnm",
+      variedades: "Arábica / Catimor",
+      finca: "Neria",
+    },
     image: { src: "/products/restaurante.jpg", alt: "Grano tostado — Descafeinado" },
     mercadoLibre: {
       kg1: "https://www.mercadolibre.com.mx/up/MLMU4615380893",
