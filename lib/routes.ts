@@ -5,6 +5,8 @@ export const routes = {
   kit: "/kit",
   about: "/nosotros",
   payments: "/metodos-de-pago",
+  privacy: "/privacidad",
+  terms: "/terminos",
   /** Ficha técnica of a coffee (config/beans.ts). */
   ficha: (slug: string) => `/fichas/${slug}`,
   line: (slug: string) => `/lineas/${slug}`,

@@ -122,6 +122,8 @@ export const siteConfig = {
           { label: "Kit de especialidad", href: "/kit" },
           { label: "Blog", href: "/blogs" },
           { label: "Nosotros", href: "/nosotros" },
+          { label: "Privacidad", href: "/privacidad" },
+          { label: "Términos y condiciones", href: "/terminos" },
         ],
       },
     ],

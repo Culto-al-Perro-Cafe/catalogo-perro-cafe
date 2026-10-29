@@ -19,6 +19,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: absoluteUrl(routes.kit), changeFrequency: "monthly", priority: 0.6 },
     { url: absoluteUrl(routes.about), changeFrequency: "yearly", priority: 0.5 },
     { url: absoluteUrl(routes.payments), changeFrequency: "yearly", priority: 0.3 },
+    { url: absoluteUrl(routes.privacy), changeFrequency: "yearly", priority: 0.2 },
+    { url: absoluteUrl(routes.terms), changeFrequency: "yearly", priority: 0.2 },
     ...beans.filter(hasFicha).map((bean) => ({
       url: absoluteUrl(routes.ficha(bean.slug)),
       changeFrequency: "monthly" as const,
