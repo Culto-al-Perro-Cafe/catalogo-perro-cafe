@@ -1,13 +1,25 @@
 # Catálogo B2B — Culto al Perro Café
 
-Wholesale coffee catalog built with Next.js 16 (App Router), implemented from the
-Claude Design project **Catálogo B2B** and its "Public Bento" design system.
+Wholesale coffee catalog built with Next.js 16 (App Router).
+Design file (source of truth for look & feel): https://claude.ai/artifact/FvwuqaCFwz2323aizjbQMj
 
 ```bash
 cp .env.example .env.local   # set NEXT_PUBLIC_SITE_URL and SALES_WEBHOOK_URL
 pnpm install
 pnpm dev
 ```
+
+## Development (the short version)
+
+1. **Look & feel? Change the design file first**, then the code. Never the other way around.
+   Code-only changes are fine for infrastructure and for data (`config/`, `content/`), but if the data shows up
+   in the design, update the design too. Full rule in `AGENTS.md`.
+2. **Content and data live in `config/`.** Beans, lines, prices, copy, links: edit there, not in components.
+3. **pnpm only.** `pnpm lint` and `pnpm build` before you push.
+4. **Commits go straight to `main`** and bump the patch version in `package.json`.
+5. **Deploy = tag.** Bump the minor version, commit `Release X.Y.0`, then
+   `git tag vX.Y.0 && git push origin main vX.Y.0`. The GitHub Action ships it to CapRover.
+6. **Secrets stay in `.env.local`.** Never commit keys.
 
 ## Routes
 
