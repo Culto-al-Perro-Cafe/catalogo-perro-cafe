@@ -57,6 +57,7 @@ export function pageMetadata({
 const organizationId = absoluteUrl("/#organization");
 
 export function organizationJsonLd() {
+  const social = siteConfig.social;
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -69,10 +70,50 @@ export function organizationJsonLd() {
     areaServed: { "@type": "Country", name: siteConfig.business.areaServed },
     address: {
       "@type": "PostalAddress",
-      addressLocality: siteConfig.business.city,
-      addressRegion: siteConfig.business.region,
-      addressCountry: siteConfig.business.country,
+      streetAddress: siteConfig.business.address.street,
+      addressLocality: siteConfig.business.address.locality,
+      addressRegion: siteConfig.business.address.region,
+      postalCode: siteConfig.business.address.postalCode,
+      addressCountry: siteConfig.business.address.country,
     },
+    telephone: siteConfig.business.phone,
+    sameAs: [
+      social.instagram,
+      social.tiktok,
+      social.facebook,
+      social.x,
+      social.linkedin,
+      social.mercadoLibre,
+      social.amazon,
+    ],
+  };
+}
+
+export function localBusinessJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": absoluteUrl("/#local-business"),
+    name: siteConfig.name,
+    description: siteConfig.seo.description,
+    url: absoluteUrl(),
+    telephone: siteConfig.business.phone,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: siteConfig.business.address.street,
+      addressLocality: siteConfig.business.address.locality,
+      addressRegion: siteConfig.business.address.region,
+      postalCode: siteConfig.business.address.postalCode,
+      addressCountry: siteConfig.business.address.country,
+    },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "08:00",
+      closes: "16:00",
+    },
+    priceRange: "$$",
+    areaServed: { "@type": "Country", name: siteConfig.business.areaServed },
   };
 }
 

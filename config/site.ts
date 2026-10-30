@@ -38,6 +38,25 @@ export const siteConfig = {
     country: "MX",
     areaServed: "México",
     slogan: "Proveedores de café perrón",
+    address: {
+      street: "Av. Zacatecas 151",
+      locality: "Hermosillo",
+      region: "Sonora",
+      postalCode: "83190",
+      country: "MX",
+    },
+    phone: "+52 662 366 2547",
+    openingHours: "Mo-Sa 08:00-16:00",
+  },
+
+  social: {
+    instagram: "https://instagram.com/cultoperrocafe",
+    tiktok: "https://www.tiktok.com/@cultoperrocafe",
+    facebook: "https://facebook.com/cultoperrocafe",
+    x: "https://x.com/cultoperrocafe",
+    linkedin: "https://www.linkedin.com/company/culto-al-perro-cafe",
+    mercadoLibre: "https://mercadolibre.perro.cafe",
+    amazon: "https://amazon.perro.cafe",
   },
 
   logo: {
@@ -127,6 +146,9 @@ export const siteConfig = {
         ],
       },
     ],
+    socialTitle: "Síguenos",
+    addressTitle: "Visítanos",
+    hours: "Lun–Sáb: 8:00–16:00",
   },
 } as const;
 
