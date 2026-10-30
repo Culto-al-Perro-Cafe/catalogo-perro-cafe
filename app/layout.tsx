@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Josefin_Sans, Rokkitt } from "next/font/google";
 import { siteConfig } from "@/config/site";
-import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
+import { organizationJsonLd, websiteJsonLd, localBusinessJsonLd } from "@/lib/seo";
 import { GoogleTag } from "@/components/site/GoogleTag";
 import { JsonLd } from "@/components/site/JsonLd";
 import { SiteFooter } from "@/components/site/SiteFooter";
@@ -58,7 +58,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang={siteConfig.lang} className={`${rokkitt.variable} ${josefin.variable}`}>
       <body>
-        <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
+        <JsonLd data={[organizationJsonLd(), websiteJsonLd(), localBusinessJsonLd()]} />
         <Ticker items={siteConfig.ticker} />
         <SiteHeader />
         <main>{children}</main>

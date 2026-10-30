@@ -112,7 +112,7 @@ Con tantas opciones, ¿cómo saber cuál es la mejor para ti? Aquí algunos cons
 
 ### **Habla con los baristas**
 
-Pregunta, explora. Un buen barista puede recomendarte granos o métodos según tus gustos. Por ejemplo, el [**menú de Culto al Perro Café**](https://www.perro.cafe/menu) puede darte una idea clara antes de visitar.
+Pregunta, explora. Un buen barista puede recomendarte granos o métodos según tus gustos. Por ejemplo, el [**menú de Culto al Perro Café**](https://www.perro.cafe/menudeo) puede darte una idea clara antes de visitar.
 
 ## **El papel esencial de los tostadores de café en Sonora**
 

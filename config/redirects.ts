@@ -28,6 +28,19 @@ export const legacyRedirects: { source: string; destination: string }[] = [
   { source: "/pages/mayoreo", destination: "/" },
   { source: "/pages/contact", destination: "/ventas" },
 
+  // Old /menu page and /blog (singular) → current pages.
+  { source: "/menu", destination: "/menudeo" },
+  { source: "/blog", destination: "/blogs" },
+
+  // Local SEO pages → Hermosillo blog post and menudeo.
+  { source: "/pages/nuestros-clientes", destination: "/nosotros" },
+  { source: "/pages/cafe-tostado-hermosillo", destination: "/blogs/tostadores/la-guia-de-cafe-de-especialidad-en-hermosillo-sonora" },
+  { source: "/products/cafe-en-grano-tostado-fresco-en-hermosillo", destination: "/blogs/tostadores/la-guia-de-cafe-de-especialidad-en-hermosillo-sonora" },
+  { source: "/pages/cafe-tostado-veracruz", destination: "/menudeo" },
+  
+  // Loyalty program (inactive) → menudeo.
+  { source: "/pages/frecuentes", destination: "/menudeo" },
+
   // Mistyped link in circulation.
   { source: "/lineas/espress", destination: "/lineas/espresso" },
 ];
