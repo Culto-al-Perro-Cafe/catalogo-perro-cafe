@@ -1,3 +1,5 @@
+/* Footer (design: Footer.dc.html) */
+
 .footer {
   background: var(--color-the-black);
   color: #fff;
@@ -5,35 +7,43 @@
 }
 
 .top {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 48px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 32px 80px;
   padding: 48px 32px 32px;
 }
 
-.mark {
+/* Brand mark with the address, hours and phone under it. */
+.left {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 32px;
+  margin-right: auto;
   color: #fff;
 }
 
-.content {
+.visit {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  align-items: flex-start;
+  gap: 10px;
 }
 
 .columns {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 32px 80px;
 }
 
 .column {
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   gap: 10px;
+  text-align: right;
 }
 
 .columnTitle {
@@ -45,48 +55,39 @@
   color: var(--color-the-yellow);
 }
 
-.link {
+.item {
   font-family: var(--font-body);
   font-size: 16px;
-}
-
-.contactText {
-  font-family: var(--font-body);
-  font-size: 14px;
-  line-height: 1.6;
-  color: inherit;
+  line-height: 1.35;
+  color: #fff;
   text-decoration: none;
 }
 
-.socialBar {
+/* Social and marketplace buttons, right-aligned, with a rule below. */
+.social {
   display: flex;
-  gap: 32px;
-  padding: 20px 0;
-  border-top: var(--border-on-ink);
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin: 0 32px 24px;
+  padding-bottom: 24px;
   border-bottom: var(--border-on-ink);
 }
 
-.socialSection {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.socialIcons {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.socialIcon {
+.socialIcon,
+.socialLabel {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
   height: 32px;
   border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
   transition: all 0.2s;
+}
+
+.socialIcon {
+  width: 32px;
 }
 
 .socialIcon svg {
@@ -94,25 +95,16 @@
   height: 18px;
 }
 
-.socialIcon:hover {
-  border-color: var(--color-the-orange);
-  background: rgba(228, 115, 76, 0.1);
-}
-
 .socialLabel {
-  display: inline-flex;
-  align-items: center;
-  padding: 0 12px;
-  height: 32px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 2px 12px 0;
   font-family: var(--font-label);
   font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  transition: all 0.2s;
 }
 
+.socialIcon:hover,
 .socialLabel:hover {
   border-color: var(--color-the-orange);
   background: rgba(228, 115, 76, 0.1);
@@ -161,27 +153,28 @@
 
 @media (max-width: 639px) {
   .top {
-    grid-template-columns: 1fr;
-    gap: 32px;
     padding: 40px var(--page-pad) 24px;
   }
 
+  .left {
+    width: 100%;
+  }
+
   .columns {
+    display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
+    gap: 24px 16px;
+    width: 100%;
   }
 
-  .column:first-child {
-    grid-column: 1 / -1;
+  .column {
+    align-items: flex-start;
+    text-align: left;
   }
 
-  .mark {
-    order: -1;
-  }
-
-  .socialBar {
-    flex-direction: column;
-    gap: 12px;
+  .social {
+    justify-content: flex-start;
+    margin: 0 var(--page-pad) 24px;
   }
 
   .bottom {

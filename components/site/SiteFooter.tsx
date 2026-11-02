@@ -64,77 +64,57 @@ const socialIcons = [
   },
 ];
 
+/** Footer (design: Footer.dc.html). Data: config/site.ts (footer, business, social). */
 export function SiteFooter() {
   const { footer, business } = siteConfig;
   return (
     <footer className={styles.footer}>
       <div className={styles.top}>
-        <div className={styles.mark}>
+        <div className={styles.left}>
           <BrandMark width={48} label={siteConfig.shortName} />
-        </div>
-        <div className={styles.content}>
-          <div className={styles.columns}>
-            {footer.columns.map((column) => (
-              <nav key={column.title} aria-label={column.title} className={styles.column}>
-                <span className={styles.columnTitle}>{column.title}</span>
-                {resolveLinks(column.links).map((link) => (
-                  <Link key={link.label} href={link.href} className={styles.link}>
-                    {link.label}
-                  </Link>
-                ))}
-              </nav>
-            ))}
-            <div className={styles.column}>
-              <span className={styles.columnTitle}>{footer.addressTitle}</span>
-              <span className={styles.contactText}>
-                {business.address.street}
-                <br />
-                {business.address.locality}, {business.address.region} {business.address.postalCode}
-              </span>
-              <span className={styles.contactText}>{footer.hours}</span>
-              <a href={`tel:${business.phone}`} className={styles.contactText}>
-                {business.phone}
-              </a>
-            </div>
-          </div>
-          <div className={styles.socialBar}>
-            <div className={styles.socialSection}>
-              <span className={styles.columnTitle}>{footer.socialTitle}</span>
-              <div className={styles.socialIcons}>
-                {socialIcons.map((social) => (
-                  <a
-                    key={social.name}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.socialIcon}
-                    aria-label={social.name}
-                  >
-                    {social.icon}
-                  </a>
-                ))}
-                <a
-                  href={siteConfig.social.mercadoLibre}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.socialLabel}
-                  aria-label="Mercado Libre"
-                >
-                  Mercado Libre
-                </a>
-                <a
-                  href={siteConfig.social.amazon}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.socialLabel}
-                  aria-label="Amazon"
-                >
-                  Amazon
-                </a>
-              </div>
-            </div>
+          <div className={styles.visit}>
+            <span className={styles.item}>{business.address.street}</span>
+            <span className={styles.item}>
+              {business.address.locality}, {business.address.region} {business.address.postalCode}
+            </span>
+            <span className={styles.item}>{footer.hours}</span>
+            <a href={`tel:${business.phone.replace(/\s/g, "")}`} className={styles.item}>
+              {business.phone}
+            </a>
           </div>
         </div>
+        <div className={styles.columns}>
+          {footer.columns.map((column) => (
+            <nav key={column.title} aria-label={column.title} className={styles.column}>
+              <span className={styles.columnTitle}>{column.title}</span>
+              {resolveLinks(column.links).map((link) => (
+                <Link key={link.label} href={link.href} className={styles.item}>
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          ))}
+        </div>
+      </div>
+      <div className={styles.social}>
+        {socialIcons.map((social) => (
+          <a
+            key={social.name}
+            href={social.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.socialIcon}
+            aria-label={social.name}
+          >
+            {social.icon}
+          </a>
+        ))}
+        <a href={siteConfig.social.mercadoLibre} target="_blank" rel="noopener noreferrer" className={styles.socialLabel}>
+          Mercado Libre
+        </a>
+        <a href={siteConfig.social.amazon} target="_blank" rel="noopener noreferrer" className={styles.socialLabel}>
+          Amazon
+        </a>
       </div>
       <div className={styles.wordmarkBox} aria-hidden="true">
         <FitText className={styles.wordmark}>{footer.wordmark}</FitText>

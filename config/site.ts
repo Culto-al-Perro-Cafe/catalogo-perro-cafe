@@ -146,8 +146,6 @@ export const siteConfig = {
         ],
       },
     ],
-    socialTitle: "Síguenos",
-    addressTitle: "Visítanos",
     hours: "Lun–Sáb: 8:00–16:00",
   },
 } as const;
