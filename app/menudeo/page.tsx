@@ -132,18 +132,15 @@ export default function MenudeoPage() {
           </div>
           <div className={styles.kitAction}>
             <PointingHand className={styles.kitHand} />
-            <a
-              href={withUtm(cfg.sampleKit.url, { campaign: utmConfig.campaigns.menudeo, content: "kit-de-muestras" })}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${cfg.sampleKit.title} — ${cfg.linkLabelSuffix}`}
-              {...trackAttrs(analyticsEvents.mercadoLibreClick, { product: "kit-de-muestras", placement: "kit" })}
+            <Link
+              href={routes.kit}
+              {...trackAttrs(analyticsEvents.ctaClick, { cta: "menudeo_kit" })}
               className="cp-btn"
               data-variant="primary"
               data-size="xl"
             >
               <span className="cp-btn__label">{cfg.sampleKit.label}</span>
-            </a>
+            </Link>
           </div>
         </BentoTile>
       </section>

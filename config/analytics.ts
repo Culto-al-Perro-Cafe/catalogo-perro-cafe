@@ -23,6 +23,8 @@ export const analyticsConfig = {
 export const analyticsEvents = {
   quoteSubmitted: "quote_submitted",
   mercadoLibreClick: "mercado_libre_click",
+  /** Amazon and TikTok Shop buttons (Mercado Libre keeps its own event). */
+  marketplaceClick: "marketplace_click",
   ctaClick: "cta_click",
   leadFormSubmitted: "lead_form_submitted",
   articleShared: "article_shared",

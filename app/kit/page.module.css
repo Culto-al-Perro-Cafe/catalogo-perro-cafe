@@ -400,3 +400,57 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* "Dónde comprar": one button per marketplace. "Comprar ahora" scrolls here smoothly. */
+:global(html):has(.page) {
+  scroll-behavior: smooth;
+}
+
+.where {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: clamp(40px, 5vw, 72px);
+  scroll-margin-top: 24px;
+}
+
+.whereActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.whereButton {
+  gap: 12px;
+}
+
+.whereButton svg {
+  flex: none;
+}
+
+.dagger {
+  margin-left: 2px;
+  font-size: 0.7em;
+}
+
+.footnote {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* On phones the long labels ("Comprar en Mercado Libre") wrap instead of overflowing. */
+@media (max-width: 480px) {
+  .whereButton {
+    width: 100%;
+    padding-inline: 16px;
+    font-size: 18px;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .whereButton :global(.cp-btn__label) {
+    white-space: normal;
+  }
+}

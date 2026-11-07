@@ -107,10 +107,47 @@
   color: #fff;
 }
 
+.buyFeatured {
+  display: flex;
+}
+
+/* One box per marketplace: logo + name, then its bag sizes. */
+.markets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 16px;
+}
+
+.market {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+  border: var(--border-on-ink);
+}
+
+.marketHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 28px;
+  color: #fff;
+}
+
+.marketHead svg {
+  flex: none;
+  display: block;
+}
+
+.marketName {
+  margin: 0;
+  padding-top: 2px;
+  color: var(--color-the-yellow);
+}
+
 .buyActions {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   gap: 12px;
 }
 
@@ -127,7 +164,8 @@
     font-size: 16px;
   }
 
-  .buyActions :global(.cp-btn) {
+  .buyActions :global(.cp-btn),
+  .buyFeatured :global(.cp-btn) {
     width: 100%;
   }
 }

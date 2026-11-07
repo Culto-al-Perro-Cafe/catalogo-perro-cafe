@@ -7,6 +7,8 @@ import { withUtm } from "@/lib/utm";
 import { utmConfig } from "@/config/utm";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
+import { MarketplaceLogo } from "@/components/ui/MarketplaceLogo";
+import { marketplaces, type MarketplaceId } from "@/config/marketplaces";
 import styles from "./page.module.css";
 import { trackAttrs } from "@/lib/analytics";
 import { analyticsEvents } from "@/config/analytics";
@@ -18,26 +20,29 @@ export const metadata = pageMetadata({
   image: cfg.hero.image,
 });
 
-/** External "Comprar ahora" button to the kit's Mercado Libre listing (new tab). */
+/** "Comprar ahora": scrolls down to the "Dónde comprar" section. */
 function BuyLink({ variant, placement }: { variant: "roast" | "primary"; placement: "hero" | "closing" }) {
   return (
     <a
-      href={withUtm(cfg.url, { campaign: utmConfig.campaigns.kit, content: placement })}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={`${cfg.buyLabel} — ${cfg.linkLabelSuffix}`}
-      {...trackAttrs(analyticsEvents.mercadoLibreClick, { product: "kit-de-muestras", placement: `kit_${placement}` })}
+      href={`#${cfg.where.id}`}
+      {...trackAttrs(analyticsEvents.ctaClick, { cta: `kit_${placement}` })}
       className="cp-btn"
       data-variant={variant}
       data-size="xl"
     >
       <span className="cp-btn__label">{cfg.buyLabel}</span>
-      <Icon name="arrow_outward" size={24} />
+      <Icon name="arrow_downward" size={24} />
     </a>
   );
 }
 
-/** Kit de muestras landing (design: Catálogo B2B → Kit de muestras). Data: config/kit.ts */
+/** Marketplaces that sell the kit, in config/marketplaces.ts order. */
+const shops = marketplaces.flatMap((market) => {
+  const url = (cfg.shop as Partial<Record<MarketplaceId, string>>)[market.id];
+  return url ? [{ ...market, url }] : [];
+});
+
+/** Kit de muestras landing (design: Kit.dc.html). Data: config/kit.ts */
 export default function KitPage() {
   return (
     <div className={styles.page}>
@@ -153,6 +158,48 @@ export default function KitPage() {
         <div className={styles.closingMedia}>
           <Image src={cfg.closing.image.src} alt={cfg.closing.image.alt} fill sizes="(max-width: 800px) 100vw, 50vw" />
         </div>
+      </section>
+
+      <section id={cfg.where.id} className={styles.where} aria-labelledby="kit-where-title">
+        <div className={styles.contentsHeader}>
+          <h2 id="kit-where-title" className={styles.sectionTitle}>
+            {cfg.where.title}
+          </h2>
+          <p className={styles.contentsBody}>{cfg.where.body}</p>
+        </div>
+        <div className={styles.whereActions}>
+          {shops.map((market) => (
+            <a
+              key={market.id}
+              href={withUtm(market.url, { campaign: utmConfig.campaigns.kit, content: market.id })}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${cfg.where.buyPrefix} ${market.name} ${cfg.where.linkLabelSuffix}`}
+              {...(market.id === "mercadoLibre"
+                ? trackAttrs(analyticsEvents.mercadoLibreClick, { product: "kit-de-muestras", placement: "kit_where" })
+                : trackAttrs(analyticsEvents.marketplaceClick, {
+                    marketplace: market.id,
+                    product: "kit-de-muestras",
+                    placement: "kit_where",
+                  }))}
+              className={`cp-btn ${styles.whereButton}`}
+              data-variant="secondary"
+              data-size="xl"
+            >
+              <MarketplaceLogo id={market.id} variant="solid" background="var(--color-paper-ivory)" />
+              <span className="cp-btn__label">
+                {cfg.where.buyPrefix} {market.name}
+                {cfg.where.freeShipping.includes(market.id) && (
+                  <sup className={styles.dagger} aria-hidden="true">
+                    †
+                  </sup>
+                )}
+              </span>
+              <Icon name="arrow_outward" size={24} />
+            </a>
+          ))}
+        </div>
+        <p className={styles.footnote}>{cfg.where.footnote}</p>
       </section>
     </div>
   );

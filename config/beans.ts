@@ -6,6 +6,9 @@
 
 type Photo = { src: string; alt: string };
 
+/** One listing per bag size. */
+type BagLinks = { kg1?: string; g250?: string };
+
 /**
  * Data sheet fields, in display order, with the one label each is shown with.
  * Every bean uses these keys, so all fichas read the same way.
@@ -34,8 +37,13 @@ export type Bean = {
   specs: Partial<Record<SpecKey, string>>;
   /** Roasted-bean photo for the ficha page. */
   image: Photo;
-  /** Mercado Libre listings per bag size. Leave a size out when it isn't sold: its button is hidden. */
-  mercadoLibre?: { kg1?: string; g250?: string };
+  /**
+   * Listings per marketplace (config/marketplaces.ts) and bag size. Leave a size or a whole marketplace out when it
+   * isn't sold there: its button is hidden. Mercado Libre 1 kg is also the "Comprar" button on /menudeo.
+   */
+  mercadoLibre?: BagLinks;
+  amazon?: BagLinks;
+  tiktok?: BagLinks;
   /** Retail card on /menudeo. */
   retail: {
     /** One line under the name. */
@@ -67,6 +75,10 @@ export const beans: Bean[] = [
       kg1: "https://www.mercadolibre.com.mx/cafe-de-especialidad-en-grano-1-kg-veracruz-culto-al-perro/p/MLM2118759400?pdp_filters=item_id:MLM6290203632",
       g250: "https://www.mercadolibre.com.mx/up/MLMU5364935764",
     },
+    amazon: { kg1: "https://www.amazon.com.mx/dp/B0HPDZFKP3" },
+    tiktok: {
+      kg1: "https://www.tiktok.com/view/product/1738217762884323255?encode_params=MIIBrAQMslWr5h4X8yZx2zHYBIIBiLWWvKUY_MJM-B6f9GTRKjkm162VrHToyOWoJx4qhki0mUO5NruKD0GlhteOQmEouYne18fMeV9OinkPbJT91Dudz3iPjuwzR3HdU0rNObnLaksfmHcy0Y_eOvABPkgGaZip8zxUYwbYwFZCNHAG76dYrOuCzXpcHVj13zdbTASUNwdrZ7Zx_yvsoxZkku7Z-v1hG98cokGX_eYeGHieKopD_i8lKl92WIDiT8_ghXXX_jS-dKweC3pE3AkqTvfMXMaANUaGvW7bG-fe09WpMvNdpd_pa4hIqJ02lmWNNWaq1EM0j65Sg0EvEDcNzwIhhYHfjlTTRPQVAcTm5NHMCluJxo7MqcXfGorR7fwRskaSXvCcAbKBc4Xzu1fKyGoaxusaJ4bl4aHUviE_DIlZef_l-oXPjOZQWLaowIDvANzRlJnNm6zrGLYmabh9fUwWpwDfR2Yt-qpeCvreP5foUMbQnsoa6g17THyZDngXmCo-lnJyGSciPmBoeQa7339AKWueAjPLs9rpBBA1e_glYCGvHupvyFLHQqjG&force_h5=1&source=seller_center",
+    },
     retail: {
       short: "Caramelo, piloncillo y miel. Balanceado y de cuerpo sedoso.",
       image: { src: "/images/menudeo/bolsa-2.jpg", alt: "Bolsa de Lavado Veracruz, café tostado Culto al Perro Café" },
@@ -90,6 +102,7 @@ export const beans: Bean[] = [
       kg1: "https://www.mercadolibre.com.mx/cafe-de-especialidad-en-grano-1-kg-chiapas-culto-al-perro/p/MLM2118759400?pdp_filters=item_id:MLM2880691733",
       g250: "https://www.mercadolibre.com.mx/up/MLMU3908638597",
     },
+    amazon: { kg1: "https://www.amazon.com.mx/dp/B0H9TM6XQG" },
     retail: {
       short: "Avellana y chocolate amargo, con acidez tipo cereza.",
       image: { src: "/images/menudeo/bolsa-3.jpg", alt: "Bolsa de Lavado Chiapas, café tostado Culto al Perro Café" },
@@ -137,6 +150,9 @@ export const beans: Bean[] = [
     mercadoLibre: {
       kg1: "https://www.mercadolibre.com.mx/up/MLMU5338937823?pdp_filters=item_id:MLM3582971095",
       g250: "https://www.mercadolibre.com.mx/up/MLMU5338877107?pdp_filters=item_id:MLM6330683162",
+    },
+    tiktok: {
+      kg1: "https://www.tiktok.com/view/product/1738217845559822263?encode_params=MIIBrAQMv3aitYjyc50RCsEABIIBiA9CaB1hUWkskLbNSJ2KGCFAcNP9aLhrCgtyENSd1MrnPBfITS3lCa6LAE3Ib0QgYjU0LfNrU6_-Q6LBIrKOeg54mOOhw9FNtCgLgb-wLx6Xkn3N7gEUtWyCPUeJXTJp8-BqH8wQ_7u7qf6Yqf2VcvqgkG6ezajnYx0rB8syZw3xmt59yX_GRc0KC50EuvsYgiTBc89exeqQLH6zHP6F6tD4GoiQ2yYPar2fZ6RQ6EXwex6k-ktpELaKLE-0cmSrbseUZk4_zMfCBNHbaLPrSb0OaOvHAtwLh7Bk2fcyWa5Y4vzOd5ZtG69LZvnVU905vjEJgvOevchM9tW8rZBfnpa84922Yvo8sPeVh_5txGTtGw3ROKMA5DfSxClCc50mi3PQHLb8cAeZQf8Xyv_1n3LhSwjUfXqKa6g18xT4869JmzbHoM2_uJyUIsGuHPJiixITalpEgUW3U8oCHEdoyaEbJuV1Tp_gTXOKgH7egQvlAb_AqM9Z6TaCiinZaXga3fBDZEUaVxFpBBDtsG3_0egubLWHGhuo1v9M&force_h5=1&source=seller_center",
     },
     retail: {
       short: "Frutal con acidez málica y cuerpo alto con textura sedosa.",
@@ -224,8 +240,8 @@ export const fichaConfig = {
   quoteLabel: "Cotizar al mayoreo",
   buy1kgLabel: "Bolsa 1 kg",
   buy250gLabel: "Bolsa 250 gr",
-  /** Screen-reader suffix for the Mercado Libre buttons. */
-  buyLabelSuffix: "comprar en Mercado Libre (abre en una pestaña nueva)",
+  /** Screen-reader suffix for the marketplace buttons: "<bean>, <size> — comprar en <marketplace> (…)". */
+  buyLabelSuffix: "(abre en una pestaña nueva)",
   /** Button to the ficha page: short on menudeo/kit cards, long on line cards. */
   linkLabel: "Ver ficha",
   linkLabelLong: "Ver ficha técnica",

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { beans, fichaConfig as cfg, getBean, hasFicha, specRows } from "@/config/beans";
 import { analyticsEvents } from "@/config/analytics";
 import { productLines } from "@/config/lines";
+import { marketplaces } from "@/config/marketplaces";
 import { salesFormConfig } from "@/config/sales-form";
 import { utmConfig } from "@/config/utm";
 import { trackAttrs } from "@/lib/analytics";
@@ -14,6 +15,7 @@ import { BackBar } from "@/components/site/BackBar";
 import { BackButton } from "@/components/ui/BackButton";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
+import { MarketplaceLogo } from "@/components/ui/MarketplaceLogo";
 import styles from "./page.module.css";
 
 /** Only beans with a data sheet (config/beans.ts) have a ficha page; anything else is a 404. */
@@ -35,7 +37,7 @@ export async function generateMetadata({ params }: PageProps<"/fichas/[slug]">):
   });
 }
 
-/** Ficha técnica (design: Catálogo B2B → Ficha). Data: config/beans.ts */
+/** Ficha técnica (design: Ficha.dc.html). Data: config/beans.ts, config/marketplaces.ts */
 export default async function FichaPage({ params }: PageProps<"/fichas/[slug]">) {
   const bean = getBean((await params).slug);
   if (!hasFicha(bean)) notFound();
@@ -46,11 +48,20 @@ export default async function FichaPage({ params }: PageProps<"/fichas/[slug]">)
   const line = productLines.find((l) => l.variants?.includes(bean.slug));
   const quoteHref = beanOption ? routes.quote(beanOption.slug) : line ? routes.quote(line.slug) : routes.sales;
 
-  // Only the bag sizes that are on sale.
-  const buy = [
-    { label: cfg.buy1kgLabel, url: bean.mercadoLibre?.kg1, size: "1kg" },
-    { label: cfg.buy250gLabel, url: bean.mercadoLibre?.g250, size: "250g" },
-  ].filter((option): option is { label: string; url: string; size: string } => Boolean(option.url));
+  // One group per marketplace with the bag sizes sold there (empty marketplaces are left out).
+  const sizes = [
+    { key: "kg1", label: cfg.buy1kgLabel, size: "1kg" },
+    { key: "g250", label: cfg.buy250gLabel, size: "250g" },
+  ] as const;
+  const shops = marketplaces
+    .map((market) => ({
+      ...market,
+      links: sizes.flatMap((s) => {
+        const url = bean[market.id]?.[s.key];
+        return url ? [{ ...s, url }] : [];
+      }),
+    }))
+    .filter((market) => market.links.length);
 
   return (
     <div className={styles.page}>
@@ -87,7 +98,7 @@ export default async function FichaPage({ params }: PageProps<"/fichas/[slug]">)
         <h2 id="ficha-buy" className={`t-label ${styles.buyTitle}`}>
           {cfg.buyTitle}
         </h2>
-        <div className={styles.buyActions}>
+        <div className={styles.buyFeatured}>
           <Button
             href={quoteHref}
             variant="roast"
@@ -97,23 +108,46 @@ export default async function FichaPage({ params }: PageProps<"/fichas/[slug]">)
           >
             {cfg.quoteLabel}
           </Button>
-          {buy.map((option) => (
-            <a
-              key={option.size}
-              href={withUtm(option.url, { campaign: utmConfig.campaigns.menudeo, content: `ficha-${bean.slug}-${option.size}` })}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${bean.name}, ${option.label} — ${cfg.buyLabelSuffix}`}
-              className="cp-btn"
-              data-variant="secondary"
-              data-size="xl"
-              {...trackAttrs(analyticsEvents.mercadoLibreClick, { product: bean.slug, placement: `ficha_${option.size}` })}
-            >
-              <span className="cp-btn__label">{option.label}</span>
-              <Icon name="arrow_outward" size={24} />
-            </a>
-          ))}
         </div>
+        {shops.length > 0 && (
+          <div className={styles.markets}>
+            {shops.map((market) => (
+              <div key={market.id} className={styles.market}>
+                <div className={styles.marketHead}>
+                  <MarketplaceLogo id={market.id} variant="ring" background="var(--color-the-black)" />
+                  <h3 className={`t-label ${styles.marketName}`}>{market.name}</h3>
+                </div>
+                <div className={styles.buyActions}>
+                  {market.links.map((option) => (
+                    <a
+                      key={option.size}
+                      href={withUtm(option.url, {
+                        campaign: utmConfig.campaigns.menudeo,
+                        content: `ficha-${bean.slug}-${market.id}-${option.size}`,
+                      })}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${bean.name}, ${option.label} — comprar en ${market.name} ${cfg.buyLabelSuffix}`}
+                      className="cp-btn"
+                      data-variant="secondary"
+                      data-size="xl"
+                      {...(market.id === "mercadoLibre"
+                        ? trackAttrs(analyticsEvents.mercadoLibreClick, { product: bean.slug, placement: `ficha_${option.size}` })
+                        : trackAttrs(analyticsEvents.marketplaceClick, {
+                            marketplace: market.id,
+                            product: bean.slug,
+                            placement: `ficha_${option.size}`,
+                          }))}
+                    >
+                      <span className="cp-btn__label">{option.label}</span>
+                      <Icon name="arrow_outward" size={24} />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </section>
     </div>
   );

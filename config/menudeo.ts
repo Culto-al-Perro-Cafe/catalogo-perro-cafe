@@ -26,8 +26,8 @@ export const menudeoConfig = {
   sampleKit: {
     title: "¿No te decides?",
     body: "Pide el Kit para probar café de especialidad: una muestra de cada grano para encontrar tu favorito.",
-    label: "Comprar Ahora ↗",
-    url: "https://www.mercadolibre.com.mx/kit-degustacion-cafe-de-especialidad-4x250g-culto-al-perro/p/MLM2124745184?pdp_filters=item_id:MLM6348601530",
+    /** Goes to the /kit landing. */
+    label: "Comprar Ahora →",
     /** Section background (overrides the default orange tile). */
     background: "#2da598",
     image: {
