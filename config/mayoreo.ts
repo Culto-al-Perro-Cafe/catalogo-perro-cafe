@@ -2,7 +2,8 @@
  * Wholesale price list (/mayoreo), shared by link with leads. The page is unlisted: it isn't in the footer or the
  * sitemap, and search engines are asked not to index it.
  *
- * `base` is the RoastOS price per kg (MXN), charged from 5 kg. The other tiers take a fixed amount off per kg.
+ * `base` is the price per kg (MXN) charged from 5 kg; the other tiers take a fixed amount off per kg. It is the
+ * RoastOS price, except for the two blends: theirs is set so that 15 kg costs $380/kg (base 395).
  * Prices are fixed here: update `base` when a price changes in RoastOS.
  */
 export const mayoreoConfig = {
@@ -36,8 +37,8 @@ export const mayoreoConfig = {
     {
       title: "Mezclas y tueste intenso",
       items: [
-        { name: "Mezcla Restaurante", note: "Mezcla de la casa. Cero amargor.", base: 420 },
-        { name: "Mezcla Restaurante Intenso", note: "Mezcla de la casa. Carácter fuerte.", base: 420 },
+        { name: "Mezcla Restaurante", note: "Mezcla de la casa. Cero amargor.", base: 395 },
+        { name: "Mezcla Restaurante Intenso", note: "Mezcla de la casa. Carácter fuerte.", base: 395 },
         { name: "Tueste Intenso", note: "Nuestro tueste más fuerte. Café con sabor intenso a bajo coste, para oficinas y cortesías.", base: 400, ficha: "tueste-intenso" },
       ],
     },
