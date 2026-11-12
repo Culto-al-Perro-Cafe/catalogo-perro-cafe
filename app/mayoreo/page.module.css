@@ -1,0 +1,237 @@
+/* Wholesale price list (design: Mayoreo.dc.html) */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px var(--page-pad) 56px;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px 48px;
+  padding-top: 8px;
+}
+
+.title {
+  font-size: clamp(40px, 3.6vw, 72px);
+  color: #fff;
+  text-wrap: balance;
+}
+
+.intro {
+  margin: 0;
+  max-width: 560px;
+  color: #fff;
+  text-wrap: pretty;
+}
+
+.sheet {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-paper-ivory);
+  color: var(--color-the-black);
+  border: var(--border-ink);
+}
+
+.sheetTitle {
+  margin: 0;
+  padding: 28px 32px 4px;
+  font-family: var(--font-headline);
+  font-size: clamp(28px, 2.6vw, 40px);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.rows {
+  padding: 8px 32px 12px;
+}
+
+.head,
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 2.4fr) repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.head {
+  align-items: end;
+  padding: 12px 0;
+  border-bottom: var(--border-ink);
+}
+
+.headTier,
+.tier {
+  text-align: right;
+}
+
+.row {
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: var(--border-ink);
+}
+
+.row:last-child {
+  border-bottom: 0;
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.nameText {
+  font-family: var(--font-headline);
+  font-size: clamp(20px, 1.8vw, 26px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.nameLink {
+  align-self: flex-start;
+  color: var(--color-the-black);
+  text-decoration: underline;
+  text-decoration-color: var(--color-the-orange);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.nameLink:hover {
+  color: var(--color-secondary);
+}
+
+.note {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+/* Tier name inside each cell: only on phones, where the header row is hidden. */
+.tierLabel {
+  display: none;
+  line-height: 1.6;
+}
+
+.price {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.best {
+  color: var(--color-secondary);
+}
+
+.perKg {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.footnote {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.footnote a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--color-the-orange);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.footnote a:hover {
+  color: var(--color-the-orange);
+}
+
+.cta {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 32px;
+}
+
+.ctaTitle {
+  flex: 1 1 420px;
+  max-width: 760px;
+  font-size: clamp(32px, 4.2vw, 64px);
+  text-wrap: balance;
+}
+
+.ctaAction {
+  flex: none;
+  display: flex;
+}
+
+@media (max-width: 760px) {
+  .head {
+    display: none;
+  }
+
+  .row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px 8px;
+    padding: 18px 0;
+  }
+
+  .name {
+    grid-column: 1 / -1;
+  }
+
+  .tier {
+    text-align: left;
+  }
+
+  .tierLabel {
+    display: block;
+  }
+
+  .rows {
+    padding: 8px 20px 12px;
+  }
+
+  .sheetTitle {
+    padding: 24px 20px 4px;
+  }
+}
+
+@media (max-width: 639px) {
+  .cta {
+    padding: 24px;
+  }
+
+  .ctaAction,
+  .ctaAction :global(.cp-btn) {
+    width: 100%;
+  }
+
+  .ctaAction :global(.cp-btn) {
+    white-space: normal;
+  }
+}

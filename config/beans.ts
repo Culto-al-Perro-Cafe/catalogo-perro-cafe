@@ -161,10 +161,16 @@ export const beans: Bean[] = [
     },
   },
   {
+    // Source: Cafetalera San Felipe, "Café Verde Robusta Natural" product page.
     slug: "tueste-intenso",
     name: "Tueste Intenso",
-    notes: "",
-    specs: {}, // TODO: technical sheet
+    notes: "Notas amaderadas, dulces y afrutadas, cuerpo intenso y regusto amargo",
+    specs: {
+      origen: "Córdoba, Atoyac y Amatlán, Veracruz",
+      proceso: "Natural",
+      altitud: "800 a 900 msnm",
+      variedades: "Canephora robusta",
+    },
     image: { src: "/products/tueste-intenso.jpg", alt: "Grano tostado — Tueste Intenso" },
     mercadoLibre: {
       kg1: "https://www.mercadolibre.com.mx/up/MLMU3908637861",

@@ -5,6 +5,8 @@ export const routes = {
   kit: "/kit",
   about: "/nosotros",
   payments: "/metodos-de-pago",
+  /** Wholesale price list. Unlisted: not in the footer or sitemap, noindex (shared by link with leads). */
+  wholesale: "/mayoreo",
   privacy: "/privacidad",
   terms: "/terminos",
   /** Ficha técnica of a coffee (config/beans.ts). */
