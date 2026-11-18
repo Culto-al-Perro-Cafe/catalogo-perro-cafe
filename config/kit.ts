@@ -14,7 +14,7 @@ export const kitConfig = {
   /** Kit listing per marketplace (config/marketplaces.ts). Leave one out when the kit isn't sold there. */
   shop: {
     mercadoLibre:
-      "https://www.mercadolibre.com.mx/kit-degustacion-cafe-de-especialidad-4x250g-culto-al-perro/p/MLM2124745184?pdp_filters=item_id:MLM6348601530",
+      "https://articulo.mercadolibre.com.mx/MLM-6348601530-kit-degustacion-cafe-de-especialidad-4x250g-culto-al-perro-_JM",
     amazon: "https://www.amazon.com.mx/dp/B0HPDWJKG6",
     tiktok:
       "https://www.tiktok.com/view/product/1738217808713648055?encode_params=MIIBrAQMWNjQhp5kTfWTR9NpBIIBiFouV7cimaDl_SrHYPECyHuJomUmVvEIiMROBEdNv1iOMIAzVcS9s_x4Pw2btGt4QDWO973qYH9MKZjMx8pmSsIHWC7a79aVFLaqX5IdkpASED836wIr5yniv2QJpr__Z6QsQBD87lWUIE-GYBdNHNvDSfzGRHwZdhsF3e7JqmF10DiCV5Au2Te_j4P7fGat23mNY3WshK-blNYqeIz3EPNb8Lusa4d_zzU9sM1n6E184mW3T-AzFatfjDY8muJ_6d5Umh-z10J5opFj2mfp2qkzs7BVwM00RcS6-SqOxAnz_gCPbgAEHmpWUPwr-2NYsbs0sEAdXao0xNuI_ShIsNk4WVu4UDbu9zm1aaMRHaxrej_VsGRLX5RIrEUjyIhFs1T_UE8fX62i3QRsrhu8mnILilkwUC0yRhTzXAmFyz0fAaFaM3uNl1UcNxOtVXL__YZSGeNePUHkpEUR0QyXgAsQUSpTyxHRbC2_Jny-Ox-6OcUw1nvyFq7am2ZeFsS10tRAGHySkPPgBBBNfb8i4oIRsF1iq46NE9Y-&force_h5=1&source=seller_center",
