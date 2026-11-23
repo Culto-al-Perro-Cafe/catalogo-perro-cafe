@@ -1,13 +1,13 @@
 ---
-title: ¿Por qué el café no paga IVA en México?
-seoTitle: Por qué el café no paga IVA en México
-description: El café tostado en bolsa no causa IVA (Art. 2-A LIVA). Descubre por qué, cómo facturarlo correctamente y qué impuestos sí pagamos los tostadores en México.
+title: ¿El café lleva IVA? Tasa 0% vs exento (Art. 2-A LIVA)
+seoTitle: ¿El café lleva IVA? Tasa 0% vs exento (Art. 2-A LIVA) · guía 2026
+description: "Respuesta corta: el café en grano, tostado o molido no causa IVA (Art. 2-A LIVA); es exento, no tasa 0%. La taza preparada sí lleva IVA. Guía para facturar en México."
 date: '2025-08-08'
-updated: '2026-05-10'
+updated: '2026-11-23'
 author: José Salcido
 image:
   src: /images/blog/por-que-el-cafe-no-paga-iva/dsc0015.jpg
-  alt: ¿Por qué el café no paga IVA en México?
+  alt: ¿El café lleva IVA? Guía sobre tasa 0% vs exento
 legacyUrl: https://www.perro.cafe/blogs/ayuda/por-que-el-cafe-no-paga-iva
 ---
 
@@ -68,3 +68,7 @@ Si es bebida lista para consumo (embotellada/lista), normalmente **sí** causa I
 :::details[¿Qué pasa si compro 2 kg o más?]
 Para mayoristas y cafeterías tenemos **precio por volumen** y asesoría de extracción sin costo. Escríbenos por Whatsapp.
 :::
+
+---
+
+¿Compras café para tu negocio? [Cotiza mayoreo con factura](/ventas).

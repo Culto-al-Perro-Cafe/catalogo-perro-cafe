@@ -23,7 +23,7 @@ export function LineCard({
       </div>
       <div className={styles.body}>
         <h3 className={`t-display-sm ${styles.title}`}>
-          {line.titlePre}
+          {line.titlePre}{" "}
           <br />
           {line.titleMain}
         </h3>

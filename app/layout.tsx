@@ -3,6 +3,7 @@ import { Josefin_Sans, Rokkitt } from "next/font/google";
 import { siteConfig } from "@/config/site";
 import { organizationJsonLd, websiteJsonLd, localBusinessJsonLd } from "@/lib/seo";
 import { GoogleTag } from "@/components/site/GoogleTag";
+import { GtagOutbound } from "@/components/site/GtagOutbound";
 import { JsonLd } from "@/components/site/JsonLd";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { MobileSalesBar } from "@/components/site/SalesCta";
@@ -64,6 +65,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main>{children}</main>
         <SiteFooter />
         <MobileSalesBar />
+        <GtagOutbound />
         <GoogleTag />
       </body>
     </html>

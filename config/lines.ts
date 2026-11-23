@@ -17,8 +17,15 @@ export type ProductLine = {
   /** Long description on the detail page. */
   description: string;
   highlights: string[];
+  /** <title> override aimed at buyer-intent queries; falls back to `name`. */
+  seoTitle?: string;
   /** Meta description override; falls back to `summary` + `description`. */
   seoDescription?: string;
+  /**
+   * Lowest mayoreo price per kg in MXN (desde 5 kg), from config/mayoreo.ts.
+   * Used for Product JSON-LD `offers`.
+   */
+  pricePerKg: number;
   /** Product photo in /public. Leave undefined to show the hatched placeholder. */
   image?: { src: string; alt: string };
   /** Coffees offered in this line ("Granos disponibles"), by slug from config/beans.ts. */
@@ -31,7 +38,7 @@ export const productLines: ProductLine[] = [
     image: { src: "/products/espresso.jpg", alt: "Granos de café tostado para espresso, tueste medio claro" },
     name: "Café para Espresso",
     titlePre: "Café para",
-    titleMain: "Espresso",
+    titleMain: "espresso",
     summary: "Consistencia lote tras lote. Para máquina y métodos de filtrado.",
     description:
       "Diseñado para barras que exigen perfección y constancia. Te garantizamos el mismo perfil de sabor lote tras lote, para que tus baristas no tengan que estar recalibrando moliendas todo el tiempo. Rinde excelente en máquina de espresso y métodos de filtrado manuales.",
@@ -42,15 +49,17 @@ export const productLines: ProductLine[] = [
     ],
     // Data sheets live in config/beans.ts.
     variants: ["lavado-veracruz", "lavado-chiapas", "natural-honey-veracruz", "ambar-bourbon-puebla"],
+    seoTitle: "Café para espresso de mayoreo para cafeterías",
     seoDescription:
-      "Café para espresso de mayoreo con perfil estable lote tras lote. Ideal para cafeterías de especialidad, máquina de espresso y métodos de filtrado. Envíos a todo México.",
+      "Café para espresso de mayoreo con perfil estable lote tras lote. Ideal para cafeterías de especialidad, máquina de espresso y filtrado. Envíos a todo México desde 5 kg.",
+    pricePerKg: 420,
   },
   {
     slug: "restaurante",
     image: { src: "/products/restaurante.jpg", alt: "Granos de café tostado de la Línea Restaurante, tueste medio" },
     name: "Línea Restaurante",
-    titlePre: "Línea",
-    titleMain: "Restaurante",
+    titlePre: "Café para",
+    titleMain: "restaurantes",
     summary: "La mejor taza en cada mesa, sin batallar. Cero amargor.",
     description:
       "Sirve una taza de buen café antes de cada comida, dales una excelente primera impresión. Logramos un perfil balanceado y constante que le gusta a todos, eliminando por completo ese sabor \"amargo\" o quemado del café comercial de baja calidad. Tus clientes lo van a notar.",
@@ -59,15 +68,17 @@ export const productLines: ProductLine[] = [
       "En grano o molido, ya listo para trabajar.",
       "Tostado antes de enviarse, para que tengas café fresco.",
     ],
+    seoTitle: "Proveedor de café para restaurantes · mayoreo desde 5 kg",
     seoDescription:
-      "Café para restaurantes: perfil balanceado, sin amargor y fácil de preparar para tu personal. Café tostado de mayoreo con envíos a todo México.",
+      "Proveedor de café para restaurantes: perfil balanceado, sin amargor y fácil de preparar. Mayoreo desde 5 kg, con factura y envíos a todo México.",
+    pricePerKg: 395,
   },
   {
     slug: "oficina",
     image: { src: "/products/oficina.jpg", alt: "Granos de café tostado de la Línea Oficina, tueste medio" },
     name: "Línea Oficina",
-    titlePre: "Línea",
-    titleMain: "Oficina",
+    titlePre: "Café para",
+    titleMain: "oficina",
     summary: "Gran sabor a bajo costo. Ideal para cafeteras de goteo.",
     description:
       "El café de oficina no tiene que ser malo. Esta es nuestra opción de mejor costo-beneficio, pensada específicamente para las clásicas cafeteras de casa u oficina. Buen rendimiento, buen sabor y a un precio que cuida el presupuesto de tu empresa.",
@@ -77,15 +88,17 @@ export const productLines: ProductLine[] = [
       "Molido, ya listo para trabajar.",
       "Tostado antes de enviarse, para que tengas café fresco.",
     ],
+    seoTitle: "Café para oficina por kilo con factura · envío a todo México",
     seoDescription:
-      "Café para oficina con el mejor costo-beneficio. Ideal para cafeteras de goteo y percoladoras. Café tostado de mayoreo con facturación y envíos a todo México.",
+      "Café para oficina y servicio de café para oficinas: costo-beneficio, cafeteras de goteo y percoladoras. Mayoreo por kilo con factura y envíos a todo México.",
+    pricePerKg: 400,
   },
   {
     slug: "tueste-intenso",
     image: { src: "/products/tueste-intenso.jpg", alt: "Granos de café de tueste oscuro de la Línea Tueste Intenso" },
     name: "Línea Tueste Intenso",
-    titlePre: "Línea",
-    titleMain: "Tueste Intenso",
+    titlePre: "Tueste",
+    titleMain: "intenso",
     summary: "Fuerte y con carácter. Perfecto para barras de cortesía.",
     description:
       "Para los que buscan ese sabor a café fuerte y tradicional. Desarrollamos este tueste pensando en negocios que ofrecen servicio de café en cortesía (como hoteles, agencias o salas de espera) y necesitan una bebida con mucha presencia y carácter.",
@@ -95,8 +108,10 @@ export const productLines: ProductLine[] = [
       "Molido, ya listo para trabajar.",
       "Tostado antes de enviarse, para que tengas café fresco.",
     ],
+    seoTitle: "Café de tueste intenso para hoteles y cortesía",
     seoDescription:
-      "Café de tueste oscuro y cuerpo pesado para hoteles, agencias y salas de espera. Café tostado de mayoreo con envíos a todo México.",
+      "Café de tueste oscuro y cuerpo pesado para hoteles, agencias y salas de espera. Mayoreo desde 5 kg con envíos a todo México.",
+    pricePerKg: 400,
   },
 ];
 

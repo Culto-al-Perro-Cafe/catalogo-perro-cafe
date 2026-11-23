@@ -30,7 +30,7 @@ export async function generateMetadata({
   if (!line) return {};
 
   return pageMetadata({
-    title: line.name,
+    title: line.seoTitle ?? line.name,
     description: line.seoDescription ?? `${line.summary} ${line.description}`,
     path: routes.line(line.slug),
     image: line.image,
@@ -67,7 +67,7 @@ export default async function LinePage({ params }: PageProps<"/lineas/[slug]">) 
 
         <BentoTile tone="ivory" className={styles.info}>
           <h1 className={`t-display-md ${styles.title}`}>
-            {line.titlePre}
+            {line.titlePre}{" "}
             <br />
             {line.titleMain}
           </h1>
