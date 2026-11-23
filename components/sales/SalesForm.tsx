@@ -20,8 +20,8 @@ import {
 import { Button } from "@/components/ui/Button";
 import { SegmentedChoice, SelectField, TextField } from "@/components/ui/fields";
 import styles from "./SalesForm.module.css";
-import { track } from "@/lib/analytics";
-import { analyticsEvents } from "@/config/analytics";
+import { gtagEvent, track } from "@/lib/analytics";
+import { analyticsEvents, gtagEvents } from "@/config/analytics";
 
 const lineOptions = [RECOMMEND_OPTION, ...productLines.map((l) => l.name)];
 const businessOptions = [
@@ -109,6 +109,7 @@ export function SalesForm({ initialLine, extraLine }: { initialLine?: string; ex
       if (result.ok) {
         // No personal data: only what the lead is interested in.
         track(analyticsEvents.quoteSubmitted, { linea: form.linea, tipo: form.tipo, consumo: form.consumo });
+        gtagEvent(gtagEvents.generateLead, { form_id: "ventas" });
         router.replace(routes.salesSent, { scroll: false });
       }
       else {

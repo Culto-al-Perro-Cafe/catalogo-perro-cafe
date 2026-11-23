@@ -1,8 +1,9 @@
 ---
 title: Cómo elegir un proveedor de café para tu negocio
-description: 'Hay algo curioso en muchos restaurantes y cafeterías: pasan semanas pensando en el menú, en la cocina, en el diseño del lugar o incluso en las sillas… pero el café termina siendo una decisión improvisada. Y normalmente eso se nota. No porque el cliente llegue pensando en “notas sensoriales” o en el origen exacto del gr'
+seoTitle: Cómo elegir un proveedor de café (checklist para negocios)
+description: "Checklist para elegir proveedor de café: consistencia, entregas, precio por taza y soporte. Para restaurantes, oficinas y cafeterías en México."
 date: '2026-05-25'
-updated: '2026-05-25'
+updated: '2026-11-23'
 author: José Salcido
 image:
   src: /images/blog/como-elegir-un-proveedor-de-cafe-para-tu-negocio/dsc9688.jpg
@@ -116,6 +117,6 @@ En Culto al Perro Café trabajamos con restaurantes, oficinas y negocios que nec
 
 ### ¿Buscas proveedor de café para tu negocio?
 
-Cotiza café para restaurantes, oficinas y cafeterías directamente con nosotros.
+Cotiza café para [restaurantes](/lineas/restaurante), [oficinas](/lineas/oficina) y [cafeterías](/lineas/espresso) directamente con nosotros en [ventas](/ventas).
 
 ::cta{id="cotizar" label="Ver información de mayoreo"}

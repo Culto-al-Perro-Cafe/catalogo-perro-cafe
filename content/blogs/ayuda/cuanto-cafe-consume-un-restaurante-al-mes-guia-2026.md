@@ -1,16 +1,17 @@
 ---
-title: ¿Cuánto café consume un restaurante al mes? Guía 2026
-description: Descubre cuánto café consume un restaurante al mes, cómo calcular tu consumo real y cuánto café deberías comprar para evitar faltantes y desperdicio.
+title: ¿Cuánto café consume un restaurante al mes?
+seoTitle: ¿Cuánto café consume un restaurante al mes? Cálculo práctico 2026
+description: La mayoría de restaurantes usa entre 10 y 50 kg de café al mes. Aprende a calcular tazas × gramos, pedir sin faltantes y cotizar mayoreo desde 5 kg.
 date: '2026-05-29'
-updated: '2026-05-29'
+updated: '2026-11-23'
 author: José Salcido
 image:
   src: /images/blog/cuanto-cafe-consume-un-restaurante-al-mes-guia-2026/cafe-para-restaurantes.png
-  alt: ¿Cuánto café consume un restaurante al mes? Guía 2026
+  alt: ¿Cuánto café consume un restaurante al mes?
 legacyUrl: https://www.perro.cafe/blogs/ayuda/cuanto-cafe-consume-un-restaurante-al-mes-guia-2026
 ---
 
-La mayoría de los restaurantes consumen entre **10 y 50 kg de café al mes**. Pero la cifra real depende del tipo de restaurante, la cantidad de clientes diarios, si venden desayunos, si ofrecen café después de la comida y qué tan importante es el café dentro de su operación.
+La mayoría de los restaurantes consumen entre **10 y 50 kg de café al mes**. Pero la cifra real depende del tipo de restaurante, la cantidad de clientes diarios, si venden desayunos, si ofrecen café después de la comida y qué tan importante es el café dentro de su operación. Si ya sabes tu volumen, revisa nuestra [línea de café para restaurantes](/lineas/restaurante) o [cotiza mayoreo](/ventas).
 
 Un restaurante pequeño puede consumir alrededor de **10 kg mensuales**, mientras que un restaurante con alto volumen, desayunos fuertes o servicio constante puede superar fácilmente los **100 kg al mes**.
 
@@ -107,7 +108,7 @@ La mejor forma de saberlo es calcular cuántas tazas se preparan al día y multi
 
 ## ¿No sabes cuánto café necesita tu restaurante?
 
-En **Culto al Perro Café** ayudamos a restaurantes, hoteles, oficinas y cafeterías a calcular su consumo mensual de café y programar entregas recurrentes.
+En **Culto al Perro Café** ayudamos a restaurantes, hoteles, oficinas y cafeterías a calcular su consumo mensual de café y programar entregas recurrentes. Conoce el [café para restaurantes](/lineas/restaurante) o escribe a [ventas](/ventas) para una cotización.
 
 Si quieres saber cuánto café deberías comprar al mes, podemos ayudarte a estimarlo.
 

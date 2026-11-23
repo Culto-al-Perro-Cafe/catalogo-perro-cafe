@@ -143,6 +143,7 @@ export function catalogJsonLd() {
 }
 
 export function productLineJsonLd(line: ProductLine) {
+  const url = absoluteUrl(routes.line(line.slug));
   return [
     {
       "@context": "https://schema.org",
@@ -150,31 +151,28 @@ export function productLineJsonLd(line: ProductLine) {
       name: line.name,
       description: line.description,
       category: "Café tostado",
-      url: absoluteUrl(routes.line(line.slug)),
+      url,
       image: line.image
         ? absoluteUrl(line.image.src)
         : absoluteUrl(`${routes.line(line.slug)}/opengraph-image`),
       brand: { "@type": "Brand", name: siteConfig.shortName },
       manufacturer: { "@id": organizationId },
+      offers: {
+        "@type": "Offer",
+        url,
+        priceCurrency: "MXN",
+        price: line.pricePerKg,
+        priceValidUntil: `${new Date().getFullYear() + 1}-12-31`,
+        availability: "https://schema.org/InStock",
+        itemCondition: "https://schema.org/NewCondition",
+        seller: { "@id": organizationId },
+        unitText: "kg",
+      },
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: siteConfig.line.breadcrumbRoot,
-          item: absoluteUrl(routes.home),
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: line.name,
-          item: absoluteUrl(routes.line(line.slug)),
-        },
-      ],
-    },
+    breadcrumbJsonLd([
+      { name: siteConfig.line.breadcrumbRoot, path: routes.home },
+      { name: line.name, path: routes.line(line.slug) },
+    ]),
   ];
 }
 
@@ -185,8 +183,11 @@ function breadcrumbJsonLd(items: { name: string; path: string }[]) {
     itemListElement: items.map((item, i) => ({
       "@type": "ListItem",
       position: i + 1,
-      name: item.name,
-      item: absoluteUrl(item.path),
+      // Nested `item` with `name` so Google Rich Results name each crumb (avoids "Unnamed item").
+      item: {
+        "@id": absoluteUrl(item.path),
+        name: item.name,
+      },
     })),
   };
 }

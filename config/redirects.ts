@@ -24,12 +24,14 @@ export const legacyRedirects: { source: string; destination: string }[] = [
   // Payment methods page.
   { source: "/pages/metodos-de-pago", destination: "/metodos-de-pago" },
 
-  // Wholesale and contact pages → B2B catalog and sales form.
-  { source: "/pages/mayoreo", destination: "/" },
+  // Wholesale and contact pages → B2B wholesale price list and sales form.
+  { source: "/pages/mayoreo", destination: "/mayoreo" },
   { source: "/pages/contact", destination: "/ventas" },
 
   // Old /menu page and /blog (singular) → current pages.
+  // Both /menu and /menu/ so a trailing-slash hop never chains into a second redirect.
   { source: "/menu", destination: "/menudeo" },
+  { source: "/menu/", destination: "/menudeo" },
   { source: "/blog", destination: "/blogs" },
 
   // Local SEO pages → Hermosillo blog post and menudeo.

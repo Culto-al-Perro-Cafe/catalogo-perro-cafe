@@ -1,12 +1,13 @@
 ---
-title: La Guia de Café de Especialidad en Hermosillo, Sonora
-description: Descubre el verdadero sabor del café de especialidad en Hermosillo. Aprende sobre tuestes, métodos y por qué el café local está conquistando paladares exigentes
+title: Cafeterías y café de especialidad en Hermosillo (guía 2026)
+seoTitle: Cafeterías y café de especialidad en Hermosillo (guía 2026)
+description: "Guía de cafeterías y café de especialidad en Hermosillo, Sonora: qué significa especialidad, dónde probarlo y cómo comprar café tostado local."
 date: '2025-05-16'
-updated: '2025-05-16'
+updated: '2026-11-23'
 author: José Salcido
 image:
   src: /images/blog/la-guia-de-cafe-de-especialidad-en-hermosillo-sonora/image_2.jpg
-  alt: La Guia de Café de Especialidad en Hermosillo, Sonora
+  alt: Cafeterías y café de especialidad en Hermosillo
 legacyUrl: https://www.perro.cafe/blogs/tostadores/la-guia-de-cafe-de-especialidad-en-hermosillo-sonora
 ---
 

@@ -1,16 +1,17 @@
 ---
-title: 'Qué café comprar para una cafetería nueva: guía 2026'
-description: Descubre qué café comprar para una cafetería nueva, cuánto café necesitas al mes y cómo elegir un proveedor confiable para tu negocio.
+title: Qué café comprar para una cafetería nueva
+seoTitle: Qué café comprar para una cafetería nueva (guía 2026)
+description: "Guía para elegir café de mayoreo al abrir una cafetería: perfil para espresso y leche, consumo mensual y proveedor confiable en México."
 date: '2026-05-29'
-updated: '2026-05-29'
+updated: '2026-11-23'
 author: José Salcido
 image:
   src: /images/blog/que-cafe-comprar-para-una-cafeteria-nueva-guia-2026/cuanto-cafe-compra-una-cafeteria.png
-  alt: 'Qué café comprar para una cafetería nueva: guía 2026'
+  alt: Qué café comprar para una cafetería nueva
 legacyUrl: https://www.perro.cafe/blogs/ayuda/que-cafe-comprar-para-una-cafeteria-nueva-guia-2026
 ---
 
-Elegir qué café comprar para una cafetería nueva es una de las decisiones más importantes del negocio. No solo afecta el sabor de las bebidas, también afecta tus costos, tu operación, tu margen de ganancia y la experiencia que tendrán tus clientes.
+Elegir qué café comprar para una cafetería nueva es una de las decisiones más importantes del negocio. No solo afecta el sabor de las bebidas, también afecta tus costos, tu operación, tu margen de ganancia y la experiencia que tendrán tus clientes. Empieza por un [café para espresso de mayoreo](/lineas/espresso) pensado para barra.
 
 El error más común es elegir café solo por gusto personal, por moda o porque alguien dijo que cierto origen era “mejor”. Pero una cafetería necesita algo más importante: **un café consistente, rentable y fácil de trabajar todos los días**.
 
@@ -125,7 +126,7 @@ La mejor decisión es comprar café pensando en tu cliente, tu menú, tu volumen
 
 ## ¿Estás abriendo una cafetería?
 
-En **Culto al Perro Café** ayudamos a cafeterías, restaurantes y negocios nuevos a elegir café, calcular consumo mensual y programar entregas recurrentes.
+En **Culto al Perro Café** ayudamos a cafeterías, restaurantes y negocios nuevos a elegir café, calcular consumo mensual y programar entregas recurrentes. Revisa el [café para espresso](/lineas/espresso) o [cotiza en ventas](/ventas).
 
 Si estás por abrir una cafetería o quieres cambiar de proveedor, podemos ayudarte a elegir una opción rentable y fácil de operar.
 
